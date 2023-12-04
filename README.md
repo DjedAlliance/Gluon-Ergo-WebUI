@@ -1,4 +1,4 @@
-Phoenix Frontend Interface
+Gluown Frontend Interface
 
 Start development server with
 
