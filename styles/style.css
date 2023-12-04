@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #0d0f19;
+  overflow-x: hidden;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.font-SpaceGrotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@font-face {
+  font-family: VelaSansRegular;
+  src: url("/fonts/VelaSans-Regular.otf");
+}
+
+@font-face {
+  font-family: VelaSansMedium;
+  src: url("/fonts/VelaSans-Medium.otf");
+}
+
+@font-face {
+  font-family: VelaSanSemiBold;
+  src: url("/fonts/VelaSans-SemiBold.otf");
+}
+
+@font-face {
+  font-family: VelaSansBold;
+  src: url("/fonts/VelaSans-Bold.otf");
+}
+
+.font-VelaSansRegular {
+  font-family: VelaSansRegular;
+  font-weight: 400;
+}
+
+.font-VelaSansMedium {
+  font-family: VelaSansMedium;
+  font-weight: 500;
+}
+
+.font-VelaSanSemiBold {
+  font-family: VelaSanSemiBold;
+  font-weight: 600;
+}
+
+.font-VelaSansBold {
+  font-family: VelaSansBold;
+  font-weight: 700;
+}
+
+.primary-gradient {
+  background-image: linear-gradient(to right,
+      rgb(0, 31, 208),
+      rgb(101, 20, 252)) !important;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  width: auto !important;
+}
+
+.react-datepicker__month-container {
+  /*background: #6b7280;*/
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.ant-dropdown .ant-dropdown-menu {
+  background: white;
+  /*margin-left: 30px;*/
+  /*border-radius: 20px;*/
+}
+
+.ant-dropdown-menu-title-content {
+  margin-left: 10px;
+}
+
+.ant-tabs-nav-wrap {
+  border: 1px solid darkgrey;
+  border-radius: 15px;
+}
+
+.ant-tabs-nav::before {
+  border: none !important;
+}
+
+.ant-tabs-nav-wrap {
+  justify-content: space-between;
+}
+
+.ant-modal-content {
+  background: #141414 !important;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+    0 9px 28px 8px #0000000d;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active {
+  z-index: 1;
+  color: white;
+}
+
+.ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
+  background: #7066c5;
+  height: 100% !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.ant-modal-close-x {
+  color: white;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: white !important;
+}
+
+.ant-tabs-tab-btn {
+  color: black;
+  font-size: 16px;
+}
+
+.ant-btn.ant-btn-lg {
+  padding-right: 4px;
+}
+
+.ant-tabs-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 4px;
+}
+
+.ant-tabs-tab {
+  width: 50%;
+  justify-content: center;
+}
+
+.ant-tabs .ant-tabs-tab {
+  padding: 6px;
+}
+
+.ant-modal .ant-modal-content {
+  border-radius: 16px;
+  border: 1px solid #434343;
+  padding: 16px !important;
+  background-color: white !important;
+}
+
+.ant-modal-close-x {
+  font-size: 20px !important;
+}
+
+.connectWalletBtn {
+  font-family: "Space Grotesk", sans-serif !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+/* Track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #d9d9d98f;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.ant-modal-close-icon svg {
+  fill: #0d0f19;
+}
+
+@media (max-width: 640px) {
+  .ergo-pay-wallet-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    top: 53% !important;
+    transform: translateY(-50%);
+  }
+
+  .browser-wallet-modal {
+    width: 100% !important;
+    max-width: 360px !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+
+  .site-button-ghost-wrapper .ant-space-item {
+    width: 100%;
+  }
+
+  .ant-modal-wrap {
+    overflow: hidden !important;
+  }
+}
