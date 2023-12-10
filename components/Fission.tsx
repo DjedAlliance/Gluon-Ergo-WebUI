@@ -17,6 +17,10 @@ import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForFission } from "@/blockchain/ergo/apiHelper";
+import CardContainer from "@/components/Common/CardContainer";
+import CardHeader from "@/components/Common/CardHeader";
+import TokenInfo from "@/components/Common/TokenInfo";
+import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
 
 const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -130,48 +134,60 @@ const Fission = () => {
   };
 
   return (
-    <>
-      <div className="max-w-md mx-auto mb-10 lg:mb-0 font-inter">
-        <h4 className="text-black text-xl font-medium">
-          Erg to Gold and Gold Reserve
-        </h4>
-        <p className="text-black my-3 min-h-[100px]">
-          Mint hodlERG with no fees. You have the freedom to mint as much as you
-          desire at the current price. it is important to note that the minting
-          process does not directly affect the tokens pricing dynamics.
-        </p>
-
-        <div className="flex bg-gray-200 shadow-lg justify-between rounded-md items-start h-full">
-          <div className="flex flex-col w-full h-full">
-            <input
-              className="w-full border-b-2 border-l-0 border-r-0 border-t-0 border-gray-300 bg-transparent text-gray-500 font-medium text-md h-14 focus:outline-none focus:ring-0 focus:border-primary focus-within:outline-none focus-within:shadow-none focus:shadow-none pl-4"
-              placeholder="Amount"
-              type="number"
-              onChange={(event) =>
-                setErgForFissionAmount(parseFloat(event.target.value))
-              }
-            />
-          </div>
-
-          <button
-            className="h-24 whitespace-nowrap focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300  focus:shadow-none font-medium rounded text-md px-5 py-2.5"
-            onClick={handleClick}
-          >
-            FISSION ERG TO RSV AND GOLD
-          </button>
-          {isModalErgoPayOpen && (
-            <ErgoPayWalletModal
-              isModalOpen={isModalErgoPayOpen}
-              setIsModalOpen={setIsModalErgoPayOpen}
-              ergoPayLink={ergoPayLink}
-              txid={ergoPayTxId}
-              isMainnet={isMainnet}
-            ></ErgoPayWalletModal>
-          )}
-        </div>
-      </div>
-    </>
+    <CardContainer>
+      <CardHeader title="Fission" />
+      <TokenInfo
+        tokenName="Neutrons & Protons "
+        description="TRACE is the native token of Trace Network which is fully decentralized, community governed & owned protocol managed by STRCAE holders."
+        logoUrl="https://cryptologos.cc/logos/ergo-erg-logo.png?v=029" // Replace with your actual logo path
+      />
+      <TokenPurchaseForm onPurchase={handleClick} />
+    </CardContainer>
   );
+
+  // return (
+  //   <>
+  //     <div className="max-w-md mx-auto mb-10 lg:mb-0 font-inter">
+  //       <h4 className="text-black text-xl font-medium">
+  //         Erg to Gold and Gold Reserve
+  //       </h4>
+  //       <p className="text-black my-3 min-h-[100px]">
+  //         Mint hodlERG with no fees. You have the freedom to mint as much as you
+  //         desire at the current price. it is important to note that the minting
+  //         process does not directly affect the tokens pricing dynamics.
+  //       </p>
+
+  //       <div className="flex bg-gray-200 shadow-lg justify-between rounded-md items-start h-full">
+  //         <div className="flex flex-col w-full h-full">
+  //           <input
+  //             className="w-full border-b-2 border-l-0 border-r-0 border-t-0 border-gray-300 bg-transparent text-gray-500 font-medium text-md h-14 focus:outline-none focus:ring-0 focus:border-primary focus-within:outline-none focus-within:shadow-none focus:shadow-none pl-4"
+  //             placeholder="Amount"
+  //             type="number"
+  //             onChange={(event) =>
+  //               setErgForFissionAmount(parseFloat(event.target.value))
+  //             }
+  //           />
+  //         </div>
+
+  //         <button
+  //           className="h-24 whitespace-nowrap focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300  focus:shadow-none font-medium rounded text-md px-5 py-2.5"
+  //           onClick={handleClick}
+  //         >
+  //           FISSION ERG TO RSV AND GOLD
+  //         </button>
+  //         {isModalErgoPayOpen && (
+  //           <ErgoPayWalletModal
+  //             isModalOpen={isModalErgoPayOpen}
+  //             setIsModalOpen={setIsModalErgoPayOpen}
+  //             ergoPayLink={ergoPayLink}
+  //             txid={ergoPayTxId}
+  //             isMainnet={isMainnet}
+  //           ></ErgoPayWalletModal>
+  //         )}
+  //       </div>
+  //     </div>
+  //   </>
+  // );
 };
 
 export default Fission;
