@@ -4,6 +4,7 @@ import "../styles/TokenInfo.css";
 import "../styles/CardHeader.css";
 import "../styles/CardContainer.css";
 import "../styles/TokenPurchaseForm.css";
+import "../styles/TokenContainer.css";
 
 import type { AppProps } from "next/app";
 

@@ -21,6 +21,7 @@ import CardContainer from "@/components/Common/CardContainer";
 import CardHeader from "@/components/Common/CardHeader";
 import TokenInfo from "@/components/Common/TokenInfo";
 import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
+import TokenContainer from "@/components/Common/TokenContainer";
 
 const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -133,15 +134,20 @@ const Fission = () => {
     }
   };
 
+  const tokenName = "Neutrons & Protons";
+  const description =
+    "TRACE is the native token of Trace Network which is fully decentralized, community governed & owned protocol managed by STRCAE holders.";
+  const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
+
   return (
     <CardContainer>
       <CardHeader title="Fission" />
-      <TokenInfo
-        tokenName="Neutrons & Protons "
-        description="TRACE is the native token of Trace Network which is fully decentralized, community governed & owned protocol managed by STRCAE holders."
-        logoUrl="https://cryptologos.cc/logos/ergo-erg-logo.png?v=029" // Replace with your actual logo path
+      <TokenContainer
+        onPurchase={handleClick}
+        tokenName={tokenName}
+        description={description}
+        logoUrl={logoUrl}
       />
-      <TokenPurchaseForm onPurchase={handleClick} />
     </CardContainer>
   );
 
