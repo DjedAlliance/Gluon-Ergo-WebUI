@@ -9,10 +9,7 @@ import {
   precisionBigInt,
   UIMultiplier,
 } from "@/blockchain/ergo/constants";
-import { HodlBankContract } from "@/blockchain/ergo/phoenixContracts/BankContracts/HodlBankContract";
 import Footer from "./Footer";
-import Hodlerg from "./Hodlerg";
-import Refund from "./Refund";
 import { fromEvent } from "rxjs";
 import { io, Socket } from "socket.io-client";
 import { DefaultEventsMap } from "@socket.io/component-emitter";

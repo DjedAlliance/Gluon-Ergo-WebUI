@@ -84,7 +84,7 @@ const Fission = () => {
     try {
       const unsignedTransaction = await UnsignedTxForFission(
         isMainnet,
-        localStorage.getItem("walletAddress") || "",
+        walletConfig.walletAddress[0] || "",
         ergForFissionAmount,
         true
       );

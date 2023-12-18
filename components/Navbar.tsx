@@ -35,48 +35,6 @@ const Navbar = (props: IProps) => {
       <div className="sm:hidden w-full ">
         <ConnectWallet socket={socket} />
       </div>
-      {/* <div className="primary-gradient w-full py-3 text-center flex items-center space-x-12 sm:space-x-20 justify-center">
-        <button
-          onClick={() => setActiveTab("TransmuteSigGoldToRsv")}
-          className={`text-white font-medium font-inter text-lg uppercase transition-all duration-200 ease-in-out after:transition-all
-           after:ease-in-out after:duration-200 relative after:absolute after:-bottom-[11px] after:left-1/2 after:-translate-x-1/2 after:bg-white after:h-1 ${
-             activeTab === "TransmuteSigGoldToRsv" ? "after:w-[130%] " : ""
-           }`}
-        >
-          TransmuteSigGoldToRsv
-        </button>
-        <button
-          onClick={() => setActiveTab("TransmuteRsvToGold")}
-          className={`text-white font-medium font-inter text-lg uppercase transition-all duration-200 ease-in-out after:transition-all
-           after:ease-in-out after:duration-200 relative after:absolute after:-bottom-[11px] after:left-1/2 after:-translate-x-1/2 after:bg-white after:h-1 ${
-             activeTab === "TransmuteRsvToGold" ? "after:w-[130%] " : ""
-           }`}
-        >
-          TransmuteRsvToGold
-        </button>
-        <button
-          onClick={() => setActiveTab("Fission")}
-          className={`text-white font-medium font-inter text-lg uppercase transition-all duration-200 ease-in-out after:transition-all
-           after:ease-in-out after:duration-200 relative after:absolute after:-bottom-[11px] after:left-1/2 after:-translate-x-1/2 after:bg-white after:h-1 ${
-             activeTab === "Fission" ? "after:w-[130%] " : ""
-           }`}
-        >
-          Fission
-        </button>
-        <button
-          onClick={() => setActiveTab("MintGold")}
-          className={`text-white font-medium font-inter text-lg uppercase transition-all duration-200 ease-in-out after:transition-all
-           after:ease-in-out after:duration-200 relative after:absolute after:-bottom-[11px] after:left-1/2 after:-translate-x-1/2 after:bg-white after:h-1 ${
-             activeTab === "MintGold" ? "after:w-[130%] " : ""
-           }`}
-        >
-          MintGold
-        </button>
-      </div>
-    </>
-  );
-}; */}
-
       <button className="sm:hidden" onClick={toggleMenu}>
         {/* Hamburger icon */}
         {`HamburgerIcon -> ${activeTab}`}

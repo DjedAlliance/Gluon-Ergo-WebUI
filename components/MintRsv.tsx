@@ -79,7 +79,7 @@ const MintRsv = () => {
     try {
       const unsignedTransaction = await UnsignedTxForMintRsv(
         isMainnet,
-        localStorage.getItem("walletAddress") || "",
+        walletConfig.walletAddress[0] || "",
         ergForMintRsvAmount,
         true
       );

@@ -79,7 +79,7 @@ const MintGold = () => {
     try {
       const unsignedTransaction = await UnsignedTxForMintGold(
         isMainnet,
-        localStorage.getItem("walletAddress") || "",
+        walletConfig.walletAddress[0] || "",
         ergForMintGoldAmount,
         true
       );

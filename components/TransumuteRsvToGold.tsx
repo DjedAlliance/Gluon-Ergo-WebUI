@@ -80,7 +80,7 @@ const TransmuteRsvToGold = () => {
     try {
       const unsignedTransaction = await UnsignedTxForTransmuteRsvToGold(
         isMainnet,
-        localStorage.getItem("walletAddress") || "",
+        walletConfig.walletAddress[0] || "",
         RsvToGoldTransmuteAmount,
         true
       );
