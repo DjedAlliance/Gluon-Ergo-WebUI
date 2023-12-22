@@ -3,10 +3,12 @@ import TokenInfo from "./TokenInfo";
 import TokenPurchaseForm from "./TokenPurchaseForm";
 
 interface TokenContainerProps {
-  onPurchase: (amount: string) => void;
+  onPurchase: (amount: number) => Promise<void>;
   tokenName: string;
   description: string;
   logoUrl: string;
+  baseCurrency?: string;
+  maxAmount?: number;
 }
 
 const TokenContainer: React.FC<TokenContainerProps> = ({
@@ -14,6 +16,8 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
   tokenName,
   description,
   logoUrl,
+  baseCurrency,
+  maxAmount,
 }) => {
   return (
     <div className="token-container">
@@ -22,7 +26,7 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
         description={description}
         logoUrl={logoUrl}
       />
-      <TokenPurchaseForm onPurchase={onPurchase} />
+      <TokenPurchaseForm onPurchase={onPurchase} baseCurrency={baseCurrency} maxAmount={maxAmount}  />
     </div>
   );
 };

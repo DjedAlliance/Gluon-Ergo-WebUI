@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { explorerClient, PROXY_ADDRESS } from "@/blockchain/ergo/constants";
-import { OutputInfo } from "@/blockchain/ergo/explorerApi";
+import {
+  EXPLORER_API_URL,
+  explorerClient,
+  PROXY_ADDRESS,
+} from "@/blockchain/ergo/constants";
+import {
+  Configuration,
+  DefaultApiFactory,
+  OutputInfo,
+} from "@/blockchain/ergo/explorerApi";
 import {
   checkWalletConnection,
   signAndSubmitTx,
@@ -15,7 +23,11 @@ import { getShortLink, getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
-import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
+import {
+  outputInfoToErgoTransactionOutput,
+  nanoErgsToErgs,
+  ergsToNanoErgs,
+} from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForFission } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "@/components/Common/CardContainer";
 import CardHeader from "@/components/Common/CardHeader";
@@ -35,6 +47,8 @@ const Fission = () => {
   const [isModalErgoPayOpen, setIsModalErgoPayOpen] = useState<boolean>(false);
   const [ergoPayLink, setErgoPayLink] = useState<string>("");
   const [ergoPayTxId, setErgoPayTxId] = useState<string>("");
+  const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
+  const [ergoAmoutAvailable, setErgoAmoutAvailable] = useState<any>(null);
 
   useEffect(() => {
     const isMainnet = localStorage.getItem("IsMainnet")
@@ -43,9 +57,25 @@ const Fission = () => {
 
     setIsMainnet(isMainnet);
     setProxyAddress(PROXY_ADDRESS(isMainnet));
+    const explorerConf = new Configuration({
+      basePath: EXPLORER_API_URL(isMainnet),
+    });
+
+    const explorerClient = DefaultApiFactory(explorerConf);
+    setExplorerApiClient(explorerClient);
+
+    const walletConfig = getWalletConfig();
+    if (walletConfig !== undefined) {
+      explorerClient
+        .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
+        .then((res) => {
+          console.log(res.data.nanoErgs * 10 ** -9);
+          setErgoAmoutAvailable(nanoErgsToErgs(res.data.nanoErgs));
+        });
+    }
   }, []);
 
-  const handleClick = async () => {
+  const handleClick = async (amount: number) => {
     const walletConfig = getWalletConfig();
 
     if (!(await checkWalletConnection(walletConfig))) {
@@ -85,7 +115,7 @@ const Fission = () => {
       const unsignedTransaction = await UnsignedTxForFission(
         isMainnet,
         walletConfig.walletAddress[0] || "",
-        ergForFissionAmount,
+        ergsToNanoErgs(amount),
         true
       );
 
@@ -136,19 +166,33 @@ const Fission = () => {
 
   const tokenName = "Neutrons & Protons";
   const description =
-    "TRACE is the native token of Trace Network which is fully decentralized, community governed & owned protocol managed by STRCAE holders.";
+    "Erg is the native token of the Ergo blockchain which is a POS, fully decentralized, and  community governed protocol. Use Fission to convert your Erg to Neutrons and Protons.";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
   return (
-    <CardContainer>
-      <CardHeader title="Fission" />
-      <TokenContainer
-        onPurchase={handleClick}
-        tokenName={tokenName}
-        description={description}
-        logoUrl={logoUrl}
-      />
-    </CardContainer>
+    <>
+      <CardContainer>
+        <CardHeader title="Fission" />
+        <TokenContainer
+          onPurchase={handleClick}
+          tokenName={tokenName}
+          description={description}
+          logoUrl={logoUrl}
+          baseCurrency="ERG"
+          maxAmount={ergoAmoutAvailable}
+        />
+      </CardContainer>
+      {isModalErgoPayOpen && (
+        <ErgoPayWalletModal
+          isModalOpen={isModalErgoPayOpen}
+          setIsModalOpen={setIsModalErgoPayOpen}
+          ergoPayLink={ergoPayLink}
+          txid={ergoPayTxId}
+          isMainnet={isMainnet}
+        ></ErgoPayWalletModal>
+      )}
+      ;
+    </>
   );
 
   // return (
@@ -181,14 +225,7 @@ const Fission = () => {
   //         >
   //           FISSION ERG TO RSV AND GOLD
   //         </button>
-  //         {isModalErgoPayOpen && (
-  //           <ErgoPayWalletModal
-  //             isModalOpen={isModalErgoPayOpen}
-  //             setIsModalOpen={setIsModalErgoPayOpen}
-  //             ergoPayLink={ergoPayLink}
-  //             txid={ergoPayTxId}
-  //             isMainnet={isMainnet}
-  //           ></ErgoPayWalletModal>
+  //
   //         )}
   //       </div>
   //     </div>
