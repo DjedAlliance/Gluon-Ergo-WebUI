@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { getFissionPrice } from "@/blockchain/ergo/apiHelper";
+import {
+  getFissionPrice,
+  getTransmuteGoldToRsvRate,
+} from "@/blockchain/ergo/apiHelper";
 import {
   nanoErgsToErgs,
   ergsToNanoErgs,
@@ -81,7 +84,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           <p>
             Wallet Balance: {maxAmount} {currencyShown}
           </p>
-          <p>
+          <div>
             Expected receive:{" "}
             <ConversionBox
               inputValue={amount}
@@ -89,7 +92,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
               baseCurrency={currencyShown}
               currentPage={currentPage}
             />
-          </p>
+          </div>
         </div>
         <button type="submit" className="buy-button" disabled={isError}>
           Buy Now
@@ -120,16 +123,19 @@ export const ConversionBox = ({
   }));
 
   const [assets, setAssets] = useState<Asset[]>(initialData);
-  let getPrice: any;
   React.useEffect(() => {
+    let getPrice: any;
+    let input: any;
     switch (currentPage) {
       case "TransmuteRsvToGold":
         getPrice = getFissionPrice;
         break;
-      case "TransmuteSigGoldToRsv":
-        getPrice = getFissionPrice;
+      case "TransmuteGLDToRSV":
+        input = inputValue;
+        getPrice = getTransmuteGoldToRsvRate;
         break;
       case "Fission":
+        input = ergsToNanoErgs(inputValue);
         getPrice = getFissionPrice;
         break;
       case "MintGold":
@@ -144,7 +150,7 @@ export const ConversionBox = ({
     }
     const fetchData = async () => {
       try {
-        const response = await getPrice(isMainnet, ergsToNanoErgs(inputValue));
+        const response = await getPrice(isMainnet, input);
         setAssets(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -153,7 +159,7 @@ export const ConversionBox = ({
 
     // Call the API immediately and then set an interval
     fetchData();
-    const intervalId = setInterval(fetchData, 5000);
+    const intervalId = setInterval(fetchData, 10000); // 10 second interval
 
     // Clear the interval on component unmount
     return () => clearInterval(intervalId);

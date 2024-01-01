@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { explorerClient, PROXY_ADDRESS } from "@/blockchain/ergo/constants";
-import { OutputInfo } from "@/blockchain/ergo/explorerApi";
+import {
+  EXPLORER_API_URL,
+  explorerClient,
+  PROXY_ADDRESS,
+} from "@/blockchain/ergo/constants";
+import {
+  Configuration,
+  DefaultApiFactory,
+  OutputInfo,
+} from "@/blockchain/ergo/explorerApi";
 import {
   checkWalletConnection,
+  nanoErgsToErgs,
   signAndSubmitTx,
 } from "@/blockchain/ergo/walletUtils/utils";
 import { toast } from "react-toastify";
@@ -11,12 +20,19 @@ import {
   noti_option_close,
 } from "@/components/Notifications/Toast";
 import { Amount, Box, ErgoAddress } from "@fleet-sdk/core";
-import { getShortLink, getWalletConfig } from "@/blockchain/ergo/wallet/utils";
+import {
+  findTokenById,
+  getShortLink,
+  getWalletConfig,
+} from "@/blockchain/ergo/wallet/utils";
 import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForTransmuteGoldToRsv } from "@/blockchain/ergo/apiHelper";
+import CardContainer from "./Common/CardContainer";
+import CardHeader from "./Common/CardHeader";
+import TokenContainer from "./Common/TokenContainer";
 
 const TransmuteGoldToRsv = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -25,6 +41,8 @@ const TransmuteGoldToRsv = () => {
   const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
+  const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
+  const [goldAmoutAvailable, setGoldAmoutAvailable] = useState<any>(null);
 
   const minBoxValue = BigInt(1000000);
 
@@ -39,6 +57,26 @@ const TransmuteGoldToRsv = () => {
 
     setIsMainnet(isMainnet);
     setProxyAddress(PROXY_ADDRESS(isMainnet));
+    const explorerConf = new Configuration({
+      basePath: EXPLORER_API_URL(isMainnet),
+    });
+
+    const explorerClient = DefaultApiFactory(explorerConf);
+    setExplorerApiClient(explorerClient);
+
+    const walletConfig = getWalletConfig();
+    if (walletConfig !== undefined) {
+      explorerClient
+        .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
+        .then((res) => {
+          const protons = findTokenById(
+            res.data.tokens ?? [],
+            "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
+          );
+          console.log(protons?.amount);
+          setGoldAmoutAvailable(protons?.amount);
+        });
+    }
   }, []);
 
   const handleClick = async () => {
@@ -129,50 +167,37 @@ const TransmuteGoldToRsv = () => {
       return;
     }
   };
+  const tokenName = "SigGold to Gold Reserve";
+  const description =
+    "Gold RSV is a reserve-backed stablecoin pegged to the price of gold.";
+  const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
   return (
     <>
-      <div className="max-w-md mx-auto mb-10 lg:mb-0 font-inter">
-        <h4 className="text-black text-xl font-medium">
-          Erg to Gold and Gold Reserve
-        </h4>
-        <p className="text-black my-3 min-h-[100px]">
-          Mint hodlERG with no fees. You have the freedom to mint as much as you
-          desire at the current price. it is important to note that the minting
-          process does not directly affect the tokens pricing dynamics.
-        </p>
-
-        <div className="flex bg-gray-200 shadow-lg justify-between rounded-md items-start h-full">
-          <div className="flex flex-col w-full h-full">
-            <input
-              className="w-full border-b-2 border-l-0 border-r-0 border-t-0 border-gray-300 bg-transparent text-gray-500 font-medium text-md h-14 focus:outline-none focus:ring-0 focus:border-primary focus-within:outline-none focus-within:shadow-none focus:shadow-none pl-4"
-              placeholder="Amount"
-              type="number"
-              onChange={(event) =>
-                setGoldToRsvTransmuteAmount(parseFloat(event.target.value))
-              }
-            />
-          </div>
-
-          <button
-            className="h-24 whitespace-nowrap focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300  focus:shadow-none font-medium rounded text-md px-5 py-2.5"
-            onClick={handleClick}
-          >
-            TRANSMUTE GOLD TO RSV
-          </button>
-          {isModalErgoPayOpen && (
-            <ErgoPayWalletModal
-              isModalOpen={isModalErgoPayOpen}
-              setIsModalOpen={setIsModalErgoPayOpen}
-              ergoPayLink={ergoPayLink}
-              txid={ergoPayTxId}
-              isMainnet={isMainnet}
-            ></ErgoPayWalletModal>
-          )}
-        </div>
-      </div>
+      <CardContainer>
+        <CardHeader title="Transmute Gold to RSV" />
+        <TokenContainer
+          onPurchase={handleClick}
+          tokenName={tokenName}
+          description={description}
+          logoUrl={logoUrl}
+          baseCurrency="Protons"
+          maxAmount={goldAmoutAvailable}
+          isMainnet={isMainnet}
+          currentPage="TransmuteGLDToRSV"
+        />
+      </CardContainer>
+      {isModalErgoPayOpen && (
+        <ErgoPayWalletModal
+          isModalOpen={isModalErgoPayOpen}
+          setIsModalOpen={setIsModalErgoPayOpen}
+          ergoPayLink={ergoPayLink}
+          txid={ergoPayTxId}
+          isMainnet={isMainnet}
+        ></ErgoPayWalletModal>
+      )}
+      ;
     </>
   );
 };
-
 export default TransmuteGoldToRsv;
