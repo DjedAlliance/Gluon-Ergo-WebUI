@@ -9,6 +9,8 @@ interface TokenContainerProps {
   logoUrl: string;
   baseCurrency?: string;
   maxAmount?: number;
+  isMainnet?: boolean;
+  currentPage: string;
 }
 
 const TokenContainer: React.FC<TokenContainerProps> = ({
@@ -18,6 +20,8 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
   logoUrl,
   baseCurrency,
   maxAmount,
+  isMainnet,
+  currentPage,
 }) => {
   return (
     <div className="token-container">
@@ -26,7 +30,13 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
         description={description}
         logoUrl={logoUrl}
       />
-      <TokenPurchaseForm onPurchase={onPurchase} baseCurrency={baseCurrency} maxAmount={maxAmount}  />
+      <TokenPurchaseForm
+        onPurchase={onPurchase}
+        baseCurrency={baseCurrency}
+        maxAmount={maxAmount}
+        isMainnet={isMainnet}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

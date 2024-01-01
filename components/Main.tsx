@@ -15,7 +15,7 @@ import { io, Socket } from "socket.io-client";
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import { getWalletConnection } from "@/blockchain/ergo/walletUtils/utils";
-import Fission from "./Fission";
+import { Fission } from "./Fission";
 import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";

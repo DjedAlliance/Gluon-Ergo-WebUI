@@ -28,14 +28,17 @@ import {
   nanoErgsToErgs,
   ergsToNanoErgs,
 } from "@/blockchain/ergo/walletUtils/utils";
-import { UnsignedTxForFission } from "@/blockchain/ergo/apiHelper";
+import {
+  UnsignedTxForFission,
+  getFissionPrice,
+} from "@/blockchain/ergo/apiHelper";
 import CardContainer from "@/components/Common/CardContainer";
 import CardHeader from "@/components/Common/CardHeader";
 import TokenInfo from "@/components/Common/TokenInfo";
 import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
 import TokenContainer from "@/components/Common/TokenContainer";
 
-const Fission = () => {
+export const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [ergForFissionAmount, setErgForFissionAmount] = useState<number>(0);
   const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
@@ -110,7 +113,7 @@ const Fission = () => {
     ).ergoTree;
 
     receiverErgoTree = receiverErgoTree.substring(2);
-
+    setErgForFissionAmount(ergsToNanoErgs(amount));
     try {
       const unsignedTransaction = await UnsignedTxForFission(
         isMainnet,
@@ -180,6 +183,8 @@ const Fission = () => {
           logoUrl={logoUrl}
           baseCurrency="ERG"
           maxAmount={ergoAmoutAvailable}
+          isMainnet={isMainnet}
+          currentPage="Fission"
         />
       </CardContainer>
       {isModalErgoPayOpen && (
@@ -194,43 +199,4 @@ const Fission = () => {
       ;
     </>
   );
-
-  // return (
-  //   <>
-  //     <div className="max-w-md mx-auto mb-10 lg:mb-0 font-inter">
-  //       <h4 className="text-black text-xl font-medium">
-  //         Erg to Gold and Gold Reserve
-  //       </h4>
-  //       <p className="text-black my-3 min-h-[100px]">
-  //         Mint hodlERG with no fees. You have the freedom to mint as much as you
-  //         desire at the current price. it is important to note that the minting
-  //         process does not directly affect the tokens pricing dynamics.
-  //       </p>
-
-  //       <div className="flex bg-gray-200 shadow-lg justify-between rounded-md items-start h-full">
-  //         <div className="flex flex-col w-full h-full">
-  //           <input
-  //             className="w-full border-b-2 border-l-0 border-r-0 border-t-0 border-gray-300 bg-transparent text-gray-500 font-medium text-md h-14 focus:outline-none focus:ring-0 focus:border-primary focus-within:outline-none focus-within:shadow-none focus:shadow-none pl-4"
-  //             placeholder="Amount"
-  //             type="number"
-  //             onChange={(event) =>
-  //               setErgForFissionAmount(parseFloat(event.target.value))
-  //             }
-  //           />
-  //         </div>
-
-  //         <button
-  //           className="h-24 whitespace-nowrap focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300  focus:shadow-none font-medium rounded text-md px-5 py-2.5"
-  //           onClick={handleClick}
-  //         >
-  //           FISSION ERG TO RSV AND GOLD
-  //         </button>
-  //
-  //         )}
-  //       </div>
-  //     </div>
-  //   </>
-  // );
 };
-
-export default Fission;
