@@ -167,7 +167,7 @@ const TransmuteGoldToRsv = () => {
       return;
     }
   };
-  const tokenName = "SigGold to Gold Reserve";
+  const tokenName = "Convert SigGold to Gold Reserve";
   const description =
     "Gold RSV is a reserve-backed stablecoin pegged to the price of gold.";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {
   getFissionPrice,
+  getMintGoldRate,
+  getMintRsvRate,
   getTransmuteGoldToRsvRate,
 } from "@/blockchain/ergo/apiHelper";
 import {
@@ -139,10 +141,12 @@ export const ConversionBox = ({
         getPrice = getFissionPrice;
         break;
       case "MintGold":
-        getPrice = getFissionPrice;
+        input = ergsToNanoErgs(inputValue);
+        getPrice = getMintGoldRate;
         break;
       case "MintRsv":
-        getPrice = getFissionPrice;
+        input = ergsToNanoErgs(inputValue);
+        getPrice = getMintRsvRate;
         break;
       default:
         getPrice = getFissionPrice;

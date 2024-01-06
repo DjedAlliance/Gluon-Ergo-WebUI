@@ -6,7 +6,7 @@ interface CardContainerProps {
 }
 
 const CardContainer: React.FC<CardContainerProps> = ({ children }) => {
-  return <div className="card-container">{children}</div>;
+  return <div className="card-container">{children}</div>
 };
 
 export default CardContainer;

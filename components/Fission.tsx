@@ -167,7 +167,7 @@ export const Fission = () => {
     }
   };
 
-  const tokenName = "Neutrons & Protons";
+  const tokenName = "Convert Ergo to Neutrons & Protons";
   const description =
     "Erg is the native token of the Ergo blockchain which is a POS, fully decentralized, and  community governed protocol. Use Fission to convert your Erg to Neutrons and Protons.";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path

@@ -33,3 +33,18 @@
 .token-links a:hover {
     text-decoration: underline;
 }
+
+
+@media (max-width: 500px) {
+
+    /* Adjust breakpoint as needed for mobile view */
+    .token-logo {
+        margin: 0px;
+    }
+    .token-info {
+        margin: 0px;
+    }
+    .token-links {
+        margin: 0px;
+    }
+}
