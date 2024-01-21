@@ -17,22 +17,6 @@ const TokenInfo: React.FC<TokenInfoProps> = ({
       <img src={logoUrl} alt={`${tokenName} logo`} className="token-logo" />
       <h1>{tokenName}</h1>
       <p>{description}</p>
-      <div className="token-links">
-        <a
-          href="https://www.coingecko.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CoinGecko
-        </a>
-        <a
-          href="https://coinmarketcap.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CoinMarketCap
-        </a>
-      </div>
     </div>
   );
 };

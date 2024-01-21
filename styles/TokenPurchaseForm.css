@@ -42,7 +42,7 @@
 .buy-button {
     width: 100%;
     padding: 0.75rem;
-    background-color: #5755d9;
+    background-color: #FFBF00;
     /* A placeholder color for the button */
     border: none;
     border-radius: 4px;
@@ -53,6 +53,6 @@
 }
 
 .buy-button:hover {
-    background-color: #6a6fd9;
+    background-color: #C8B209;
     /* A lighter shade for hover state */
 }
