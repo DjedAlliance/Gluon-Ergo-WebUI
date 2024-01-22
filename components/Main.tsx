@@ -20,10 +20,16 @@ import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
+import {
+  Fission as fissionTitle,
+  Fusion as fusionTitle,
+  TransmuteFromGold as transmuteFromGoldTitle,
+  TransmuteToGold as transmuteToGoldTitle,
+} from "./constant";
 
 const Main = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState("homePage");
+  const [activeTab, setActiveTab] = useState("Fission");
   const [lastBlock, setLastBlock] = useState(null);
 
   const [socket, setSocket] = useState<
@@ -71,14 +77,14 @@ const Main = () => {
         setActiveTab={setActiveTab}
         socket={socket}
       />
-      {activeTab === "Home" && <h1>Hello world</h1>}
-      {activeTab === "TransmuteRsvToGold" && <TransmuteRsvToGold />}
-      {activeTab === "TransmuteSigGoldToRsv" && <TransmuteGoldToRsv />}
-      {activeTab === "Fission" && <Fission />}
+      {activeTab === "Home" && <Fission />}
+      {activeTab === transmuteToGoldTitle && <TransmuteRsvToGold />}
+      {activeTab === transmuteFromGoldTitle && <TransmuteGoldToRsv />}
+      {activeTab === fissionTitle && <Fission />}
       {activeTab === "MintGold" && <MintGold />}
       {activeTab === "MintRsv" && <MintRsv />}
       {/* {activeTab === "refund" && <Refund />} */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

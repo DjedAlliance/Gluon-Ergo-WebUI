@@ -33,6 +33,7 @@ import { UnsignedTxForTransmuteGoldToRsv } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
 import CardHeader from "./Common/CardHeader";
 import TokenContainer from "./Common/TokenContainer";
+import { TransmuteFromGold } from "./constant";
 
 const TransmuteGoldToRsv = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -42,7 +43,7 @@ const TransmuteGoldToRsv = () => {
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
-  const [goldAmoutAvailable, setGoldAmoutAvailable] = useState<any>(null);
+  const [goldAmountAvailable, setGoldAmountAvailable] = useState<any>(null);
 
   const minBoxValue = BigInt(1000000);
 
@@ -74,12 +75,12 @@ const TransmuteGoldToRsv = () => {
             "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
           );
           console.log(protons?.amount);
-          setGoldAmoutAvailable(protons?.amount);
+          setGoldAmountAvailable(protons?.amount);
         });
     }
   }, []);
 
-  const handleClick = async () => {
+  const handleClick = async (amount: number) => {
     const walletConfig = getWalletConfig();
 
     if (!(await checkWalletConnection(walletConfig))) {
@@ -114,7 +115,7 @@ const TransmuteGoldToRsv = () => {
     ).ergoTree;
 
     receiverErgoTree = receiverErgoTree.substring(2);
-
+    setGoldToRsvTransmuteAmount(goldAmountAvailable)
     try {
       const unsignedTransaction = await UnsignedTxForTransmuteGoldToRsv(
         isMainnet,
@@ -182,9 +183,9 @@ const TransmuteGoldToRsv = () => {
           description={description}
           logoUrl={logoUrl}
           baseCurrency="Protons"
-          maxAmount={goldAmoutAvailable}
+          maxAmount={goldAmountAvailable}
           isMainnet={isMainnet}
-          currentPage="TransmuteGLDToRSV"
+          currentPage={TransmuteFromGold}
         />
       </CardContainer>
       {isModalErgoPayOpen && (
@@ -196,7 +197,6 @@ const TransmuteGoldToRsv = () => {
           isMainnet={isMainnet}
         ></ErgoPayWalletModal>
       )}
-      ;
     </>
   );
 };

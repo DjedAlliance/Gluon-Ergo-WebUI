@@ -37,6 +37,7 @@ import CardHeader from "@/components/Common/CardHeader";
 import TokenInfo from "@/components/Common/TokenInfo";
 import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
 import TokenContainer from "@/components/Common/TokenContainer";
+import { Fission as fissionTitle } from "./constant";
 
 export const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -51,7 +52,7 @@ export const Fission = () => {
   const [ergoPayLink, setErgoPayLink] = useState<string>("");
   const [ergoPayTxId, setErgoPayTxId] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
-  const [ergoAmoutAvailable, setErgoAmoutAvailable] = useState<any>(null);
+  const [ergoAmountAvailable, setErgoAmountAvailable] = useState<any>(null);
 
   useEffect(() => {
     const isMainnet = localStorage.getItem("IsMainnet")
@@ -73,7 +74,7 @@ export const Fission = () => {
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
           console.log(res.data.nanoErgs * 10 ** -9);
-          setErgoAmoutAvailable(nanoErgsToErgs(res.data.nanoErgs));
+          setErgoAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
         });
     }
   }, []);
@@ -182,9 +183,9 @@ export const Fission = () => {
           description={description}
           logoUrl={logoUrl}
           baseCurrency="ERG"
-          maxAmount={ergoAmoutAvailable}
+          maxAmount={ergoAmountAvailable}
           isMainnet={isMainnet}
-          currentPage="Fission"
+          currentPage={fissionTitle}
         />
       </CardContainer>
       {isModalErgoPayOpen && (

@@ -5,6 +5,12 @@ import ConnectWallet from "@/components/wallet/ConnectWallet";
 import DropDown from "@/components/wallet/DropDown";
 import { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "@socket.io/component-emitter";
+import {
+  Fission,
+  Fusion,
+  TransmuteFromGold,
+  TransmuteToGold,
+} from "./constant";
 
 interface IProps {
   activeTab: string;
@@ -45,25 +51,25 @@ const Navbar = (props: IProps) => {
         <div className="primary-gradient py-3 flex flex-col items-center justify-center space-y-4">
           {/* Tab Buttons */}
           <TabButton
-            title="Fission"
+            title={Fission}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             setIsMenuOpen={setIsMenuOpen}
           />
           <TabButton
-            title="Fusion"
+            title={Fusion}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             setIsMenuOpen={setIsMenuOpen}
           />
           <TabButton
-            title="TransmuteGoldToRsv"
+            title={TransmuteToGold}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             setIsMenuOpen={setIsMenuOpen}
           />
           <TabButton
-            title="TransmuteRsvToGold"
+            title={TransmuteFromGold}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             setIsMenuOpen={setIsMenuOpen}
@@ -75,25 +81,25 @@ const Navbar = (props: IProps) => {
       <div className="hidden sm:flex primary-gradient w-full py-3 text-center items-center space-x-12 sm:space-x-20 justify-center">
         {/* Tab Buttons */}
         <TabButton
-          title="Fission"
+          title={Fission}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           setIsMenuOpen={setIsMenuOpen}
         />
         <TabButton
-          title="Fusion"
+          title={Fusion}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           setIsMenuOpen={setIsMenuOpen}
         />
         <TabButton
-          title="TransmuteSigGoldToRsv"
+          title={TransmuteToGold}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           setIsMenuOpen={setIsMenuOpen}
         />
         <TabButton
-          title="TransmuteRsvToGold"
+          title={TransmuteFromGold}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           setIsMenuOpen={setIsMenuOpen}

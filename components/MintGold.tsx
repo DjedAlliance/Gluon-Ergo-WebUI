@@ -37,7 +37,7 @@ const MintGold = () => {
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
-  const [goldAmoutAvailable, setGoldAmoutAvailable] = useState<any>(null);
+  const [goldAmountAvailable, setGoldAmountAvailable] = useState<any>(null);
 
   const minBoxValue = BigInt(1000000);
 
@@ -65,7 +65,7 @@ const MintGold = () => {
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
           console.log(res.data.nanoErgs * 10 ** -9);
-          setGoldAmoutAvailable(nanoErgsToErgs(res.data.nanoErgs));
+          setGoldAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
         });
     }
   }, []);
@@ -178,7 +178,7 @@ const MintGold = () => {
           description={description}
           logoUrl={logoUrl}
           baseCurrency="Ergo"
-          maxAmount={goldAmoutAvailable}
+          maxAmount={goldAmountAvailable}
           isMainnet={isMainnet}
           currentPage="MintGold"
         />

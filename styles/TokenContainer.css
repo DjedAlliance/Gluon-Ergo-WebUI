@@ -24,7 +24,7 @@
 
 .token-info, .token-purchase-form {
     flex: 1 1 48%; /* Take up half the width minus a bit for margin */
-    margin: 1%; /* Provide some space between the components */
+    margin: 0%; /* Provide some space between the components */
   }
   
   @media (max-width: 500px) {

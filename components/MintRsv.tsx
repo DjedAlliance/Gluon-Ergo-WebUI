@@ -29,6 +29,7 @@ import { UnsignedTxForMintRsv } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
 import CardHeader from "./Common/CardHeader";
 import TokenContainer from "./Common/TokenContainer";
+import { MintRsv as mintRsvTitle } from "./constant";
 
 const MintRsv = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -37,7 +38,7 @@ const MintRsv = () => {
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
-  const [ergoAmoutAvailable, setErgoAmoutAvailable] = useState<any>(null);
+  const [ergoAmountAvailable, setErgoAmountAvailable] = useState<any>(null);
 
   const minBoxValue = BigInt(1000000);
 
@@ -65,7 +66,7 @@ const MintRsv = () => {
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
           console.log(res.data.nanoErgs * 10 ** -9);
-          setErgoAmoutAvailable(nanoErgsToErgs(res.data.nanoErgs));
+          setErgoAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
         });
     }
   }, []);
@@ -177,9 +178,9 @@ const MintRsv = () => {
           description={description}
           logoUrl={logoUrl}
           baseCurrency="Ergo"
-          maxAmount={ergoAmoutAvailable}
+          maxAmount={ergoAmountAvailable}
           isMainnet={isMainnet}
-          currentPage="MintRsv"
+          currentPage={mintRsvTitle}
         />
       </CardContainer>
       {isModalErgoPayOpen && (
