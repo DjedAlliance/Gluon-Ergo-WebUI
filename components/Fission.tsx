@@ -176,7 +176,7 @@ export const Fission = () => {
   return (
     <>
       <CardContainer>
-        <CardHeader title="Fission" />
+        <CardHeader />
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}

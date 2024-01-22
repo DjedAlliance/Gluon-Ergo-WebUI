@@ -171,7 +171,7 @@ const MintRsv = () => {
   return (
     <>
       <CardContainer>
-        <CardHeader title="Mint Gold" />
+        <CardHeader />
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}

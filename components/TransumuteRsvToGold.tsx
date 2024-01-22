@@ -174,7 +174,7 @@ const TransmuteRsvToGold = () => {
   return (
     <>
       <CardContainer>
-        <CardHeader title="Transmute Rsv to Gold" />
+        <CardHeader />
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}

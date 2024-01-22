@@ -67,7 +67,7 @@ export default function KnowYourAssumptionsModal() {
                     </h2>
                     <div className="space-y-4 px-2 py-6">
                       <p>
-                        <span className="font-bold">Phoenix</span> is an open
+                        <span className="font-bold">Gluon</span> is an open
                         source UI for interacting with contracts on the Ergo
                         Blockchain.{" "}
                       </p>
@@ -75,12 +75,12 @@ export default function KnowYourAssumptionsModal() {
                         <span className="font-bold">Notice that:</span>
                         <ul className="list-inside">
                           <li>
-                            - We don't log, collect, profile, share or sell your
+                            - We do not log, collect, profile, share or sell your
                             data.
                           </li>
                           <li>
                             {" "}
-                            - Phoenix operates on a live blockchain, thus
+                            - Gluon operates on a live blockchain, thus
                             transactions are final, and irreversible once they
                             have status «
                             <span className="font-semibold">
@@ -99,23 +99,11 @@ export default function KnowYourAssumptionsModal() {
                             </a>
                             .{" "}
                           </li>
-                          <li>
-                            {" "}
-                            -{" "}
-                            <a
-                              href="https://github.com/PhoenixErgo"
-                              target="_blank"
-                              className="transition-all duration-200 ease-in-out hover:text-opacity-80 text-primary"
-                            >
-                              All code is open source and available
-                            </a>{" "}
-                            for public review.{" "}
-                          </li>
                         </ul>
                       </div>
                       <p className="font-bold">
-                        The Phoenix Finance doesn't guarantee the absence of
-                        bugs and errors.
+                        The Gluon doesn't guarantee the absence of bugs and
+                        errors.
                       </p>
                       <p className="font-bold">
                         {" "}
@@ -132,36 +120,6 @@ export default function KnowYourAssumptionsModal() {
                           <li>
                             Only YOU are responsible for securely storing your
                             recovery phrase.
-                          </li>
-                          <li>
-                            Our UI does not provide the option for slippage
-                            tolerance, you will receive the corresponding amount
-                            of hodlERG/ERG based on the price calculated at
-                            transaction execution time.
-                          </li>
-                          <li>
-                            Our UI uses a proxy contract to interact with the
-                            hodlERG bank, not your wallet UTxOs. This means that
-                            we have a transaction execution bot which processes
-                            all transactions that interact with the bank.
-                          </li>
-                          <li>
-                            If funds are stuck in the proxy, there is the option
-                            to refund ERG/hodlERG as long as our bot does not
-                            use the proxy to execute a transaction before you
-                            are able to execute the refund.
-                          </li>
-                          <li>
-                            If you would prefer to interact with the bank box
-                            directly, use this UI:{" "}
-                            <a
-                              className="text-primary font-medium"
-                              href="https://app.hodlcoin.co.in/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              https://app.hodlcoin.co.in/
-                            </a>
                           </li>
                         </ul>
                       </div>
