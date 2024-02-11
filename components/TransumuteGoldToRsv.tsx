@@ -31,7 +31,6 @@ import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForTransmuteGoldToRsv } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
-import CardHeader from "./Common/CardHeader";
 import TokenContainer from "./Common/TokenContainer";
 import { TransmuteFromGold } from "./constant";
 
@@ -169,14 +168,12 @@ const TransmuteGoldToRsv = () => {
     }
   };
   const tokenName = "Convert SigGold to Gold Reserve";
-  const description =
-    "Gold RSV is a reserve-backed stablecoin pegged to the price of gold.";
+  const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
   return (
     <>
       <CardContainer>
-        <CardHeader  />
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}

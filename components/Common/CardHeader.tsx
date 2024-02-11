@@ -1,5 +1,4 @@
 import React from "react";
-// import "./CardHeader.css";
 
 interface CardHeaderProps {
   title?: string;

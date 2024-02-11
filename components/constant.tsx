@@ -9,4 +9,3 @@ export const MintGold = "Mint Gold";
 export const MintRsv = "Mint RSV";
 export const Fission = "Fission";
 export const Fusion = "Fusion";
-

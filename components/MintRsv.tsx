@@ -27,7 +27,6 @@ import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForMintRsv } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
-import CardHeader from "./Common/CardHeader";
 import TokenContainer from "./Common/TokenContainer";
 import { MintRsv as mintRsvTitle } from "./constant";
 
@@ -171,7 +170,6 @@ const MintRsv = () => {
   return (
     <>
       <CardContainer>
-        <CardHeader />
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}

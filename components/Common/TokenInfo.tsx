@@ -14,8 +14,12 @@ const TokenInfo: React.FC<TokenInfoProps> = ({
 }) => {
   return (
     <div className="token-info">
+      <div className="header-info">
+
       <img src={logoUrl} alt={`${tokenName} logo`} className="token-logo" />
       <h1>{tokenName}</h1>
+      <div/>
+      </div>
       <p>{description}</p>
     </div>
   );

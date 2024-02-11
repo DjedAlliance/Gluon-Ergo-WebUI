@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import {
   getFissionPrice,
+  getFusionPrice,
   getMintGoldRate,
   getMintRsvRate,
   getTransmuteGoldToRsvRate,
+  getTransmuteRsvToGoldRate,
 } from "@/blockchain/ergo/apiHelper";
 import {
   nanoErgsToErgs,
   ergsToNanoErgs,
 } from "@/blockchain/ergo/walletUtils/utils";
+import {
+  Fission,
+  Fusion,
+  TransmuteFromGold,
+  TransmuteToGold,
+} from "../constant";
 // import "./TokenPurchaseForm.css";
 
 interface TokenPurchaseFormProps {
@@ -54,52 +62,122 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
     setIsError(newAmount > maxAmount || newAmount <= 0);
   };
 
-  const currencyShown = baseCurrency ?? `USDT`;
-
+  const currencyShown = baseCurrency ?? `ERG`;
   return (
     <>
-      <form className="token-purchase-form" onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="payment-amount">Payment In</label>
-          <select id="payment-amount">
-            <option value="Ergo">{currencyShown}</option>
-          </select>
-          <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            placeholder="Enter amount"
-          />
-          <button type="button" onClick={() => setAmount(maxAmount)}>
-            MAX
-          </button>
-        </div>
-        {isError && amount > 0 && (
-          <p style={{ color: "red" }}>
-            Amount exceeds the maximum limit of {maxAmount}.
-          </p>
-        )}
-        {isError && amount <= 0 && (
-          <p style={{ color: "red" }}>Amount must be greater than zero.</p>
-        )}
-        <div className="conversion-info">
-          <p>
-            Wallet Balance: {maxAmount} {currencyShown}
-          </p>
-          <div>
-            Expected receive:{" "}
-            <ConversionBox
-              inputValue={amount}
-              isMainnet={isMainnet}
-              baseCurrency={currencyShown}
-              currentPage={currentPage}
+      {currentPage !== Fusion ? (
+        <form className="token-purchase-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="payment-amount-static">Payment In</label>
+            {/* Use a span or a read-only input to display the currency */}
+            <input
+              id="payment-amount-static"
+              type="text"
+              readOnly
+              value={currencyShown}
+              style={{
+                background: "#e9ecef",
+                borderColor: "transparent",
+                color: "#495057",
+              }} // Styling to indicate it's not editable
+            />
+            <input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
             />
           </div>
-        </div>
-        <button type="submit" className="buy-button" disabled={isError}>
-          Buy Now
-        </button>
-      </form>
+          {isError && amount > 0 && (
+            <p style={{ color: "red" }}>
+              Amount exceeds the maximum limit of {maxAmount}.
+            </p>
+          )}
+          {isError && amount <= 0 && (
+            <p style={{ color: "red" }}>Amount must be greater than zero.</p>
+          )}
+          <div className="conversion-info">
+            Wallet Balance:{" "}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setAmount(maxAmount);
+              }}
+            >
+              {maxAmount} {currencyShown}
+            </a>
+            <div>
+              Expected receive:{" "}
+              <ConversionBox
+                inputValue={amount}
+                isMainnet={isMainnet}
+                baseCurrency={currencyShown}
+                currentPage={currentPage}
+              />
+            </div>
+          </div>
+          <button type="submit" className="buy-button" disabled={isError}>
+            Convert Now
+          </button>
+        </form>
+      ) : (
+        <form className="token-purchase-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="payment-amount-static">Convert back to </label>
+            {/* Use a span or a read-only input to display the currency */}
+            <input
+              id="payment-amount-static"
+              type="text"
+              readOnly
+              value={currencyShown}
+              style={{
+                background: "#e9ecef",
+                borderColor: "transparent",
+                color: "#495057",
+              }} // Styling to indicate it's not editable
+            />
+            <input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
+            />
+          </div>
+          {isError && amount > 0 && (
+            <p style={{ color: "red" }}>
+              Amount exceeds the maximum limit of {maxAmount}.
+            </p>
+          )}
+          {isError && amount <= 0 && (
+            <p style={{ color: "red" }}>Amount must be greater than zero.</p>
+          )}
+          <div className="conversion-info">
+            Wallet Balance:{" "}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setAmount(maxAmount);
+              }}
+            >
+              {maxAmount} {currencyShown}
+            </a>
+            <div>
+              Expected receive:{" "}
+              <ConversionBox
+                inputValue={amount}
+                isMainnet={isMainnet}
+                baseCurrency={currencyShown}
+                currentPage={currentPage}
+              />
+            </div>
+          </div>
+          <button type="submit" className="buy-button" disabled={isError}>
+            Convert Now
+          </button>
+        </form>
+      )}
     </>
   );
 };
@@ -129,16 +207,21 @@ export const ConversionBox = ({
     let getPrice: any;
     let input: any;
     switch (currentPage) {
-      case "TransmuteRsvToGold":
-        getPrice = getFissionPrice;
+      case TransmuteToGold:
+        input = inputValue;
+        getPrice = getTransmuteRsvToGoldRate;
         break;
-      case "TransmuteGLDToRSV":
+      case TransmuteFromGold:
         input = inputValue;
         getPrice = getTransmuteGoldToRsvRate;
         break;
-      case "Fission":
+      case Fission:
         input = ergsToNanoErgs(inputValue);
         getPrice = getFissionPrice;
+        break;
+      case Fusion:
+        input = ergsToNanoErgs(inputValue);
+        getPrice = getFusionPrice;
         break;
       case "MintGold":
         input = ergsToNanoErgs(inputValue);

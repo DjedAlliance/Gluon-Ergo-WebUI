@@ -205,6 +205,18 @@ input[type="number"] {
   fill: #0d0f19;
 }
 
+.main-style {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 @media (max-width: 640px) {
   .ergo-pay-wallet-modal {
     width: 100% !important;

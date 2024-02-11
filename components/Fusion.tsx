@@ -19,7 +19,11 @@ import {
   noti_option_close,
 } from "@/components/Notifications/Toast";
 import { Amount, Box, ErgoAddress } from "@fleet-sdk/core";
-import { getShortLink, getWalletConfig } from "@/blockchain/ergo/wallet/utils";
+import {
+  findTokenById,
+  getShortLink,
+  getWalletConfig,
+} from "@/blockchain/ergo/wallet/utils";
 import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
@@ -29,18 +33,18 @@ import {
   ergsToNanoErgs,
 } from "@/blockchain/ergo/walletUtils/utils";
 import {
-  UnsignedTxForFission,
-  getFissionPrice,
+  UnsignedTxForFusion,
+  getFusionPrice,
 } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "@/components/Common/CardContainer";
 import TokenInfo from "@/components/Common/TokenInfo";
 import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
 import TokenContainer from "@/components/Common/TokenContainer";
-import { Fission as fissionTitle } from "./constant";
+import { Fusion as fusionTitle } from "./constant";
 
-export const Fission = () => {
+export const Fusion = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [ergForFissionAmount, setErgForFissionAmount] = useState<number>(0);
+  const [ergForFusionAmount, setErgForFusionAmount] = useState<number>(0);
   const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
@@ -71,7 +75,16 @@ export const Fission = () => {
     if (walletConfig !== undefined) {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
+
         .then((res) => {
+          const neutrons = findTokenById(
+            res.data.tokens ?? [],
+            "b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05"
+          );
+          const protons = findTokenById(
+            res.data.tokens ?? [],
+            "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
+          );
           console.log(res.data.nanoErgs * 10 ** -9);
           setErgoAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
         });
@@ -113,9 +126,9 @@ export const Fission = () => {
     ).ergoTree;
 
     receiverErgoTree = receiverErgoTree.substring(2);
-    setErgForFissionAmount(ergsToNanoErgs(amount));
+    setErgForFusionAmount(ergsToNanoErgs(amount));
     try {
-      const unsignedTransaction = await UnsignedTxForFission(
+      const unsignedTransaction = await UnsignedTxForFusion(
         isMainnet,
         walletConfig.walletAddress[0] || "",
         ergsToNanoErgs(amount),
@@ -137,7 +150,7 @@ export const Fission = () => {
         }
         const url = await getShortLink(
           ergoPayTx,
-          `Erg amount for fission: ${ergForFissionAmount}`,
+          `Erg amount for fusion: ${ergForFusionAmount}`,
           changeAddress,
           isMainnet
         );
@@ -167,7 +180,7 @@ export const Fission = () => {
     }
   };
 
-  const tokenName = "Convert ERG to GAU and GAUC";
+  const tokenName = "Convert GAU and GAUC to ERG";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
@@ -182,7 +195,7 @@ export const Fission = () => {
           baseCurrency="ERG"
           maxAmount={ergoAmountAvailable}
           isMainnet={isMainnet}
-          currentPage={fissionTitle}
+          currentPage={fusionTitle}
         />
       </CardContainer>
       {isModalErgoPayOpen && (

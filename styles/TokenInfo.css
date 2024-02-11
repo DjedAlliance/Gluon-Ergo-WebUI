@@ -3,6 +3,7 @@
     text-align: center;
     background: #f5f5f5;
     border-radius: 8px 8px 0 0;
+    
 }
 
 .token-logo {
@@ -34,6 +35,14 @@
     text-decoration: underline;
 }
 
+.header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between items */
+    /* Aligns items vertically in the center */
+}
+
+
 
 @media (max-width: 500px) {
 
@@ -41,9 +50,11 @@
     .token-logo {
         margin: 0px;
     }
+
     .token-info {
         margin: 0px;
     }
+
     .token-links {
         margin: 0px;
     }

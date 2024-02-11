@@ -27,7 +27,6 @@ import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForMintGold } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
-import CardHeader from "./Common/CardHeader";
 import TokenContainer from "./Common/TokenContainer";
 
 const MintGold = () => {
@@ -171,7 +170,6 @@ const MintGold = () => {
   return (
     <>
       <CardContainer>
-        <CardHeader />
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}

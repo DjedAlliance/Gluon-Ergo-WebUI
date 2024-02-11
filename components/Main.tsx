@@ -26,6 +26,7 @@ import {
   TransmuteFromGold as transmuteFromGoldTitle,
   TransmuteToGold as transmuteToGoldTitle,
 } from "./constant";
+import { Fusion } from "./Fusion";
 
 const Main = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -70,21 +71,37 @@ const Main = () => {
       : true;
     console.log(`isMainnet: ${isMainnet}`);
   }, [lastBlock]);
+
   return (
     <>
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        socket={socket}
-      />
-      {activeTab === "Home" && <Fission />}
-      {activeTab === transmuteToGoldTitle && <TransmuteRsvToGold />}
-      {activeTab === transmuteFromGoldTitle && <TransmuteGoldToRsv />}
-      {activeTab === fissionTitle && <Fission />}
-      {activeTab === "MintGold" && <MintGold />}
-      {activeTab === "MintRsv" && <MintRsv />}
-      {/* {activeTab === "refund" && <Refund />} */}
-      <Footer />
+      <div>
+        <div
+          className="main-content"
+          style={{ minHeight: "calc(100vh - 100px)", paddingBottom: "100px" }}
+        >
+          <Navbar
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            socket={socket}
+          />
+          {activeTab === "Home" && <Fission />}
+          {activeTab === transmuteToGoldTitle && <TransmuteRsvToGold />}
+          {activeTab === transmuteFromGoldTitle && <TransmuteGoldToRsv />}
+          {activeTab === fissionTitle && <Fission />}
+          {activeTab === fusionTitle && <Fusion />}
+          {activeTab === "MintGold" && <MintGold />}
+          {activeTab === "MintRsv" && <MintRsv />}
+          {/* {activeTab === "refund" && <Refund />} */}
+        </div>
+
+        <footer
+          className="footer"
+          style={{ height: "100px", marginTop: "-100px" }}
+        >
+          {" "}
+          <Footer />
+        </footer>
+      </div>
     </>
   );
 };
