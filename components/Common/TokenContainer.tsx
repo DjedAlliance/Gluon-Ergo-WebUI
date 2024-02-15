@@ -9,7 +9,7 @@ interface TokenContainerProps {
   logoUrl: string;
   baseCurrency?: string;
   maxAmount?: number;
-  isMainnet?: boolean;
+  isMainnet: boolean;
   currentPage: string;
   maxProtonsAvailable?: number;
   maxNeutronsAvailable?: number;
