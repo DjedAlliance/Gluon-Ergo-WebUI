@@ -1,5 +1,5 @@
 .token-container {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     /* Align children side by side */
     flex-wrap: wrap;

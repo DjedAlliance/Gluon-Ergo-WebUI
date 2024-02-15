@@ -23,8 +23,10 @@ interface TokenPurchaseFormProps {
   onPurchase: (amount: number) => Promise<void>;
   baseCurrency?: string;
   maxAmount?: number;
-  isMainnet?: boolean;
+  isMainnet: boolean;
   currentPage?: string;
+  maxProtonsAvailable?: number;
+  maxNeutronsAvailable?: number;
 }
 
 const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
@@ -33,10 +35,14 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
   maxAmount = 0,
   isMainnet,
   currentPage,
+  maxProtonsAvailable,
+  maxNeutronsAvailable,
 }) => {
   const [amount, setAmount] = useState(0);
   const [isError, setIsError] = useState(false);
-
+  const [isErrorInFusion, setIsErrorInFusion] = useState(false);
+  const [protonsPerTransaction, setProtonsPerTransaction] = useState(0);
+  const [neutronsPerTransaction, setNeutronsPerTransaction] = useState(0);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (amount <= maxAmount) {
@@ -58,8 +64,35 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
       newAmount = 0;
     }
 
+    // if (currentPage === Fusion) {
+    //   getFusionPrice(isMainnet, ergsToNanoErgs(amount)).then((response) => {
+    //     setProtonsPerTransaction(
+    //       response.data.find(
+    //         (asset: Asset) =>
+    //           asset.id ===
+    //           "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
+    //       )?.price
+    //     );
+    //     setNeutronsPerTransaction(
+    //       response.data.find(
+    //         (asset: Asset) =>
+    //           asset.id ===
+    //           "b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05"
+    //       )?.price
+    //     );
+    //   });
+    // }
+    // if (
+    //   maxNeutronsAvailable &&
+    //   maxProtonsAvailable &&
+    //   (maxProtonsAvailable < protonsPerTransaction ||
+    //     maxNeutronsAvailable < neutronsPerTransaction)
+    // ) {
+    //   console.log("should be in error");
+    //   setIsErrorInFusion(true);
+    // }
     setAmount(newAmount);
-    setIsError(newAmount > maxAmount || newAmount <= 0);
+    setIsError(newAmount > maxAmount || newAmount <= 0 || isErrorInFusion);
   };
 
   const currencyShown = baseCurrency ?? `ERG`;
@@ -96,6 +129,9 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           {isError && amount <= 0 && (
             <p style={{ color: "red" }}>Amount must be greater than zero.</p>
           )}
+          {/* {isError && isErrorInFusion && (
+            <p style={{ color: "red" }}> Insufficient balance</p>
+          )} */}
           <div className="conversion-info">
             Wallet Balance:{" "}
             <a
@@ -124,7 +160,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
       ) : (
         <form className="token-purchase-form" onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="payment-amount-static">Convert back to </label>
+            <label htmlFor="payment-amount-static">Convert back to</label>
             {/* Use a span or a read-only input to display the currency */}
             <input
               id="payment-amount-static"
@@ -153,7 +189,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             <p style={{ color: "red" }}>Amount must be greater than zero.</p>
           )}
           <div className="conversion-info">
-            Wallet Balance:{" "}
+            Wallet Balance of ERG:{" "}
             <a
               href="#"
               onClick={(e) => {
@@ -163,8 +199,15 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             >
               {maxAmount} {currencyShown}
             </a>
+            <br />
             <div>
-              Expected receive:{" "}
+              Wallet Balance of Proton: {maxProtonsAvailable}
+              <br />
+              Wallet Balance of Neutron: {maxNeutronsAvailable}
+            </div>
+            <div>
+              <br />
+              Expected to spend:{" "}
               <ConversionBox
                 inputValue={amount}
                 isMainnet={isMainnet}

@@ -11,6 +11,8 @@ interface TokenContainerProps {
   maxAmount?: number;
   isMainnet?: boolean;
   currentPage: string;
+  maxProtonsAvailable?: number;
+  maxNeutronsAvailable?: number;
 }
 
 const TokenContainer: React.FC<TokenContainerProps> = ({
@@ -22,6 +24,8 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
   maxAmount,
   isMainnet,
   currentPage,
+  maxProtonsAvailable,
+  maxNeutronsAvailable,
 }) => {
   return (
     <div className="token-container">
@@ -36,6 +40,8 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
         maxAmount={maxAmount}
         isMainnet={isMainnet}
         currentPage={currentPage}
+        maxProtonsAvailable={maxProtonsAvailable}
+        maxNeutronsAvailable={maxNeutronsAvailable}
       />
     </div>
   );

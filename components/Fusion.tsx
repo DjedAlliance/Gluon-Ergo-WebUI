@@ -56,6 +56,8 @@ export const Fusion = () => {
   const [ergoPayTxId, setErgoPayTxId] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [ergoAmountAvailable, setErgoAmountAvailable] = useState<any>(null);
+  const [protonAmountAvailable, setProtonAmountAvailable] = useState<any>(null);
+  const [neutronAmountAvailable, setNeutronAmountAvailable] = useState<any>(null);
 
   useEffect(() => {
     const isMainnet = localStorage.getItem("IsMainnet")
@@ -81,10 +83,12 @@ export const Fusion = () => {
             res.data.tokens ?? [],
             "b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05"
           );
+          setNeutronAmountAvailable(neutrons?.amount);
           const protons = findTokenById(
             res.data.tokens ?? [],
             "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
           );
+          setProtonAmountAvailable(protons?.amount);
           console.log(res.data.nanoErgs * 10 ** -9);
           setErgoAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
         });
@@ -196,6 +200,8 @@ export const Fusion = () => {
           maxAmount={ergoAmountAvailable}
           isMainnet={isMainnet}
           currentPage={fusionTitle}
+          maxProtonsAvailable={protonAmountAvailable}
+          maxNeutronsAvailable={neutronAmountAvailable}
         />
       </CardContainer>
       {isModalErgoPayOpen && (

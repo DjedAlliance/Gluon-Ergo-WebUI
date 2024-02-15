@@ -48,6 +48,16 @@ const Footer = () => {
               Discord
             </a>
           </h2>
+          <h2 className="font-bold uppercase pb-3">
+            <a
+              className="transition-all duration-200 ease-in-out hover:text-opacity-80"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.youtube.com/watch?v=tnvm1we6xts"
+            >
+              How it works
+            </a>
+          </h2>
         </div>
         <div className="grid w-full text-white place-content-center container mx-auto  px-2 sm:px-3 lg:px-5">
           <h2 className="font-bold uppercase pb-3">
