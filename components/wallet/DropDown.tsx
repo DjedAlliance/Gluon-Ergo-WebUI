@@ -86,7 +86,7 @@ const DropDown: React.FC = () => {
             color: "white",
             border: "none",
             backgroundImage:
-              "linear-gradient( to right, rgba(208, 0, 0, 1), rgba(255, 122, 0, 1) )",
+              "linear-gradient(to right, #09c85c, #9dff00) !important",
             fontFamily: `'Space Grotesk', sans-serif`,
           }}
         >

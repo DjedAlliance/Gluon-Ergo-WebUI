@@ -9,24 +9,28 @@ import {
   precisionBigInt,
   UIMultiplier,
 } from "@/blockchain/ergo/constants";
-import { HodlBankContract } from "@/blockchain/ergo/phoenixContracts/BankContracts/HodlBankContract";
 import Footer from "./Footer";
-import Hodlerg from "./Hodlerg";
-import Refund from "./Refund";
 import { fromEvent } from "rxjs";
 import { io, Socket } from "socket.io-client";
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import { getWalletConnection } from "@/blockchain/ergo/walletUtils/utils";
-import Fission from "./Fission";
+import { Fission } from "./Fission";
 import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
+import {
+  Fission as fissionTitle,
+  Fusion as fusionTitle,
+  TransmuteFromGold as transmuteFromGoldTitle,
+  TransmuteToGold as transmuteToGoldTitle,
+} from "./constant";
+import { Fusion } from "./Fusion";
 
 const Main = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState("homePage");
+  const [activeTab, setActiveTab] = useState("Fission");
   const [lastBlock, setLastBlock] = useState(null);
 
   const [socket, setSocket] = useState<
@@ -67,21 +71,37 @@ const Main = () => {
       : true;
     console.log(`isMainnet: ${isMainnet}`);
   }, [lastBlock]);
+
   return (
     <>
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        socket={socket}
-      />
-      {activeTab === "Home" && <h1>Hello world</h1>}
-      {activeTab === "TransmuteRsvToGold" && <TransmuteRsvToGold />}
-      {activeTab === "TransmuteSigGoldToRsv" && <TransmuteGoldToRsv />}
-      {activeTab === "Fission" && <Fission />}
-      {activeTab === "MintGold" && <MintGold />}
-      {activeTab === "MintRsv" && <MintRsv />}
-      {/* {activeTab === "refund" && <Refund />} */}
-      {/* <Footer /> */}
+      <div>
+        <div
+          className="main-content"
+          style={{ minHeight: "calc(100vh - 100px)", paddingBottom: "100px" }}
+        >
+          <Navbar
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            socket={socket}
+          />
+          {activeTab === "Home" && <Fission />}
+          {activeTab === transmuteToGoldTitle && <TransmuteRsvToGold />}
+          {activeTab === transmuteFromGoldTitle && <TransmuteGoldToRsv />}
+          {activeTab === fissionTitle && <Fission />}
+          {activeTab === fusionTitle && <Fusion />}
+          {activeTab === "MintGold" && <MintGold />}
+          {activeTab === "MintRsv" && <MintRsv />}
+          {/* {activeTab === "refund" && <Refund />} */}
+        </div>
+
+        <footer
+          className="footer"
+          style={{ height: "100px", marginTop: "-100px" }}
+        >
+          {" "}
+          <Footer />
+        </footer>
+      </div>
     </>
   );
 };

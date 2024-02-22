@@ -43,6 +43,21 @@ export async function getFissionPrice(
   }
 }
 
+export async function getFusionPrice(
+  isMainnet: boolean,
+  ergAmount: number
+): Promise<any> {
+  const nodeApi = new NodeApi(
+    NODE_API_URL(isMainnet),
+    GLUONW_NODE_API_URL(isMainnet)
+  );
+  try {
+    return await nodeApi.getFusionPrice(ergAmount);
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getNeutronsPrice(isMainnet: boolean): Promise<any> {
   const nodeApi = new NodeApi(
     NODE_API_URL(isMainnet),
@@ -139,6 +154,31 @@ export async function UnsignedTxForFission(
   );
   try {
     const response = await nodeApi.putFissionService(
+      walletAddress,
+      ergAmount,
+      isEIP12
+    );
+    const parsedResponse = JSON.parse(removeBackslashes(response.data));
+    console.log(parsedResponse);
+    return parsedResponse;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+export async function UnsignedTxForFusion(
+  isMainnet: boolean,
+  walletAddress: string,
+  ergAmount: number,
+  isEIP12: boolean
+): Promise<UnsignedTransaction> {
+  const nodeApi = new NodeApi(
+    NODE_API_URL(isMainnet),
+    GLUONW_NODE_API_URL(isMainnet)
+  );
+  try {
+    const response = await nodeApi.putFusionService(
       walletAddress,
       ergAmount,
       isEIP12

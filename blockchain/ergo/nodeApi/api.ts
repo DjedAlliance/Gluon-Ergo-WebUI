@@ -30,6 +30,12 @@ export class NodeApi {
     const url = `${this.gluownNodeBaseURI}/fission/${ergAmount}`;
     return await axios.get(url);
   }
+
+  async getFusionPrice(ergAmount: number): Promise<any> {
+    const url = `${this.gluownNodeBaseURI}/fission/${ergAmount}`;
+    return await axios.get(url);
+  }
+
   async getTransmuteGoldToRsvRate(goldAmount: number): Promise<any> {
     const url = `${this.gluownNodeBaseURI}/transmute/toProtons/${goldAmount}`;
     return await axios.get(url);
@@ -57,6 +63,19 @@ export class NodeApi {
     });
     return response;
   }
+
+  async putFusionService(
+    walletAddress: string,
+    ergAmount: number,
+    isEIP12: boolean
+  ): Promise<any> {
+    const url = `${this.gluownNodeBaseURI}/fission/${ergAmount}/${isEIP12}`;
+    const response = await axios.put(url, {
+      walletAddress: walletAddress,
+    });
+    return response;
+  }
+
   async putTransmuteGoldToRsv(
     walletAddress: string,
     goldAmount: number,

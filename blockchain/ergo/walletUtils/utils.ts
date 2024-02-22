@@ -133,3 +133,11 @@ export const removeBackslashes = (input: string) => {
     return "";
   }
 };
+
+export const nanoErgsToErgs = (nanoErgs: number) => {
+  return nanoErgs / 1000000000;
+}
+
+export const ergsToNanoErgs = (ergs: number) => {
+  return ergs * 1000000000;
+}

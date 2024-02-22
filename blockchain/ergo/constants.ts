@@ -49,6 +49,6 @@ export const NEXT_PUBLIC_NEST_API_URL = (isMainnet: boolean) =>  (
 
 export const GLUONW_NODE_API_URL = (isMainnet: boolean): string => (
     isMainnet
-        ? process.env.NEXT_PUBLIC_MAINNET_NODE_URL
+        ? process.env.NEXT_PUBLIC_NEXT_MAINNET_GLUONW
         : process.env.NEXT_PUBLIC_NEXT_TESTNET_GLUONW
 )!?.replace(/[\\/]+$/, '');

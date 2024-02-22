@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { explorerClient, PROXY_ADDRESS } from "@/blockchain/ergo/constants";
-import { OutputInfo } from "@/blockchain/ergo/explorerApi";
+import {
+  EXPLORER_API_URL,
+  explorerClient,
+  PROXY_ADDRESS,
+} from "@/blockchain/ergo/constants";
+import {
+  Configuration,
+  DefaultApiFactory,
+  OutputInfo,
+} from "@/blockchain/ergo/explorerApi";
 import {
   checkWalletConnection,
+  nanoErgsToErgs,
   signAndSubmitTx,
 } from "@/blockchain/ergo/walletUtils/utils";
 import { toast } from "react-toastify";
@@ -17,6 +26,9 @@ import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForMintRsv } from "@/blockchain/ergo/apiHelper";
+import CardContainer from "./Common/CardContainer";
+import TokenContainer from "./Common/TokenContainer";
+import { MintRsv as mintRsvTitle } from "./constant";
 
 const MintRsv = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -24,6 +36,8 @@ const MintRsv = () => {
   const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
+  const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
+  const [ergoAmountAvailable, setErgoAmountAvailable] = useState<any>(null);
 
   const minBoxValue = BigInt(1000000);
 
@@ -38,8 +52,23 @@ const MintRsv = () => {
 
     setIsMainnet(isMainnet);
     setProxyAddress(PROXY_ADDRESS(isMainnet));
-  }, []);
+    const explorerConf = new Configuration({
+      basePath: EXPLORER_API_URL(isMainnet),
+    });
 
+    const explorerClient = DefaultApiFactory(explorerConf);
+    setExplorerApiClient(explorerClient);
+
+    const walletConfig = getWalletConfig();
+    if (walletConfig !== undefined) {
+      explorerClient
+        .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
+        .then((res) => {
+          console.log(res.data.nanoErgs * 10 ** -9);
+          setErgoAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
+        });
+    }
+  }, []);
   const handleClick = async () => {
     const walletConfig = getWalletConfig();
 
@@ -79,7 +108,7 @@ const MintRsv = () => {
     try {
       const unsignedTransaction = await UnsignedTxForMintRsv(
         isMainnet,
-        localStorage.getItem("walletAddress") || "",
+        walletConfig.walletAddress[0] || "",
         ergForMintRsvAmount,
         true
       );
@@ -133,47 +162,35 @@ const MintRsv = () => {
     }
   };
 
+  const tokenName = "Mint Sig Rsv from Ergo";
+  const description =
+    "Erg is the native token of the Ergo blockchain which is a POS, fully decentralized, and  community governed protocol. Use Fission to convert your Erg to Neutrons and Protons.";
+  const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
+
   return (
     <>
-      <div className="max-w-md mx-auto mb-10 lg:mb-0 font-inter">
-        <h4 className="text-black text-xl font-medium">
-          Erg to Gold and Gold Reserve
-        </h4>
-        <p className="text-black my-3 min-h-[100px]">
-          Mint hodlERG with no fees. You have the freedom to mint as much as you
-          desire at the current price. it is important to note that the minting
-          process does not directly affect the tokens pricing dynamics.
-        </p>
-
-        <div className="flex bg-gray-200 shadow-lg justify-between rounded-md items-start h-full">
-          <div className="flex flex-col w-full h-full">
-            <input
-              className="w-full border-b-2 border-l-0 border-r-0 border-t-0 border-gray-300 bg-transparent text-gray-500 font-medium text-md h-14 focus:outline-none focus:ring-0 focus:border-primary focus-within:outline-none focus-within:shadow-none focus:shadow-none pl-4"
-              placeholder="Amount"
-              type="number"
-              onChange={(event) =>
-                setErgForMintRsvAmount(parseFloat(event.target.value))
-              }
-            />
-          </div>
-
-          <button
-            className="h-24 whitespace-nowrap focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300  focus:shadow-none font-medium rounded text-md px-5 py-2.5"
-            onClick={handleClick}
-          >
-            MintRsv ERG TO RSV AND GOLDy
-          </button>
-          {isModalErgoPayOpen && (
-            <ErgoPayWalletModal
-              isModalOpen={isModalErgoPayOpen}
-              setIsModalOpen={setIsModalErgoPayOpen}
-              ergoPayLink={ergoPayLink}
-              txid={ergoPayTxId}
-              isMainnet={isMainnet}
-            ></ErgoPayWalletModal>
-          )}
-        </div>
-      </div>
+      <CardContainer>
+        <TokenContainer
+          onPurchase={handleClick}
+          tokenName={tokenName}
+          description={description}
+          logoUrl={logoUrl}
+          baseCurrency="Ergo"
+          maxAmount={ergoAmountAvailable}
+          isMainnet={isMainnet}
+          currentPage={mintRsvTitle}
+        />
+      </CardContainer>
+      {isModalErgoPayOpen && (
+        <ErgoPayWalletModal
+          isModalOpen={isModalErgoPayOpen}
+          setIsModalOpen={setIsModalErgoPayOpen}
+          ergoPayLink={ergoPayLink}
+          txid={ergoPayTxId}
+          isMainnet={isMainnet}
+        ></ErgoPayWalletModal>
+      )}
+      ;
     </>
   );
 };
