@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   EXPLORER_API_URL,
   explorerClient,
+  GLUON_PROTON_ADDRESS,
   PROXY_ADDRESS,
 } from "@/blockchain/ergo/constants";
 import {
@@ -60,6 +61,7 @@ const TransmuteGoldToRsv = () => {
     const explorerConf = new Configuration({
       basePath: EXPLORER_API_URL(isMainnet),
     });
+    const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
 
     const explorerClient = DefaultApiFactory(explorerConf);
     setExplorerApiClient(explorerClient);
@@ -71,7 +73,7 @@ const TransmuteGoldToRsv = () => {
         .then((res) => {
           const protons = findTokenById(
             res.data.tokens ?? [],
-            "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
+            protonTokenId
           );
           console.log(protons?.amount);
           setGoldAmountAvailable(protons?.amount);
