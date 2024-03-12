@@ -69,7 +69,7 @@ export class NodeApi {
     ergAmount: number,
     isEIP12: boolean
   ): Promise<any> {
-    const url = `${this.gluownNodeBaseURI}/fission/${ergAmount}/${isEIP12}`;
+    const url = `${this.gluownNodeBaseURI}/fusion/${ergAmount}/${isEIP12}`;
     const response = await axios.put(url, {
       walletAddress: walletAddress,
     });

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   EXPLORER_API_URL,
   explorerClient,
+  GLUON_NEUTRON_ADDRESS,
   PROXY_ADDRESS,
 } from "@/blockchain/ergo/constants";
 import {
@@ -62,6 +63,7 @@ const TransmuteRsvToGold = () => {
 
     const explorerClient = DefaultApiFactory(explorerConf);
     setExplorerApiClient(explorerClient);
+    const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
@@ -70,7 +72,7 @@ const TransmuteRsvToGold = () => {
         .then((res) => {
           const neutrons = findTokenById(
             res.data.tokens ?? [],
-            "b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05"
+            neutronTokenId
           );
           setRsvAmountAvailable(neutrons?.amount);
         });

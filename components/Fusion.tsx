@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import {
   EXPLORER_API_URL,
   explorerClient,
+<<<<<<< HEAD
+=======
+  GLUON_NEUTRON_ADDRESS,
+  GLUON_PROTON_ADDRESS,
+>>>>>>> master
   PROXY_ADDRESS,
 } from "@/blockchain/ergo/constants";
 import {
@@ -57,7 +62,8 @@ export const Fusion = () => {
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [ergoAmountAvailable, setErgoAmountAvailable] = useState<any>(null);
   const [protonAmountAvailable, setProtonAmountAvailable] = useState<any>(null);
-  const [neutronAmountAvailable, setNeutronAmountAvailable] = useState<any>(null);
+  const [neutronAmountAvailable, setNeutronAmountAvailable] =
+    useState<any>(null);
 
   useEffect(() => {
     const isMainnet = localStorage.getItem("IsMainnet")
@@ -72,6 +78,10 @@ export const Fusion = () => {
 
     const explorerClient = DefaultApiFactory(explorerConf);
     setExplorerApiClient(explorerClient);
+    const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
+    const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
+    console.log(protonTokenId);
+    console.log(neutronTokenId)
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
@@ -81,12 +91,12 @@ export const Fusion = () => {
         .then((res) => {
           const neutrons = findTokenById(
             res.data.tokens ?? [],
-            "b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05"
+            neutronTokenId
           );
           setNeutronAmountAvailable(neutrons?.amount);
           const protons = findTokenById(
             res.data.tokens ?? [],
-            "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
+            protonTokenId
           );
           setProtonAmountAvailable(protons?.amount);
           console.log(res.data.nanoErgs * 10 ** -9);

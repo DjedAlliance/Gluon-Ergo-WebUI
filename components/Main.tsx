@@ -85,8 +85,8 @@ const Main = () => {
             socket={socket}
           />
           {activeTab === "Home" && <Fission />}
-          {activeTab === transmuteToGoldTitle && <TransmuteRsvToGold />}
-          {activeTab === transmuteFromGoldTitle && <TransmuteGoldToRsv />}
+          {activeTab === transmuteToGoldTitle && <TransmuteGoldToRsv />}
+          {activeTab === transmuteFromGoldTitle && <TransmuteRsvToGold />}
           {activeTab === fissionTitle && <Fission />}
           {activeTab === fusionTitle && <Fusion />}
           {activeTab === "MintGold" && <MintGold />}
