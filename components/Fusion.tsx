@@ -77,6 +77,8 @@ export const Fusion = () => {
     setExplorerApiClient(explorerClient);
     const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
     const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
+    console.log(protonTokenId);
+    console.log(neutronTokenId)
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
