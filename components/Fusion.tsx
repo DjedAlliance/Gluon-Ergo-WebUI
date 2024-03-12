@@ -208,7 +208,7 @@ export const Fusion = () => {
           isMainnet={isMainnet}
           currentPage={fusionTitle}
           maxProtonsAvailable={protonAmountAvailable}
-          maxNeutronsAvailable={neutronAmountAvailable}
+        maxNeutronsAvailable={neutronAmountAvailable}
         />
       </CardContainer>
       {isModalErgoPayOpen && (

@@ -36,8 +36,6 @@ import { TransmuteToGold } from "./constant";
 
 const TransmuteRsvToGold = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [RsvToGoldTransmuteAmount, setRsvToGoldTransmuteAmount] =
-    useState<number>(0);
   const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
   const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
@@ -70,16 +68,13 @@ const TransmuteRsvToGold = () => {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
-          const neutrons = findTokenById(
-            res.data.tokens ?? [],
-            neutronTokenId
-          );
+          const neutrons = findTokenById(res.data.tokens ?? [], neutronTokenId);
           setRsvAmountAvailable(neutrons?.amount);
         });
     }
   }, []);
 
-  const handleClick = async () => {
+  const handleClick = async (amount: number) => {
     const walletConfig = getWalletConfig();
 
     if (!(await checkWalletConnection(walletConfig))) {
@@ -119,7 +114,7 @@ const TransmuteRsvToGold = () => {
       const unsignedTransaction = await UnsignedTxForTransmuteRsvToGold(
         isMainnet,
         walletConfig.walletAddress[0] || "",
-        RsvToGoldTransmuteAmount,
+        amount,
         true
       );
 
@@ -138,7 +133,7 @@ const TransmuteRsvToGold = () => {
         }
         const url = await getShortLink(
           ergoPayTx,
-          `Gold amount: ${RsvToGoldTransmuteAmount}`,
+          `Gold amount: ${amount}`,
           changeAddress,
           isMainnet
         );
