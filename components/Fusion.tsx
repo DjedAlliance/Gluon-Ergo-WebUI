@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   EXPLORER_API_URL,
   explorerClient,
-<<<<<<< HEAD
-=======
   GLUON_NEUTRON_ADDRESS,
   GLUON_PROTON_ADDRESS,
->>>>>>> master
   PROXY_ADDRESS,
 } from "@/blockchain/ergo/constants";
 import {
