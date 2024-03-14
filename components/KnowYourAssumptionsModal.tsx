@@ -67,21 +67,26 @@ export default function KnowYourAssumptionsModal() {
                     </h2>
                     <div className="space-y-4 px-2 py-6">
                       <p>
-                        <span className="font-bold">Gluon</span> is an open
-                        source UI for interacting with contracts on the Ergo
-                        Blockchain.{" "}
+                        <span className="font-bold">Gluon</span> is an asset-backed stablecoin protocol.
+                      </p>
+                      <p>
+                        <span className="font-bold">Gluon Gold on Ergo</span> is a Gluon-based smart contract 
+                        running on the Ergo blockchain, allowing you to issue Gold-pegged stablecoins backed by ERG.
+                      </p>
+                      <p>
+                        This website is an open-source UI for interacting with Gluon Gold on Ergo.{" "}
                       </p>
                       <div className="">
-                        <span className="font-bold">Notice that:</span>
+                        <span className="font-bold">Note that:</span>
                         <ul className="list-inside">
                           <li>
-                            - We do not log, collect, profile, share or sell your
+                            - This website does not log, collect, profile, share or sell your
                             data.
                           </li>
                           <li>
                             {" "}
-                            - Gluon operates on a live blockchain, thus
-                            transactions are final, and irreversible once they
+                            - Gluon Gold on Ergo runs on a blockchain. Therefore,
+                            transactions are final and irreversible once they
                             have status «
                             <span className="font-semibold">
                               confirmed
@@ -89,37 +94,36 @@ export default function KnowYourAssumptionsModal() {
                           </li>
                           <li>
                             {" "}
-                            - Every transaction can be viewed via{" "}
+                            - All transactions can be viewed via{" "}
                             <a
                               href="https://explorer.ergoplatform.com"
                               target="_blank"
                               className="transition-all duration-200 ease-in-out hover:text-opacity-80 text-primary"
                             >
-                              explorer
+                              Ergo's Explorer
                             </a>
                             .{" "}
                           </li>
                         </ul>
                       </div>
                       <p className="font-bold">
-                        The Gluon doesn't guarantee the absence of bugs and
-                        errors.
+                        The absence of bugs and errors is not guaranteed.
                       </p>
                       <p className="font-bold">
                         {" "}
-                        NO assistance can offered if a user is hacked or cheated
-                        out of passwords, currency or private keys.{" "}
+                        No assistance can be offered if a user is hacked or cheated
+                        out of passwords, recovery phrases, private keys or assets.{" "}
                       </p>
                       <div>
                         <span className="font-bold">
-                          By accepting these KYA, you agree that:{" "}
+                          By using this website, you agree that:{" "}
                         </span>
                         <ul className="list-decimal list-inside indent-xs">
-                          <li>You will use the product at your own risk.</li>
-                          <li>Only YOU are responsible for your assets.</li>
+                          <li>You will use it at your own risk.</li>
+                          <li>Only you are responsible for your assets.</li>
                           <li>
-                            Only YOU are responsible for securely storing your
-                            recovery phrase.
+                            Only you are responsible for securely storing your
+                            passwords, recovery phrases and private keys.
                           </li>
                         </ul>
                       </div>
@@ -128,7 +132,7 @@ export default function KnowYourAssumptionsModal() {
                       className="focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300 font-medium rounded text-md px-3 sm:px-5 py-2 sm:py-2.5"
                       onClick={closeModal}
                     >
-                      I understand and accept the KYA
+                      I understand and I agree
                     </button>
                   </div>
                 </Dialog.Panel>
