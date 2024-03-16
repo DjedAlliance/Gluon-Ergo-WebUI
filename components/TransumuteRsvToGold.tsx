@@ -11,6 +11,7 @@ import {
   OutputInfo,
 } from "@/blockchain/ergo/explorerApi";
 import {
+  UIFriendlyValue,
   checkWalletConnection,
   signAndSubmitTx,
 } from "@/blockchain/ergo/walletUtils/utils";
@@ -69,7 +70,9 @@ const TransmuteRsvToGold = () => {
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
           const neutrons = findTokenById(res.data.tokens ?? [], neutronTokenId);
-          setRsvAmountAvailable(neutrons?.amount);
+          if (neutrons && neutrons.amount) {
+            setRsvAmountAvailable(UIFriendlyValue(neutrons.amount));
+          }
         });
     }
   }, []);

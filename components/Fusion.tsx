@@ -12,6 +12,7 @@ import {
   OutputInfo,
 } from "@/blockchain/ergo/explorerApi";
 import {
+  UIFriendlyValue,
   checkWalletConnection,
   signAndSubmitTx,
 } from "@/blockchain/ergo/walletUtils/utils";
@@ -77,8 +78,6 @@ export const Fusion = () => {
     setExplorerApiClient(explorerClient);
     const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
     const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
-    console.log(protonTokenId);
-    console.log(neutronTokenId)
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
@@ -86,17 +85,14 @@ export const Fusion = () => {
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
 
         .then((res) => {
-          const neutrons = findTokenById(
-            res.data.tokens ?? [],
-            neutronTokenId
-          );
-          setNeutronAmountAvailable(neutrons?.amount);
-          const protons = findTokenById(
-            res.data.tokens ?? [],
-            protonTokenId
-          );
-          setProtonAmountAvailable(protons?.amount);
-          console.log(res.data.nanoErgs * 10 ** -9);
+          const neutrons = findTokenById(res.data.tokens ?? [], neutronTokenId);
+          if (neutrons && neutrons.amount) {
+            setNeutronAmountAvailable(UIFriendlyValue(neutrons.amount));
+          }
+          const protons = findTokenById(res.data.tokens ?? [], protonTokenId);
+          if (protons && protons.amount) {
+            setProtonAmountAvailable(UIFriendlyValue(protons?.amount));
+          }
           setErgoAmountAvailable(nanoErgsToErgs(res.data.nanoErgs));
         });
     }
@@ -208,7 +204,7 @@ export const Fusion = () => {
           isMainnet={isMainnet}
           currentPage={fusionTitle}
           maxProtonsAvailable={protonAmountAvailable}
-        maxNeutronsAvailable={neutronAmountAvailable}
+          maxNeutronsAvailable={neutronAmountAvailable}
         />
       </CardContainer>
       {isModalErgoPayOpen && (

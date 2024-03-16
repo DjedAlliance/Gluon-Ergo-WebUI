@@ -10,6 +10,7 @@ import {
 import {
   nanoErgsToErgs,
   ergsToNanoErgs,
+  UIFriendlyValue,
 } from "@/blockchain/ergo/walletUtils/utils";
 import {
   Fission,
@@ -230,7 +231,7 @@ export default TokenPurchaseForm;
 interface Asset {
   assetName?: string;
   id?: string;
-  price?: number;
+  price: number;
 }
 
 export const ConversionBox = ({
@@ -239,7 +240,7 @@ export const ConversionBox = ({
   baseCurrency,
   currentPage,
 }: any) => {
-  const jsonData = `[{"assetName":"NEUTRON","id":"b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05","price":0},{"assetName":"PROTON","id":"0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510","price":0}]`;
+  const jsonData = `[]`;
   const initialData: Asset[] = JSON.parse(jsonData).map((asset: Asset) => ({
     ...asset,
     price: 0, // Set the initial price to 0
@@ -294,28 +295,16 @@ export const ConversionBox = ({
     // Clear the interval on component unmount
     return () => clearInterval(intervalId);
   }, [inputValue, isMainnet, baseCurrency, currentPage]); // Dependency array includes 'erg', so the effect reruns when 'erg' changes
-
-  // return (
-  //   // <div
-  //   //   style={{
-  //   //     border: "1px solid black",
-  //   //     padding: "20px",
-  //   //     textAlign: "center",
-  //   //   }}
-  //   // >
-  //   <>
+  
   return (
     <div>
       {assets.map((asset, index) => (
         <div key={index}>
           <p>
-            {asset.price} {asset.assetName}
+            {UIFriendlyValue(asset.price)} {asset.assetName}
           </p>
         </div>
       ))}
     </div>
   );
-  //   </>
-  //   // </div>
-  // );
 };

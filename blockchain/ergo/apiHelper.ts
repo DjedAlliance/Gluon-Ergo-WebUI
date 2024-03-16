@@ -6,7 +6,11 @@ import {
 } from "@/types/nodeApi";
 import { explorerClient, GLUONW_NODE_API_URL, NODE_API_URL } from "./constants";
 import { NodeApi } from "./nodeApi/api";
-import { removeBackslashes } from "./walletUtils/utils";
+import {
+  APIFriendlyValue,
+  UIFriendlyValue,
+  removeBackslashes,
+} from "./walletUtils/utils";
 import { UnsignedTransaction } from "@nautilus-js/eip12-types";
 
 export async function getUnConfirmedOrConfirmedTx(
@@ -91,6 +95,7 @@ export async function getTransmuteGoldToRsvRate(
     GLUONW_NODE_API_URL(isMainnet)
   );
   try {
+    goldAmount = APIFriendlyValue(goldAmount, 9);
     return await nodeApi.getTransmuteGoldToRsvRate(goldAmount);
   } catch (error) {
     throw error;
@@ -106,6 +111,7 @@ export async function getTransmuteRsvToGoldRate(
     GLUONW_NODE_API_URL(isMainnet)
   );
   try {
+    rsvAmount = APIFriendlyValue(rsvAmount, 9);
     return await nodeApi.getTransmuteRsvToGoldRate(rsvAmount);
   } catch (error) {
     throw error;
@@ -166,7 +172,6 @@ export async function UnsignedTxForFission(
   }
 }
 
-
 export async function UnsignedTxForFusion(
   isMainnet: boolean,
   walletAddress: string,
@@ -202,6 +207,7 @@ export async function UnsignedTxForTransmuteGoldToRsv(
     GLUONW_NODE_API_URL(isMainnet)
   );
   try {
+    goldAmount = APIFriendlyValue(goldAmount, 9);
     const response = await nodeApi.putTransmuteGoldToRsv(
       walletAddress,
       goldAmount,
@@ -226,6 +232,7 @@ export async function UnsignedTxForTransmuteRsvToGold(
     GLUONW_NODE_API_URL(isMainnet)
   );
   try {
+    rsvAmount = APIFriendlyValue(rsvAmount, 9);
     const response = await nodeApi.putTransmuteRsvToGold(
       walletAddress,
       rsvAmount,

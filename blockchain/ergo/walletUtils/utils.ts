@@ -135,9 +135,18 @@ export const removeBackslashes = (input: string) => {
 };
 
 export const nanoErgsToErgs = (nanoErgs: number) => {
-  return nanoErgs / 1000000000;
+  return nanoErgs / Math.pow(10, 9);
 }
 
 export const ergsToNanoErgs = (ergs: number) => {
-  return ergs * 1000000000;
+  return ergs * Math.pow(10,9);
+}
+
+export const UIFriendlyValue = (input: number, divisor?: number) => {
+  return input / Math.pow(10, divisor ?? 9);
+}
+
+
+export const APIFriendlyValue = (input: number, divisor?: number) => {
+  return input * Math.pow(10, divisor ?? 9);
 }

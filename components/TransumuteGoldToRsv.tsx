@@ -11,6 +11,7 @@ import {
   OutputInfo,
 } from "@/blockchain/ergo/explorerApi";
 import {
+  UIFriendlyValue,
   checkWalletConnection,
   nanoErgsToErgs,
   signAndSubmitTx,
@@ -71,7 +72,9 @@ const TransmuteGoldToRsv = () => {
         .then((res) => {
           const protons = findTokenById(res.data.tokens ?? [], protonTokenId);
           console.log(protons?.amount);
-          setGoldAmountAvailable(protons?.amount);
+          if (protons && protons.amount) {
+            setGoldAmountAvailable(UIFriendlyValue(protons?.amount));
+          }
         });
     }
   }, []);
