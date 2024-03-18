@@ -64,6 +64,12 @@ const Navbar = (props: IProps) => {
         <div className="primary-gradient py-3 flex flex-col items-center justify-center space-y-4">
           {/* Tab Buttons */}
           <TabButton
+            title={"About"}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+          <TabButton
             title={Fission}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
@@ -93,6 +99,12 @@ const Navbar = (props: IProps) => {
       {/* Regular display of tab buttons for larger screens */}
       <div className="hidden sm:flex primary-gradient w-full py-3 text-center items-center space-x-12 sm:space-x-20 justify-center">
         {/* Tab Buttons */}
+        <TabButton
+            title={"About"}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         <TabButton
           title={Fission}
           activeTab={activeTab}

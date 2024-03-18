@@ -20,6 +20,7 @@ import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
+import About from "./About";
 import {
   Fission as fissionTitle,
   Fusion as fusionTitle,
@@ -91,6 +92,7 @@ const Main = () => {
           {activeTab === fusionTitle && <Fusion />}
           {activeTab === "MintGold" && <MintGold />}
           {activeTab === "MintRsv" && <MintRsv />}
+          {activeTab == "About" && <About />}
           {/* {activeTab === "refund" && <Refund />} */}
         </div>
 

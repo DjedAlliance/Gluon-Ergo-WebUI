@@ -42,8 +42,8 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
   const [amount, setAmount] = useState(0);
   const [isError, setIsError] = useState(false);
   const [isErrorInFusion, setIsErrorInFusion] = useState(false);
-  const [protonsPerTransaction, setProtonsPerTransaction] = useState(0);
-  const [neutronsPerTransaction, setNeutronsPerTransaction] = useState(0);
+  // const [protonsPerTransaction, setProtonsPerTransaction] = useState(0);
+  // const [neutronsPerTransaction, setNeutronsPerTransaction] = useState(0);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (amount <= maxAmount) {
@@ -202,9 +202,9 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             </a>
             <br />
             <div>
-              Wallet Balance of Proton: {maxProtonsAvailable}
+              Wallet Balance of GAUC: {maxProtonsAvailable}
               <br />
-              Wallet Balance of Neutron: {maxNeutronsAvailable}
+              Wallet Balance of GAU: {maxNeutronsAvailable}
             </div>
             <div>
               <br />
@@ -295,7 +295,16 @@ export const ConversionBox = ({
     // Clear the interval on component unmount
     return () => clearInterval(intervalId);
   }, [inputValue, isMainnet, baseCurrency, currentPage]); // Dependency array includes 'erg', so the effect reruns when 'erg' changes
-  
+
+  assets.map((asset, index) => {
+    if (asset.assetName?.toLocaleLowerCase() == "neutron") {
+      asset.assetName = "GAU";
+    } else if (asset.assetName?.toLocaleLowerCase() == "proton") {
+      asset.assetName = "GAUC";
+    } else {
+      asset.assetName = asset.assetName;
+    }
+  });
   return (
     <div>
       {assets.map((asset, index) => (

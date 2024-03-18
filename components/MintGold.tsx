@@ -164,7 +164,7 @@ const MintGold = () => {
 
   const tokenName = "Mint Sig Gold from Ergo";
   const description =
-    "Erg is the native token of the Ergo blockchain which is a POS, fully decentralized, and  community governed protocol. Use Fission to convert your Erg to Neutrons and Protons.";
+    "Erg is the native token of the Ergo blockchain which is a POS, fully decentralized, and  community governed protocol. Use Fission to convert your Erg to GAUs and GAUCs.";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
   return (

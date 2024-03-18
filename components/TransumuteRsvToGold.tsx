@@ -30,7 +30,7 @@ import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
-import { UnsignedTxForTransmuteRsvToGold } from "@/blockchain/ergo/apiHelper";
+import { UnsignedTxForTransmuteGoldToRsv, UnsignedTxForTransmuteRsvToGold } from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
 import TokenContainer from "./Common/TokenContainer";
 import { TransmuteToGold } from "./constant";
@@ -114,7 +114,7 @@ const TransmuteRsvToGold = () => {
     receiverErgoTree = receiverErgoTree.substring(2);
 
     try {
-      const unsignedTransaction = await UnsignedTxForTransmuteRsvToGold(
+      const unsignedTransaction = await UnsignedTxForTransmuteGoldToRsv(
         isMainnet,
         walletConfig.walletAddress[0] || "",
         amount,
@@ -165,7 +165,7 @@ const TransmuteRsvToGold = () => {
       return;
     }
   };
-  const tokenName = "Convert SigGold to Gold Reserve";
+const tokenName = "Convert GAUC to GAU";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
@@ -177,7 +177,7 @@ const TransmuteRsvToGold = () => {
           tokenName={tokenName}
           description={description}
           logoUrl={logoUrl}
-          baseCurrency="Neutrons"
+          baseCurrency="GAU"
           maxAmount={rsvAmountAvailable}
           isMainnet={isMainnet}
           currentPage={TransmuteToGold}

@@ -28,7 +28,7 @@ export default function KnowYourAssumptionsModal() {
         onClick={openModal}
         className="transition-all duration-200 ease-in-out hover:text-opacity-80 outline-none bg-transparent"
       >
-        Know Your Assumptions
+        KYA
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
