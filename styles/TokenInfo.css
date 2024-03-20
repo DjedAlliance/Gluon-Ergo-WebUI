@@ -36,7 +36,6 @@
 }
 
 .header-info {
-    display: flex;
     align-items: center;
     justify-content: space-between; /* Distributes space between items */
     /* Aligns items vertically in the center */

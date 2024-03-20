@@ -102,8 +102,14 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
       {currentPage !== Fusion ? (
         <form className="token-purchase-form" onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="payment-amount-static">Payment In</label>
+            <label htmlFor="payment-amount-static">Pay</label>
             {/* Use a span or a read-only input to display the currency */}
+            <input
+              type="number"
+              value={amount === 0 ? '' : amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
+            />
             <input
               id="payment-amount-static"
               type="text"
@@ -114,12 +120,6 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
                 borderColor: "transparent",
                 color: "#495057",
               }} // Styling to indicate it's not editable
-            />
-            <input
-              type="number"
-              value={amount}
-              onChange={handleAmountChange}
-              placeholder="Enter amount"
             />
           </div>
           {isError && amount > 0 && (
@@ -145,7 +145,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
               {maxAmount} {currencyShown}
             </a>
             <div>
-              Expected receive:{" "}
+              Receive:{" "}
               <ConversionBox
                 inputValue={amount}
                 isMainnet={isMainnet}
@@ -161,7 +161,13 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
       ) : (
         <form className="token-purchase-form" onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="payment-amount-static">Convert back to</label>
+            <label htmlFor="payment-amount-static">Receive</label>
+            <input
+              type="number"
+              value={amount === 0 ? '' : amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
+            />
             {/* Use a span or a read-only input to display the currency */}
             <input
               id="payment-amount-static"
@@ -174,12 +180,6 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
                 color: "#495057",
               }} // Styling to indicate it's not editable
             />
-            <input
-              type="number"
-              value={amount}
-              onChange={handleAmountChange}
-              placeholder="Enter amount"
-            />
           </div>
           {isError && amount > 0 && (
             <p style={{ color: "red" }}>
@@ -190,25 +190,27 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             <p style={{ color: "red" }}>Amount must be greater than zero.</p>
           )}
           <div className="conversion-info">
-            Wallet Balance of ERG:{" "}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setAmount(maxAmount);
-              }}
-            >
-              {maxAmount} {currencyShown}
-            </a>
+            Wallet Balance
             <br />
             <div>
-              Wallet Balance of GAUC: {maxProtonsAvailable}
+              ERG:{" "}
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAmount(maxAmount);
+                }}
+              >
+                {maxAmount} {currencyShown}
+              </a>
               <br />
-              Wallet Balance of GAU: {maxNeutronsAvailable}
+              GAUC: {maxProtonsAvailable}
+              <br />
+              GAU: {maxNeutronsAvailable}
             </div>
             <div>
               <br />
-              Expected to spend:{" "}
+              Pay:{" "}
               <ConversionBox
                 inputValue={amount}
                 isMainnet={isMainnet}

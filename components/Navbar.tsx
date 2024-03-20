@@ -27,7 +27,7 @@ const Navbar = (props: IProps) => {
   return (
     <>
       <nav className="flex container items-center justify-between mx-auto px-2 sm:px-3 lg:px-5 py-4 text-black">
-        <span className="mr-3">Gluon Gold on Ergo</span>
+        <h1>Gluon Gold on Ergo</h1>
 
         <div className="flex items-center space-x-3 sm:space-x-4">
           <div
