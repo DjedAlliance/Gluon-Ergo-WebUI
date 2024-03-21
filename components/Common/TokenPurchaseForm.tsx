@@ -92,8 +92,28 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
     //   console.log("should be in error");
     //   setIsErrorInFusion(true);
     // }
+    e.target.value = replaceInput(newAmount).toString();
     setAmount(newAmount);
     setIsError(newAmount > maxAmount || newAmount <= 0 || isErrorInFusion);
+  };
+
+  const replaceInput = (input: number) => {
+    // If the first character is '0' followed by a digit other than a dot, remove the leading '0'
+    let stringedInput = input.toString();
+    if (
+      stringedInput.startsWith("0") &&
+      stringedInput.length > 1 &&
+      stringedInput[1] !== "."
+    ) {
+      stringedInput = stringedInput.slice(1);
+    }
+
+    // If the user starts typing a dot, prepend a '0'
+    if (stringedInput.startsWith(".")) {
+      stringedInput = "0" + stringedInput;
+    }
+
+    return parseFloat(stringedInput);
   };
 
   const currencyShown = baseCurrency ?? `ERG`;
@@ -106,7 +126,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             {/* Use a span or a read-only input to display the currency */}
             <input
               type="number"
-              value={amount === 0 ? '' : amount}
+              value={amount}
               onChange={handleAmountChange}
               placeholder="Enter amount"
             />
@@ -164,7 +184,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             <label htmlFor="payment-amount-static">Receive</label>
             <input
               type="number"
-              value={amount === 0 ? '' : amount}
+              value={amount}
               onChange={handleAmountChange}
               placeholder="Enter amount"
             />
