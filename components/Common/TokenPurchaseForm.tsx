@@ -54,68 +54,39 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputVal = e.target.value;
 
-    let newAmount = 0;
-
-    if (inputVal !== "") {
-      newAmount = parseFloat(inputVal);
+    if (inputVal === "") {
+      e.target.value = "0";
+      setAmount(0);
+      return;
+    }
+    const isFloat = /\d+\.\d+/.test(e.target.value);
+    let input = parseFloat(e.target.value);
+    if (Number.isNaN(parseFloat(e.target.value))) {
+      e.target.value = "";
     }
 
-    // If the parsed number results in NaN, reset the amount to 0
-    if (isNaN(newAmount)) {
-      newAmount = 0;
-    }
+    if (Number.isInteger(input) || isFloat) {
+      let newInput = !Number.isNaN(input)
+        ? replaceInput(parseFloat(e.target.value))
+        : input;
+      if (parseFloat(e.target.value) >= 1) {
+        e.target.value = e.target.value.replace(/^0+/, "");
+      }
 
-    // if (currentPage === Fusion) {
-    //   getFusionPrice(isMainnet, ergsToNanoErgs(amount)).then((response) => {
-    //     setProtonsPerTransaction(
-    //       response.data.find(
-    //         (asset: Asset) =>
-    //           asset.id ===
-    //           "0365bbb9b9f21ebb7ea0d3b0cf2b1c2745739e86199e72d4bb0c2d0438b36510"
-    //       )?.price
-    //     );
-    //     setNeutronsPerTransaction(
-    //       response.data.find(
-    //         (asset: Asset) =>
-    //           asset.id ===
-    //           "b444f19bf3ce453d50efebb1c6689d60823ffb11311f3aa11f7a9e0ff1e2bd05"
-    //       )?.price
-    //     );
-    //   });
-    // }
-    // if (
-    //   maxNeutronsAvailable &&
-    //   maxProtonsAvailable &&
-    //   (maxProtonsAvailable < protonsPerTransaction ||
-    //     maxNeutronsAvailable < neutronsPerTransaction)
-    // ) {
-    //   console.log("should be in error");
-    //   setIsErrorInFusion(true);
-    // }
-    e.target.value = replaceInput(newAmount).toString();
-    setAmount(newAmount);
-    setIsError(newAmount > maxAmount || newAmount <= 0 || isErrorInFusion);
+      setAmount(input);
+      setIsError(input > maxAmount || input <= 0 || isErrorInFusion);
+    }
   };
 
   const replaceInput = (input: number) => {
-    // If the first character is '0' followed by a digit other than a dot, remove the leading '0'
     let stringedInput = input.toString();
-    if (
-      stringedInput.startsWith("0") &&
-      stringedInput.length > 1 &&
-      stringedInput[1] !== "."
-    ) {
-      stringedInput = stringedInput.slice(1);
-    }
 
-    // If the user starts typing a dot, prepend a '0'
-    if (stringedInput.startsWith(".")) {
-      stringedInput = "0" + stringedInput;
+    // Remove leading '0's only if the string does not represent a decimal number less than 1
+    if (stringedInput.startsWith("0") && !stringedInput.startsWith("0.")) {
+      stringedInput = stringedInput.replace(/^0+/, "");
     }
-
     return parseFloat(stringedInput);
   };
-
   const currencyShown = baseCurrency ?? `ERG`;
   return (
     <>
