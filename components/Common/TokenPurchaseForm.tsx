@@ -184,7 +184,6 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             Wallet Balance
             <br />
             <div>
-              ERG:{" "}
               <a
                 href="#"
                 onClick={(e) => {
@@ -195,9 +194,9 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
                 {maxAmount} {currencyShown}
               </a>
               <br />
-              GAUC: {maxProtonsAvailable}
+              {maxNeutronsAvailable} GAU
               <br />
-              GAU: {maxNeutronsAvailable}
+              {maxProtonsAvailable} GAUC
             </div>
             <div>
               <br />

@@ -9,6 +9,6 @@ const About = () => {
       </CardContainer>
     </>
   );
-};
+}
 
 export default About;

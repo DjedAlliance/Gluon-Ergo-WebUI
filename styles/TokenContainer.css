@@ -17,7 +17,8 @@
     /* Adjust breakpoint as needed for mobile view */
     .token-container {
         flex-direction: column;
-        max-width: fit-content;
+        max-width: 100%;
+        align-items: center;
         overflow-y: auto ;
         /* Stack children on top of each other */
     }

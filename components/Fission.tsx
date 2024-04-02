@@ -194,7 +194,6 @@ export const Fission = () => {
           isMainnet={isMainnet}
         ></ErgoPayWalletModal>
       )}
-      ;
     </>
-  );
+  )
 };

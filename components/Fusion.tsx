@@ -216,7 +216,6 @@ export const Fusion = () => {
           isMainnet={isMainnet}
         ></ErgoPayWalletModal>
       )}
-      ;
     </>
   );
 };

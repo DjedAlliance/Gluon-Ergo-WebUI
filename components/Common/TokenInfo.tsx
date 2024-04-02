@@ -21,7 +21,7 @@ const TokenInfo: React.FC<TokenInfoProps> = ({
       <h1>{tokenName}</h1>
       <div/>
       </div>
-      <p>{description}</p>
+      {/* <p>{description}</p> */}
     </div>
   );
 };

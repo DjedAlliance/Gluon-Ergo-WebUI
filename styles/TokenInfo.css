@@ -3,7 +3,7 @@
     text-align: center;
     background: #f5f5f5;
     border-radius: 8px 8px 0 0;
-    
+
 }
 
 .token-logo {
@@ -37,7 +37,10 @@
 
 .header-info {
     align-items: center;
-    justify-content: space-between; /* Distributes space between items */
+    justify-content: space-between;
+    /* Establishes a flex container */
+    width: 100%;
+    /* Ensures it fits the width of its parent */
     /* Aligns items vertically in the center */
 }
 

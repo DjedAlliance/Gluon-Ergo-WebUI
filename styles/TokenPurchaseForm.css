@@ -19,7 +19,7 @@
 .input-group select,
 .input-group input {
     flex: 1;
-    width: fit-content;
+    width: min-content;
     padding: 0.5rem;
     margin-right: 0.5rem;
     border: 1px solid #e1e1e1;
@@ -56,4 +56,15 @@
 .buy-button:hover {
     background-color: #C8B209;
     /* A lighter shade for hover state */
+}
+
+@media (max-width: 640px) {
+    .input-group input {
+        display: flex;
+        flex-wrap: wrap;
+        width: 2rem;
+        /* Allows items to wrap to the next line if needed */
+        gap: 0.5rem;
+        /* Adds space between items, can replace margin-right in this context */
+    }
 }
