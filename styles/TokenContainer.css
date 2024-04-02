@@ -18,6 +18,7 @@
     .token-container {
         flex-direction: column;
         max-width: fit-content;
+        overflow-y: auto ;
         /* Stack children on top of each other */
     }
 }

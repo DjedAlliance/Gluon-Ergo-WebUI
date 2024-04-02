@@ -76,10 +76,7 @@ const Main = () => {
   return (
     <>
       <div>
-        <div
-          className="main-content"
-          style={{ minHeight: "calc(100vh - 100px)", paddingBottom: "100px" }}
-        >
+        <div className="main-content" style={{ paddingBottom: "100px" }}>
           <Navbar
             activeTab={activeTab}
             setActiveTab={setActiveTab}
@@ -96,11 +93,7 @@ const Main = () => {
           {/* {activeTab === "refund" && <Refund />} */}
         </div>
 
-        <footer
-          className="footer"
-          style={{ height: "100px", marginTop: "-100px" }}
-        >
-          {" "}
+        <footer className="footer" style={{ marginTop: "-100px" }}>
           <Footer />
         </footer>
       </div>

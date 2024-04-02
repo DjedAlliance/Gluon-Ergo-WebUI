@@ -8,3 +8,10 @@
     overflow: hidden;
     font-family: 'Arial', sans-serif;
 }
+
+@media (max-width: 640px) {
+    .card-container {
+
+        margin: 0rem auto;
+    }
+}
