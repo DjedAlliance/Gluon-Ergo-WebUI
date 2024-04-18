@@ -4,7 +4,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: #0d0f19;
+  background: #24222B;
+  overflow-x: hidden;
+  color: #e0e0e0;
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
 
@@ -57,9 +60,7 @@ body {
 }
 
 .primary-gradient {
-  background-image: linear-gradient(to right,
-      #C8B209,
-      #FFBF00) !important;
+ 
 }
 
 .react-datepicker-wrapper,
@@ -239,5 +240,4 @@ input[type="number"] {
   .ant-modal-wrap {
     overflow: hidden !important;
   }
-  
 }

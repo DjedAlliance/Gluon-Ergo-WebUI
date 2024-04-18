@@ -10,7 +10,7 @@ export default function Home() {
         <title>GLUONW</title>
       </Head>
       <ToastContainer />
-      <main className={`bg-[#f5f5f5] min-h-screen `}>
+      <main className={`bg-[#24222B] min-h-screen `}>
         <Main />
       </main>
     </>

@@ -21,11 +21,18 @@ import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
 import About from "./About";
+import Docs from "./Docs";
+import Reactor from "./Reactor";
+import GAU_Stablecoin from "./GAU_Stablecoin";
+import GAUC_Reservecoin from "./GAUC_Reservecoin";
 import {
   Fission as fissionTitle,
   Fusion as fusionTitle,
   TransmuteFromGold as transmuteFromGoldTitle,
   TransmuteToGold as transmuteToGoldTitle,
+  Reactor as reactorTitle,
+  GAU_Stablecoin as gauStablecoinTitle,
+  GAUC_Reservecoin as gaucReservecoinTitle
 } from "./constant";
 import { Fusion } from "./Fusion";
 
@@ -90,6 +97,10 @@ const Main = () => {
           {activeTab === "MintGold" && <MintGold />}
           {activeTab === "MintRsv" && <MintRsv />}
           {activeTab == "About" && <About />}
+          {activeTab == reactorTitle && <Reactor />}
+          {activeTab == gauStablecoinTitle && <GAU_Stablecoin />}
+          {activeTab == gaucReservecoinTitle && <GAUC_Reservecoin />}
+          {activeTab == "Docs" && <Docs />}
           {/* {activeTab === "refund" && <Refund />} */}
         </div>
 

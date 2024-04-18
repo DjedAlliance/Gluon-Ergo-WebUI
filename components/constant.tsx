@@ -9,3 +9,6 @@ export const MintGold = "Mint Gold";
 export const MintRsv = "Mint RSV";
 export const Fission = "Fission";
 export const Fusion = "Fusion";
+export const GAU_Stablecoin = "GAU Stablecoin";
+export const GAUC_Reservecoin = "GAUC Reservecoin";
+export const Reactor = "Reactor";
