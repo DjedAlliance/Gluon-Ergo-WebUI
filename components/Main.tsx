@@ -23,8 +23,6 @@ import MintRsv from "./MintRsv";
 import About from "./About";
 import Docs from "./Docs";
 import Reactor from "./Reactor";
-import GAU_Stablecoin from "./GAU_Stablecoin";
-import GAUC_Reservecoin from "./GAUC_Reservecoin";
 import {
   Fission as fissionTitle,
   Fusion as fusionTitle,
@@ -39,6 +37,7 @@ import { Fusion } from "./Fusion";
 const Main = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState("Fission");
+  const [reactorActiveTab, setReactorActiveTab] = useState("Fission");
   const [lastBlock, setLastBlock] = useState(null);
 
   const [socket, setSocket] = useState<
@@ -97,16 +96,13 @@ const Main = () => {
           {activeTab === "MintGold" && <MintGold />}
           {activeTab === "MintRsv" && <MintRsv />}
           {activeTab == "About" && <About />}
-          {activeTab == reactorTitle && <Reactor />}
-          {activeTab == gauStablecoinTitle && <GAU_Stablecoin />}
-          {activeTab == gaucReservecoinTitle && <GAUC_Reservecoin />}
+          {activeTab == reactorTitle && <Reactor reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab}/>}
+          {activeTab == gauStablecoinTitle && <TransmuteGoldToRsv />}
+          {activeTab == gaucReservecoinTitle && <TransmuteRsvToGold />}
           {activeTab == "Docs" && <Docs />}
           {/* {activeTab === "refund" && <Refund />} */}
         </div>
 
-        <footer className="footer" style={{ marginTop: "-100px" }}>
-          <Footer />
-        </footer>
       </div>
     </>
   );

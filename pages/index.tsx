@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>GLUONW</title>
+        <title>Gluon Gold</title>
       </Head>
       <ToastContainer />
       <main className={`bg-[#24222B] min-h-screen `}>

@@ -5,6 +5,8 @@ import "../styles/CardHeader.css";
 import "../styles/CardContainer.css";
 import "../styles/TokenPurchaseForm.css";
 import "../styles/TokenContainer.css";
+import "../styles/Navbar.css";
+import "../styles/Reactor.css";
 
 import type { AppProps } from "next/app";
 

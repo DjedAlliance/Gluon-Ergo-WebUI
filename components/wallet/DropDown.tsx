@@ -83,18 +83,24 @@ const DropDown: React.FC = () => {
           size="large"
           className="!px-2.5 sm:!px-4"
           style={{
-            color: "white",
-            border: "none",
-            backgroundImage:
-              "linear-gradient(to right, #09c85c, #9dff00) !important",
-            fontFamily: `'Space Grotesk', sans-serif`,
+            backgroundColor: '#35333F',
+            color: 'white',
+            padding: '10px 20px',
+            borderRadius: '10px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'background-color 0.3s',
+            fontFamily: 'Inter, Arial, sans-serif',
+            fontSize: '14px',
+            outline: 'none'
           }}
         >
           <Space
             style={{
               display: "flex",
               alignItems: "center",
-              fontFamily: `'Space Grotesk', sans-serif`,
+              fontFamily: `'Inter', sans-serif`,
             }}
           >
             <ErgoIcon />

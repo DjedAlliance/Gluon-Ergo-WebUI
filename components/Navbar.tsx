@@ -1,7 +1,6 @@
 import React from "react";
 import SettingPopup from "./SettingPopup";
 import { Logo } from "./Logo";
-import commonStyle from '../../styles/common.module.css';
 import ConnectWallet from "@/components/wallet/ConnectWallet";
 import DropDown from "@/components/wallet/DropDown";
 import { Socket } from "socket.io-client";
@@ -33,10 +32,6 @@ const Navbar = (props: IProps) => {
     <>
       <nav className="flex container items-center justify-between mx-auto px-2 sm:px-3 lg:px-5 py-4 text-black">
         <div className="left-navbar">
-          
-          <div className="logo">
-            <h1>Gluon Gold on Ergo</h1>
-          </div>
           <div className="nav-container">
             <HeaderButton title="Home" setActiveTab={setActiveTab} active={activeTab === "Home"} />
             <HeaderButton title={GAU_Stablecoin} setActiveTab={setActiveTab} active={activeTab === GAU_Stablecoin}/>
@@ -72,95 +67,9 @@ const Navbar = (props: IProps) => {
           {activeTab}
         </div>
       </button>
-
-      {/* Hamburger menu content */}
-      <div className={`sm:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-        <div className="primary-gradient py-3 flex flex-col items-center justify-center space-y-4">
-          {/* Tab Buttons */}
-          <TabButton
-            title={"About"}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-          <TabButton
-            title={Fission}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-          <TabButton
-            title={Fusion}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-          <TabButton
-            title={TransmuteToGold}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-          <TabButton
-            title={TransmuteFromGold}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-        </div>
-      </div>
-
-      {/* Regular display of tab buttons for larger screens */}
-      <div className="hidden sm:flex primary-gradient w-full py-3 text-center items-center space-x-12 sm:space-x-20 justify-center">
-        {/* Tab Buttons */}
-        <TabButton
-          title={"About"}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-        <TabButton
-          title={Fission}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-        <TabButton
-          title={Fusion}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-        <TabButton
-          title={TransmuteToGold}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-        <TabButton
-          title={TransmuteFromGold}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-      </div>
     </>
   );
 };
-
-const TabButton = ({ title, activeTab, setActiveTab, setIsMenuOpen }: any) => (
-  <button
-    onClick={() => {
-      setIsMenuOpen(false);
-      setActiveTab(title);
-    }}
-    className={`text-white font-medium font-inter text-lg uppercase transition-all duration-200 ease-in-out relative after:absolute after:-bottom-[11px] after:left-1/2 after:-translate-x-1/2 after:bg-white after:h-1 ${
-      activeTab === title ? "after:w-[130%]" : ""
-    }`}
-  >
-    {title}
-  </button>
-);
 
 const HeaderButton = ({ title, setActiveTab, active }: { title: string, setActiveTab: (tab: string) => void, active: boolean }) => (
   <button

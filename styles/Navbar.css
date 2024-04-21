@@ -1,0 +1,26 @@
+/* Header buttons style */
+  .nav-container {
+    color: #878494;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .nav-button {
+    color: #878494;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-button:hover {
+    color: #ffffff;
+  }
+
+  .nav-button.active {
+    color: #F3B619;
+  }

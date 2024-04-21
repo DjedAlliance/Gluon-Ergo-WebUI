@@ -419,35 +419,4 @@
   .ergoTokenBalanceDiv {
     padding: 12px 24px;
   }
-
-    
-  /* Header buttons style */
-  .nav-container {
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  .nav-button {
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-
-  .nav-button:hover {
-    background-color: #555;
-  }
-
-  .nav-button.active {
-    border-bottom: 3px solid #ffbf00;
-    padding-bottom: calc(0.5rem - 3px);
-  }
 }
