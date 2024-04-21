@@ -14,6 +14,8 @@ import {
   Reactor as ReactorTitle,
   GAU_Stablecoin,
   GAUC_Reservecoin,
+  MintGold,
+  MintRsv
 } from "./constant";
 import hamburgerIcon from "../public/hamburger.png";
 interface IProps {
@@ -34,8 +36,8 @@ const Navbar = (props: IProps) => {
         <div className="left-navbar">
           <div className="nav-container">
             <HeaderButton title="Home" setActiveTab={setActiveTab} active={activeTab === "Home"} />
-            <HeaderButton title={GAU_Stablecoin} setActiveTab={setActiveTab} active={activeTab === GAU_Stablecoin}/>
-            <HeaderButton title={GAUC_Reservecoin} setActiveTab={setActiveTab} active={activeTab === GAUC_Reservecoin}/>
+            <HeaderButton title={MintGold} setActiveTab={setActiveTab} active={activeTab === MintGold}/>
+            <HeaderButton title={MintRsv} setActiveTab={setActiveTab} active={activeTab === MintRsv}/>
             <HeaderButton title={ReactorTitle} setActiveTab={setActiveTab}  active={activeTab === ReactorTitle}/>
             <HeaderButton title="Docs" setActiveTab={setActiveTab} active={activeTab === "Docs"}/>
           </div>
@@ -43,11 +45,6 @@ const Navbar = (props: IProps) => {
 
         <div className="flex items-center space-x-3 sm:space-x-4">
           <div
-
-          // style={{
-          //   backgroundImage:
-          //     "linear-gradient(to right, #C8B209, #FFBF00) !important",
-          // }}
           >
             <DropDown />
           </div>

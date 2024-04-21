@@ -1,54 +1,38 @@
-/* Main container for the reactor section */
-.reactor-container {
+.reactor-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.reactor-title {
+  color: white;
+  font-size: 24px;
+  flex: 1;
+  font-family: "Inter", sans-serif;
+}
+
+.reactor-menu-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  background-color: #1A1A1A; /* Dark background */
+  background-color: #2B2935;
+  border-radius: 15px;
 }
 
-/* Container for the text info */
-.reactor-info {
-  color: #FFFFFF; /* White text color */
+.reactor-tab-button{
+  color: #878494;
+  font-family: "Inter", sans-serif;
+  background: none;
+  margin: 10px;
 }
-
-/* Reactor title */
-.reactor-title {
-  font-size: 36px; /* Large font size for the title */
-  margin: 0;
-  font-weight: 700; /* Bold font weight */
+.reactor-tab-button.active {
+  color: #F3B619;
+  background-color: #3E3733;
+  padding: 10px;
+  border-radius: 15px;
 }
-
-/* Reactor description */
-.reactor-description {
-  font-size: 14px;
-  margin: 4px 0;
-}
-
-/* Reactor conversion rates */
-.reactor-conversion {
-  font-size: 14px;
-  margin: 4px 0;
-}
-
-/* Container for the tab buttons */
-.tab-buttons-container {
-  display: flex;
-  gap: 10px; /* Adjust the gap as needed */
-}
-
-/* Styles for .tab-button as previously described */
-/* Add any additional styling for active/hover states as needed */
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-  .reactor-container {
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the start on smaller screens */
-  }
-
-  .tab-buttons-container {
-    flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
-    margin-top: 10px; /* Add some space between the text and buttons */
-  }
+.reactor-tab-button:hover {
+  color: #ffffff;
 }

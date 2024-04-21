@@ -20,7 +20,6 @@ import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
-import About from "./About";
 import Docs from "./Docs";
 import Reactor from "./Reactor";
 import {
@@ -30,7 +29,9 @@ import {
   TransmuteToGold as transmuteToGoldTitle,
   Reactor as reactorTitle,
   GAU_Stablecoin as gauStablecoinTitle,
-  GAUC_Reservecoin as gaucReservecoinTitle
+  GAUC_Reservecoin as gaucReservecoinTitle,
+  MintGold as mintGoldTitle,
+  MintRsv as mintRsvTitle
 } from "./constant";
 import { Fusion } from "./Fusion";
 
@@ -89,13 +90,10 @@ const Main = () => {
             socket={socket}
           />
           {activeTab === "Home" && <Fission />}
-          {activeTab === transmuteToGoldTitle && <TransmuteGoldToRsv />}
-          {activeTab === transmuteFromGoldTitle && <TransmuteRsvToGold />}
           {activeTab === fissionTitle && <Fission />}
           {activeTab === fusionTitle && <Fusion />}
-          {activeTab === "MintGold" && <MintGold />}
-          {activeTab === "MintRsv" && <MintRsv />}
-          {activeTab == "About" && <About />}
+          {activeTab === mintGoldTitle && <MintGold />}
+          {activeTab === mintRsvTitle && <MintRsv />}
           {activeTab == reactorTitle && <Reactor reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab}/>}
           {activeTab == gauStablecoinTitle && <TransmuteGoldToRsv />}
           {activeTab == gaucReservecoinTitle && <TransmuteRsvToGold />}

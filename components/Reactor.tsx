@@ -37,12 +37,14 @@ const Reactor = (props: IProps) => {
         <TabButton title="TransmuteFromGold" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
       </div>
       <div className="reactor-nav-container">
-          <h1 className="reactor-title">Gluon Reactor</h1>
           {/* Menu for larger screens */}
-          <TabButton title="Fission" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-          <TabButton title="Fusion" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-          <TabButton title={gauStablecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-          <TabButton title={gaucReservecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+          <h1 className="reactor-title">Gluon<br></br>Reactor</h1>
+          <div className="reactor-menu-container">
+            <TabButton title="Fission" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+            <TabButton title="Fusion" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+            <TabButton title={gauStablecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+            <TabButton title={gaucReservecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+          </div>
       </div>
       
       {reactorActiveTab === "Fission" && <Fission />}
