@@ -293,15 +293,16 @@ const ConnectWallet: React.FC<IProps> = (props) => {
       <div
         className={`flex items-center space-x-2 mx-2 sm:mx-3 sm:ml-6 mb-4 sm:mb-0  ${
           walletConnected
-            ? "py-1 px-2 sm:px-[10px] border rounded-[5px] "
+            ? "py-1 px-2 sm:px-[10px] rounded-[5px] "
             : ""
         }`}
+        style={{ backgroundColor: walletConnected ? '#35333F' : '' }}
       >
         <Space
           className="site-button-ghost-wrapper   connectWalletBtn w-full"
           wrap
           onClick={walletConnected ? showNautilusModal : showModal}
-          style={{ fontFamily: `'Space Grotesk', sans-serif` }}
+          style={{ fontFamily: `'Inter', sans-serif` }}
         >
           {walletConnected ? (
             walletName && walletName === "ergopay" ? (
@@ -411,7 +412,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
-        style={{ fontFamily: `'Space Grotesk', sans-serif`, maxWidth: 464 }}
+        style={{ fontFamily: `'Inter', sans-serif`, maxWidth: 464 }}
       >
         <h5 className="font-VelaSansRegular">Select a wallet</h5>
         <Tabs
@@ -433,12 +434,12 @@ const ConnectWallet: React.FC<IProps> = (props) => {
         onOk={handleNautilusOk}
         onCancel={handleNautilusCancel}
         footer={null}
-        style={{ fontFamily: `'Space Grotesk', sans-serif`, maxWidth: 464 }}
+        style={{ fontFamily: `'Inter', sans-serif`, maxWidth: 464 }}
       >
         {walletName && walletName === "ergopay" ? (
           <div
             style={{
-              fontFamily: `'Space Grotesk', sans-serif`,
+              fontFamily: `'Inter', sans-serif`,
             }}
           >
             <div className="flex items-center">
@@ -461,7 +462,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
 
               <button
                 onClick={() => setEyeOpen(!isEyeOpen)}
-                className="w-6 h-6 rounded-lg flex items-center justify-center border group"
+                className="w-6 h-6 rounded-lg flex items-center justify-center group"
               >
                 {isEyeOpen ? (
                   <svg
@@ -580,7 +581,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     }
                   >
                     <Tooltip placement="top" title="Copy Address to clipboard.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
@@ -607,7 +608,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     rel="noreferrer"
                   >
                     <Tooltip placement="top" title="View on explorer.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
@@ -695,7 +696,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
           <div>
             <div className="flex items-center space-x-3">
               <Image alt="img" height="32" width="32" src={NautilusLogo} />
-              <h5 className="ms-3 m-0 text-[18px] font-bold text-black font-SpaceGrotesk">
+              <h5 className="ms-3 m-0 text-[18px] font-bold text-white font-SpaceGrotesk">
                 Nautilus Wallet
               </h5>
               <button
@@ -826,7 +827,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     }
                   >
                     <Tooltip placement="top" title="Copy Address to clipboard.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
@@ -852,7 +853,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     rel="noreferrer"
                   >
                     <Tooltip placement="top" title="View on explorer.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"

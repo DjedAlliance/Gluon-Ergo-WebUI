@@ -85,7 +85,7 @@ input[type="number"] {
 }
 
 .ant-dropdown .ant-dropdown-menu {
-  background: white;
+  background-color: #555167;
   /*margin-left: 30px;*/
   /*border-radius: 20px;*/
 }
@@ -164,7 +164,6 @@ input[type="number"] {
 
 .ant-modal .ant-modal-content {
   border-radius: 16px;
-  border: 1px solid #434343;
   padding: 16px !important;
   background-color: #24222C !important;
 }

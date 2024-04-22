@@ -343,20 +343,17 @@
 /* nav modal css end */
 
 .ergoBalanceDiv {
-  background: #fafafa;
+  background: #2B2935;
   border-radius: 15px;
   padding: 10px 15px;
   margin-bottom: 20px;
-  border: 1px solid #f5f5f5;
 }
 
 .ergoTokenBalanceDiv {
-  background: #fafafa;
-  color: black;
+  color: #FFFFFF;
   border-radius: 15px;
   padding: 10px 15px;
   margin-bottom: 5px;
-  border: 1px solid #f5f5f5;
 }
 
 .ergoBalancePara {
@@ -367,7 +364,7 @@
 
 .ergoBalanceText {
   font-weight: 600;
-  color: black;
+  color: #FFFFFF;
   font-size: 20px;
   margin-bottom: 0;
   margin-left: 10px;
@@ -376,7 +373,7 @@
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 0;
-  color: #FFFF;
+  color: #FFFFFF;
 }
 .ergoBalanceTokenP {
   font-weight: bold;
@@ -386,7 +383,7 @@
 }
 
 .ergoBalanceTokenPB {
-  color: #a6a6a6;
+  color: #747474;
   margin-bottom: 0;
   margin-left: 10px;
 }
@@ -418,4 +415,28 @@
   .ergoTokenBalanceDiv {
     padding: 12px 24px;
   }
+}
+
+.copyRequestButton {
+  background: #635E78;
+  border-radius: 10px;
+  color:#FFFFFF;
+  margin: 1%;
+  border: none;
+}
+
+.copyRequestButton:hover {
+  background: #555167;
+}
+
+.openWithWalletButton {
+  background: #6F65C5;
+  border-radius: 10px;
+  color:#FFFFFF;
+  margin: 1%;
+  border: none;
+}
+
+.openWithWalletButton:hover {
+  background: #8c83de;
 }

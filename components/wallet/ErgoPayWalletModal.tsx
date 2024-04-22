@@ -49,7 +49,7 @@ const ErgoPayWalletModal = ({ isModalOpen, setIsModalOpen, ergoPayLink, txid, is
             setIsModalOpen(false);
             window.document.documentElement.classList.remove('overflow-hidden');
         }} footer={null}>
-            <div style={{ fontFamily: `'Space Grotesk', sans-serif` }}>
+            <div style={{ fontFamily: `'Inter', sans-serif` }}>
                 <p className="text-black">
                     Complete the action with an ErgoPay compatible wallet.
                 </p>
@@ -92,7 +92,7 @@ const ErgoPayWalletModal = ({ isModalOpen, setIsModalOpen, ergoPayLink, txid, is
                     <CopyToClipboard text={textToCopy} onCopy={(e) => handleCopyText(e)}>
                         <Button
                             block
-                            style={{ fontFamily: `'Space Grotesk', sans-serif` }}
+                            style={{ fontFamily: `'Inter', sans-serif` }}
                             className="mr-2"
                         >
                             Copy request
@@ -105,7 +105,7 @@ const ErgoPayWalletModal = ({ isModalOpen, setIsModalOpen, ergoPayLink, txid, is
                             border: 'none',
                             color: 'white',
                             background: '#6F65C5',
-                            fontFamily: `'Space Grotesk', sans-serif`,
+                            fontFamily: `'Inter', sans-serif`,
                         }}
                         onClick={openLink}
                         className="ml-2"

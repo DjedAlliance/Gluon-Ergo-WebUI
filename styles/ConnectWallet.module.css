@@ -5,6 +5,8 @@
 .currentErgs {
   padding: 0.25rem; /* py-1 */
   color: white;
+  background-color: #24222C;
+  border-radius: 5px;
 }
 
 .eyeToggleButton {
