@@ -376,7 +376,7 @@
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 0;
-  color: #262626;
+  color: #FFFF;
 }
 .ergoBalanceTokenP {
   font-weight: bold;
@@ -396,12 +396,12 @@
   border-radius: 15px;
   padding: 12px 15px;
   margin-bottom: 5px;
-  border: 1px solid #d9d9d9;
   cursor: pointer;
+  background-color: #444153;
 }
 
 .addressIcons svg {
-  fill: #262626;
+  fill: #FFFFFF;
 }
 .addressIcons svg:hover {
   fill: #148fec;

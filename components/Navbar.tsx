@@ -35,7 +35,7 @@ const Navbar = (props: IProps) => {
       <nav className="flex container items-center justify-between mx-auto px-2 sm:px-3 lg:px-5 py-4 text-black">
         <div className="left-navbar">
           <div className="nav-container">
-            <HeaderButton title="Home" setActiveTab={setActiveTab} active={activeTab === "Home"} />
+            <HeaderButton title="Gluon Gold" setActiveTab={setActiveTab} active={activeTab === "Home"} />
             <HeaderButton title={MintGold} setActiveTab={setActiveTab} active={activeTab === MintGold}/>
             <HeaderButton title={MintRsv} setActiveTab={setActiveTab} active={activeTab === MintRsv}/>
             <HeaderButton title={ReactorTitle} setActiveTab={setActiveTab}  active={activeTab === ReactorTitle}/>

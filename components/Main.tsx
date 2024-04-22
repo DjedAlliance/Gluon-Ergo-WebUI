@@ -16,6 +16,7 @@ import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import { getWalletConnection } from "@/blockchain/ergo/walletUtils/utils";
 import { Fission } from "./Fission";
+import Home from "./Home";
 import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
@@ -89,7 +90,7 @@ const Main = () => {
             setActiveTab={setActiveTab}
             socket={socket}
           />
-          {activeTab === "Home" && <Fission />}
+          {activeTab === "Gluon Gold" && <Home />}
           {activeTab === fissionTitle && <Fission />}
           {activeTab === fusionTitle && <Fusion />}
           {activeTab === mintGoldTitle && <MintGold />}

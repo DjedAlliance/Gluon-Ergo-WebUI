@@ -2,6 +2,7 @@ import {
   faArrowUpRightFromSquare,
   faCopy,
 } from "@fortawesome/free-solid-svg-icons";
+import styles from '../../styles/ConnectWallet.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal, Space, Tabs, TabsProps, Tooltip } from "antd";
 import Image from "next/image";
@@ -41,8 +42,6 @@ import { fromEvent, Subscription } from "rxjs";
 import { Socket } from "socket.io-client";
 import { noti_option_close } from "../Notifications/Toast";
 import { CopyOutlined } from "@ant-design/icons";
-/* Import walletconnected styles*/
-import styles from "../../styles/ConnectWallet.module.css";
 interface Token {
   tokenId: string;
   amount: number;
@@ -292,23 +291,27 @@ const ConnectWallet: React.FC<IProps> = (props) => {
   return (
     <>
       <div
-      className={`
-        ${styles.buttonBase}
-        ${styles.buttonSpacing}
-        ${walletConnected ? styles.walletConnected : ""}
-      `}
+        className={`flex items-center space-x-2 mx-2 sm:mx-3 sm:ml-6 mb-4 sm:mb-0  ${
+          walletConnected
+            ? "py-1 px-2 sm:px-[10px] border rounded-[5px] "
+            : ""
+        }`}
       >
         <Space
           className="site-button-ghost-wrapper   connectWalletBtn w-full"
           wrap
           onClick={walletConnected ? showNautilusModal : showModal}
-          style={{ fontFamily: `'Inter', sans-serif` }}
+          style={{ fontFamily: `'Space Grotesk', sans-serif` }}
         >
           {walletConnected ? (
             walletName && walletName === "ergopay" ? (
               <div className="flex w-full">
-                <button className={styles.fullWidthButton}>
-                  <p className={`${isEyeOpen ? styles.textBlur : ''}`}>
+                <button className="w-full space-x-2 font-VelaSansRegular flex  text-black rounded-[5px] font-normal">
+                  <p
+                    className={`${
+                      isEyeOpen ? "blur-sm" : ""
+                    }  font-VelaSansRegular text-white font-normal`}
+                  >
                     {numberWithCommas(parseInt(ergBalance), 9)} ERG
                   </p>
                   <span>
@@ -326,26 +329,25 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                       ></path>
                     </svg>
                   </span>
-                  <p className={`${isEyeOpen ? styles.textBlur : ''}`}>
+                  <p
+                    className={`font-VelaSansRegular ${
+                      isEyeOpen ? "blur-sm" : ""
+                    } `}
+                  >
                     {reduceAddress(walletAddress![0])}
                   </p>
                 </button>
               </div>
             ) : (
               <div className="flex w-full items-center whitespace-nowrap">
-                <span
-                  className={`${
-                    isEyeOpen ? "blur-sm" : ""
-                  } font-VelaSansRegular py-1`}
-                >
+                <span className={`${isEyeOpen ? styles.textBlur : ''} ${styles.currentErgs} py-1`}>
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </span>
                 <button
                   className="w-full font-VelaSansRegular"
                   style={{
                     borderRadius: 5,
-                    background: "#FAFAFA",
-                    color: "black",
+                    color: "white",
                     marginLeft: 10,
                     padding: "3px 10px",
                   }}
@@ -362,7 +364,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
           ) : (
             <button
               type="button"
-              className="focus:outline-none text-white w-full sm:w-fit primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300 font-medium rounded text-md px-3 sm:px-5 py-2 sm:py-2.5"
+              className={styles.connectWalletButton}
             >
               CONNECT WALLET
             </button>
@@ -370,7 +372,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
         </Space>
         {walletConnected && (
           <button
-            className="border min-w-[24px] min-h-[24px]  flex items-center justify-center rounded-md"
+            className={styles.eyeToggleButton}
             onClick={() => setEyeOpen(!isEyeOpen)}
           >
             {isEyeOpen ? (
@@ -380,9 +382,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                 data-icon="eye-invisible"
                 width="1em"
                 height="1em"
-                fill="#262626"
+                fill="#FFFFFF"
                 aria-hidden="true"
-                color="white"
               >
                 <path d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"></path>
                 <path d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"></path>
@@ -394,9 +395,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                 data-icon="eye"
                 width="1em"
                 height="1em"
-                fill="#262626"
+                fill="#FFFFFF"
                 aria-hidden="true"
-                color="white"
               >
                 <path d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"></path>
               </svg>
@@ -421,7 +421,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
           onChange={onChange}
           animated
           activeKey={activeKey}
-          className="font-VelaSansRegular mt-2"
+          className="mt-2"
+          style={{ background: '#2B2935' }} 
         />
       </Modal>
 
@@ -460,7 +461,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
 
               <button
                 onClick={() => setEyeOpen(!isEyeOpen)}
-                className="w-6 h-6 rounded-lg flex items-center justify-center border border-[#d9d9d9] group"
+                className="w-6 h-6 rounded-lg flex items-center justify-center border group"
               >
                 {isEyeOpen ? (
                   <svg
@@ -469,9 +470,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     data-icon="eye-invisible"
                     width="1em"
                     height="1em"
-                    fill="#262626"
+                    fill="#FFFFFF"
                     aria-hidden="true"
-                    color="white"
                   >
                     <path d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"></path>
                     <path d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"></path>
@@ -483,9 +483,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     data-icon="eye"
                     width="1em"
                     height="1em"
-                    fill="#262626"
+                    fill="#FFFFFF"
                     aria-hidden="true"
-                    color="white"
                   >
                     <path d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"></path>
                   </svg>
@@ -507,11 +506,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
             >
               <div className="flex items-center">
                 <ErgoIconModal />
-                <p
-                  className={`${commonStyle.ergoBalanceText} ${
-                    isEyeOpen ? "blur-sm" : ""
-                  } font-SpaceGrotesk`}
-                >
+                <p className={`${commonStyle.ergoBalanceText} ${isEyeOpen ? styles.textBlur : ''}`} >
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </p>
               </div>
@@ -585,7 +580,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     }
                   >
                     <Tooltip placement="top" title="Copy Address to clipboard.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border border-[#d9d9d9] group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
@@ -612,7 +607,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     rel="noreferrer"
                   >
                     <Tooltip placement="top" title="View on explorer.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border border-[#d9d9d9] group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
@@ -704,7 +699,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                 Nautilus Wallet
               </h5>
               <button
-                className="border border-[#d9d9d9] min-w-[24px] min-h-[24px]  flex items-center justify-center rounded-md"
+                className="border min-w-[24px] min-h-[24px]  flex items-center justify-center rounded-md"
                 onClick={() => setEyeOpen(!isEyeOpen)}
               >
                 {isEyeOpen ? (
@@ -714,9 +709,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     data-icon="eye-invisible"
                     width="1em"
                     height="1em"
-                    fill="#262626"
+                    fill="#FFFFFF"
                     aria-hidden="true"
-                    color="white"
                   >
                     <path d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"></path>
                     <path d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"></path>
@@ -728,9 +722,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     data-icon="eye"
                     width="1em"
                     height="1em"
-                    fill="#262626"
+                    fill="#FFFFFF"
                     aria-hidden="true"
-                    color="white"
                   >
                     <path d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"></path>
                   </svg>
@@ -833,7 +826,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     }
                   >
                     <Tooltip placement="top" title="Copy Address to clipboard.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border border-[#d9d9d9] group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
@@ -859,7 +852,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                     rel="noreferrer"
                   >
                     <Tooltip placement="top" title="View on explorer.">
-                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border border-[#d9d9d9] group">
+                      <span className="w-6 h-6 rounded-lg flex items-center justify-center border group">
                         <svg
                           className="group-hover:fill-primary fill-darkblack"
                           width="14"
