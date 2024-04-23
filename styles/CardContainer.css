@@ -2,11 +2,10 @@
     width: 100%;
     max-width: 1050px;
     margin: 2rem auto;
-    background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 @media (max-width: 640px) {

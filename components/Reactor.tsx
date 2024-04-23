@@ -38,19 +38,22 @@ const Reactor = (props: IProps) => {
       </div>
       <div className="reactor-nav-container">
           {/* Menu for larger screens */}
-          <h1 className="reactor-title">Gluon<br></br>Reactor</h1>
-          <div className="reactor-menu-container">
-            <TabButton title="Fission" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-            <TabButton title="Fusion" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-            <TabButton title={gauStablecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-            <TabButton title={gaucReservecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+          <div className="header-and-menu">
+            <h1 className="reactor-title">Gluon Reactor</h1>
+            <div className="reactor-menu-container">
+              <TabButton title="Fission" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+              <TabButton title="Fusion" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+              <TabButton title={gauStablecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+              <TabButton title={gaucReservecoinTitle} reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
+            </div>
+          </div>
+          <div className="main-content">
+            {reactorActiveTab === "Fission" && <Fission />}
+            {reactorActiveTab === "Fusion" && <Fusion />}
+            {reactorActiveTab === gauStablecoinTitle && <TransumuteGoldToRsv />}
+            {reactorActiveTab === gaucReservecoinTitle && <TransumuteRsvToGold />}
           </div>
       </div>
-      
-      {reactorActiveTab === "Fission" && <Fission />}
-      {reactorActiveTab === "Fusion" && <Fusion />}
-      {reactorActiveTab === gauStablecoinTitle && <TransumuteGoldToRsv />}
-      {reactorActiveTab === gaucReservecoinTitle && <TransumuteRsvToGold />}
     </>
   );
 }

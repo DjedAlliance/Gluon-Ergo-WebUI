@@ -1,9 +1,11 @@
 .reactor-nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-left: 15%;
-  margin-right: 15%;
+  display: grid;
+  grid-template-columns: 2fr 10fr; 
+  grid-template-rows: auto auto; /* Two rows, size depends on content */
+  width: 100%; /* Full width of the container */
+  height: 100vh; /* Full viewport height (adjust as necessary) */
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .reactor-title {
@@ -19,6 +21,12 @@
   align-items: center;
   background-color: #2B2935;
   border-radius: 15px;
+  display: block;
+  padding-right: 10%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  margin-right: 30%;
+  margin-top: 10%;
 }
 
 .reactor-tab-button{
@@ -26,13 +34,25 @@
   font-family: "Inter", sans-serif;
   background: none;
   margin: 10px;
+  width: 100%;
 }
 .reactor-tab-button.active {
   color: #F3B619;
   background-color: #3E3733;
   padding: 10px;
   border-radius: 15px;
+  display: block;
 }
 .reactor-tab-button:hover {
   color: #ffffff;
+}
+
+.header-and-menu {
+  justify-content: flex-start;
+  flex-direction: column; 
+}
+
+.main-content {
+  grid-column: 2 / 3; /* Occupies the second column */
+  grid-row: 1 / 2; /* First row */
 }

@@ -167,7 +167,7 @@ export const Fission = () => {
     }
   };
 
-  const tokenName = "Convert ERG to GAU and GAUC";
+  const tokenName = "Split ERG into GAU stablecoin and GAUC reservecoin";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
