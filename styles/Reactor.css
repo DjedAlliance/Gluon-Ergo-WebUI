@@ -53,6 +53,6 @@
 }
 
 .main-content {
-  grid-column: 2 / 3; /* Occupies the second column */
-  grid-row: 1 / 2; /* First row */
+  margin-right: 15%;
+
 }
