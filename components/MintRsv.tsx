@@ -190,7 +190,6 @@ const MintRsv = () => {
           isMainnet={isMainnet}
         ></ErgoPayWalletModal>
       )}
-      ;
     </>
   );
 };

@@ -190,7 +190,6 @@ const MintGold = () => {
           isMainnet={isMainnet}
         ></ErgoPayWalletModal>
       )}
-      ;
     </>
   );
 };

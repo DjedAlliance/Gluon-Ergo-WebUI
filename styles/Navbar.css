@@ -24,3 +24,44 @@
   .nav-button.active {
     color: #F3B619;
   }
+
+.mobile-navbar {
+    position: relative;
+    z-index: 1;
+}
+
+.menu-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    background: none;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #878494;
+    border-radius: 5px;
+    color: black;
+}
+
+.menu-item {
+    padding: 10px 15px;
+}
+
+.menu-item.active {
+    color: #F3B619;
+    font-weight: bold;
+}
+
+.menu-item-submenu{
+    padding: 10px 15px;
+    color: black;
+}
+
+.menu-item-submenu.active{
+    padding: 10px 15px;
+    color: #F3B619;
+}

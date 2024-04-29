@@ -96,6 +96,7 @@ const Main = () => {
           {activeTab === mintGoldTitle && <MintGold />}
           {activeTab === mintRsvTitle && <MintRsv />}
           {activeTab == reactorTitle && <Reactor reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab}/>}
+          {/* UNCOMMENT THIS LINE TO ADD THE MINT TABS
           {activeTab == gauStablecoinTitle && <TransmuteGoldToRsv />}
           {activeTab == gaucReservecoinTitle && <TransmuteRsvToGold />}
           {activeTab == "Docs" && <Docs />}

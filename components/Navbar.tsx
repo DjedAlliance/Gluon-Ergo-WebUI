@@ -32,7 +32,7 @@ const Navbar = (props: IProps) => {
   };
   return (
     <>
-      <nav className="flex container items-center justify-between mx-auto px-2 sm:px-3 lg:px-5 py-4 text-black">
+  <nav className="hidden lg:flex container items-center justify-between mx-auto px-2 sm:px-3 lg:px-5 py-4 text-black">
         <div className="left-navbar">
           <div className="nav-container">
             <HeaderButton title="Gluon Gold" setActiveTab={setActiveTab} active={activeTab === "Home"} />
@@ -58,12 +58,31 @@ const Navbar = (props: IProps) => {
       <div className="sm:hidden w-full ">
         <ConnectWallet socket={socket} />
       </div>
-      <button className="sm:hidden" onClick={toggleMenu}>
-        <div className="flex items-center space-x-2 ">
-          <Image src={hamburgerIcon} alt="Logo" width={46} height={46} />
-          {activeTab}
-        </div>
-      </button>
+      {/* Menu for small screens (Hamburguer)*/}
+      <div>
+        <button className="sm:hidden" onClick={toggleMenu}>
+          <div className="flex items-center space-x-2">
+            <Image src={hamburgerIcon} alt="Menu" width={46} height={46} />
+            {activeTab}
+          </div>
+        </button>
+        {isMenuOpen && (
+          <ul className="menu-list">
+            <li className={`menu-item ${activeTab === "Home" ? "active" : ""}`} onClick={() => { setActiveTab("Home"); toggleMenu(); }}>Home</li>
+            <li className={`menu-item ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(MintGold); toggleMenu(); }}>Mint Gold</li>
+            <li className={`menu-item ${activeTab === MintRsv ? "active" : ""}`} onClick={() => { setActiveTab(MintRsv); toggleMenu(); }}>Mint Reserve</li>
+            <li className={`menu-item ${activeTab === ReactorTitle ? "active" : ""}`} onClick={() => { setActiveTab(ReactorTitle); toggleMenu(); }}>Reactor
+              <ul className="menu-submenu">
+              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(Fission); toggleMenu(); }}>Fission</li>
+              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(Fusion); toggleMenu(); }}>Fusion</li>
+              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(GAU_Stablecoin); toggleMenu(); }}>Beta Decay +</li>
+              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(GAUC_Reservecoin); toggleMenu(); }}>Beta Decay -</li>
+              </ul>
+            </li>
+            <li className={`menu-item ${activeTab === "Docs" ? "active" : ""}`} onClick={() => { setActiveTab("Docs"); toggleMenu(); }}>Docs</li>
+          </ul>
+        )}
+      </div>
     </>
   );
 };

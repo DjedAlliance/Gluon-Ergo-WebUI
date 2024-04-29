@@ -4,7 +4,7 @@ import CardContainer from "./Common/CardContainer";
 const Home = () => {
   return (
     <>
-      
+      Home
     </>
   );
 }
