@@ -6,10 +6,11 @@
     overflow: hidden;
     font-family: 'Inter', sans-serif;
     justify-content: center;
+    min-width: 400px;
 }
 
 @media (max-width: 640px) {
     .card-container {
-        margin: 0rem auto;
+        margin: auto 1rem auto;
     }
 }

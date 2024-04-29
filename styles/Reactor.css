@@ -8,6 +8,20 @@
   margin-right: 10%;
 }
 
+@media (max-width: 640px) {
+  .header-and-menu {
+      display: none;
+  }
+
+  .reactor-nav-container {
+    display: grid;
+    grid-template-columns: 2fr 10fr; 
+    grid-template-rows: auto auto; /* Two rows, size depends on content */
+    width: 100%; /* Full width of the container */
+    height: 100vh; /* Full viewport height (adjust as necessary) */
+  }
+}
+
 .reactor-title {
   color: white;
   font-size: 24px;

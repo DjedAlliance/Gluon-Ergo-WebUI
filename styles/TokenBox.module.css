@@ -19,11 +19,11 @@
 
 @media (max-width: 400px) {
   .detailContainer{
-    min-width: 250px; /* Increased minimum width for large devices */
+    min-width: 350px; /* Increased minimum width for large devices */
   }
 
   .convertNowButton{
-    min-width: 250px; /* Increased minimum width for large devices */
+    min-width: 350px; /* Increased minimum width for large devices */
   }
 }
 
@@ -87,7 +87,7 @@
   padding: 10px;
   margin-top: 10px;
   border: none;
-  min-width: 500px;
+  min-width: 250px;
 }
 
 .convertNowButton:hover{

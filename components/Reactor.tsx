@@ -29,13 +29,6 @@ const Reactor = (props: IProps) => {
 
   return (
     <>
-      <div className={`sm:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-        {/* Menu for small screens (Hamburguer)*/}
-        <TabButton title="Fission" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-        <TabButton title="Fusion" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-        <TabButton title="TransmuteToGold" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-        <TabButton title="TransmuteFromGold" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
-      </div>
       <div className="reactor-nav-container">
           {/* Menu for larger screens */}
           <div className="header-and-menu">

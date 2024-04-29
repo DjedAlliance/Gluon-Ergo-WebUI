@@ -24,7 +24,7 @@
     }
 }
 
-., .token-purchase-form {
+.token-purchase-form {
     flex: 1 1 48%; /* Take up half the width minus a bit for margin */
     margin: 0%; /* Provide some space between the components */
   }

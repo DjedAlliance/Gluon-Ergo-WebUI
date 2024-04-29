@@ -291,9 +291,9 @@ const ConnectWallet: React.FC<IProps> = (props) => {
   return (
     <>
       <div
-        className={`flex items-center space-x-2 mx-2 sm:mx-3 sm:ml-6 mb-4 sm:mb-0  ${
+        className={`flex items-center space-x-2 mx-2 sm:mx-30 mr-15 mt-15 ml-6 mb-4 lg:mb-0  ${
           walletConnected
-            ? "py-1 px-2 sm:px-[10px] rounded-[5px] "
+            ? "py-1 px-2 sm:mt-10 px-[10px] rounded-[5px] "
             : ""
         }`}
         style={{ backgroundColor: walletConnected ? '#35333F' : '' }}

@@ -55,9 +55,6 @@ const Navbar = (props: IProps) => {
         </div>
       </nav>
 
-      <div className="sm:hidden w-full ">
-        <ConnectWallet socket={socket} />
-      </div>
       {/* Menu for small screens (Hamburguer)*/}
       <div>
         <button className="sm:hidden" onClick={toggleMenu}>
@@ -73,15 +70,18 @@ const Navbar = (props: IProps) => {
             <li className={`menu-item ${activeTab === MintRsv ? "active" : ""}`} onClick={() => { setActiveTab(MintRsv); toggleMenu(); }}>Mint Reserve</li>
             <li className={`menu-item ${activeTab === ReactorTitle ? "active" : ""}`} onClick={() => { setActiveTab(ReactorTitle); toggleMenu(); }}>Reactor
               <ul className="menu-submenu">
-              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(Fission); toggleMenu(); }}>Fission</li>
-              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(Fusion); toggleMenu(); }}>Fusion</li>
-              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(GAU_Stablecoin); toggleMenu(); }}>Beta Decay +</li>
-              <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(GAUC_Reservecoin); toggleMenu(); }}>Beta Decay -</li>
+                <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(Fission); toggleMenu(); }}>Fission</li>
+                <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(Fusion); toggleMenu(); }}>Fusion</li>
+                <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(GAU_Stablecoin); toggleMenu(); }}>Beta Decay +</li>
+                <li className={`menu-item-submenu ${activeTab === MintGold ? "active" : ""}`} onClick={() => { setActiveTab(GAUC_Reservecoin); toggleMenu(); }}>Beta Decay -</li>
               </ul>
             </li>
             <li className={`menu-item ${activeTab === "Docs" ? "active" : ""}`} onClick={() => { setActiveTab("Docs"); toggleMenu(); }}>Docs</li>
           </ul>
         )}
+         <div className="sm:hidden w-full ">
+          <ConnectWallet socket={socket} />
+        </div>
       </div>
     </>
   );
