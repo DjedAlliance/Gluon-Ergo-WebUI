@@ -164,8 +164,6 @@
   transition-property: all;
   text-align: left;
   border-radius: 8px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .modal5 {
@@ -269,7 +267,6 @@
   border-radius: 6px;
   border-width: 1px;
   border-color: #d1d5db;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 @media (min-width: 640px) {
@@ -383,7 +380,7 @@
 }
 
 .ergoBalanceTokenPB {
-  color: #747474;
+  color: #b7b4b4;
   margin-bottom: 0;
   margin-left: 10px;
 }

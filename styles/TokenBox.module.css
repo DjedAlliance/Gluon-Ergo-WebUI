@@ -1,0 +1,96 @@
+.detailContainer{
+  background-color: #2B2935;
+  border-radius: 15px;
+  padding: 15px 15px;
+  justify-content: space-between;
+  min-width: 300px;
+  border: none;
+}
+
+/* Large devices (desktops) */
+@media (min-width: 600px) {
+  .detailContainer{
+    min-width: 500px; /* Increased minimum width for large devices */
+  }
+  .convertNowButton{
+    min-width: 500px; /* Increased minimum width for large devices */
+  }
+}
+
+@media (max-width: 400px) {
+  .detailContainer{
+    min-width: 250px; /* Increased minimum width for large devices */
+  }
+
+  .convertNowButton{
+    min-width: 250px; /* Increased minimum width for large devices */
+  }
+}
+
+.detailContainerActionLabel{
+  font-family: 'Inter', sans-serif;
+  color: #878494;
+}
+
+.detailContainerActionLabelMax{
+  font-family: 'Inter', sans-serif;
+  color: #F3B619;
+  margin-left: 10px;
+}
+
+.detailContainerActionLabelRow{
+  display: flex;
+}
+
+.detailContainerRow{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.detailContainerInput{
+  background-color: transparent;
+  border-radius: 15px;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  max-width: 200px;
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  border-color: transparent;
+}
+
+.detailContainerCurrency{
+  font-family: 'Inter', sans-serif;
+  color: white;
+  font-weight: bold;
+  background-color: #2B2935;
+  border: none;
+  font-size: 25px;
+}
+
+.walletBalance{
+  font-family: 'Inter', sans-serif;
+  color: #696677;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.convertNowButton{
+  background-color: #F3B619;
+  border-radius: 15px;
+  color: #2B2935;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  min-width: 500px;
+}
+
+.convertNowButton:hover{
+  background-color: #F3B619;
+  opacity: 0.8;
+}

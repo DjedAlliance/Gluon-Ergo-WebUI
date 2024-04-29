@@ -27,7 +27,6 @@
   border-radius: 0.375rem; /* rounded */
   background: #F3B619;
   color: #24222C;
-  transition: opacity 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 

@@ -7,6 +7,7 @@ import {
   getTransmuteGoldToRsvRate,
   getTransmuteRsvToGoldRate,
 } from "@/blockchain/ergo/apiHelper";
+import styles from '../../styles/TokenBox.module.css';
 import {
   nanoErgsToErgs,
   ergsToNanoErgs,
@@ -91,27 +92,44 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
   return (
     <>
       {currentPage !== Fusion ? (
-        <form className="token-purchase-form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="payment-amount-static">Pay</label>
-            {/* Use a span or a read-only input to display the currency */}
-            <input
-              type="number"
-              value={amount}
-              onChange={handleAmountChange}
-              placeholder="Enter amount"
-            />
-            <input
-              id="payment-amount-static"
-              type="text"
-              readOnly
-              value={currencyShown}
-              style={{
-                background: "#e9ecef",
-                borderColor: "transparent",
-                color: "#495057",
-              }} // Styling to indicate it's not editable
-            />
+            <div className={styles.detailContainer}>
+              <div className={styles.detailContainerRow}>
+                <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
+                {/* Use a span or a read-only input to display the currency */}
+                <div className={styles.detailContainerActionLabelRow}>
+                  <p className={styles.detailContainerActionLabel}> Bal: {maxAmount} GAU </p>
+                  <p className={styles.detailContainerActionLabelMax}> Max</p>
+                </div>
+              </div>
+              <div className={styles.detailContainerRow}>
+                <input
+                  type="number"
+                  value={amount}
+                  onChange={handleAmountChange}
+                  placeholder="Enter amount"
+                  className={styles.detailContainerInput}
+                />
+                <p id="payment-amount-static" className={styles.detailContainerCurrency}>
+                  {currencyShown}
+                </p>
+              </div>
+              <div className={styles.detailContainerRow}>
+                <div className={styles.walletBalance}>
+                  Wallet Balance:{" "}
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setAmount(maxAmount);
+                    }}
+                  >
+                    {maxAmount} {currencyShown}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           {isError && amount > 0 && (
             <p style={{ color: "red" }}>
@@ -124,53 +142,62 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           {/* {isError && isErrorInFusion && (
             <p style={{ color: "red" }}> Insufficient balance</p>
           )} */}
-          <div className="conversion-info">
-            Wallet Balance:{" "}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setAmount(maxAmount);
-              }}
-            >
-              {maxAmount} {currencyShown}
-            </a>
-            <div>
-              Receive:{" "}
-              <ConversionBox
-                inputValue={amount}
-                isMainnet={isMainnet}
-                baseCurrency={currencyShown}
-                currentPage={currentPage}
-              />
+          <div className="input-group">
+            <div className={styles.detailContainer}>
+              <div className={styles.detailContainerRow}>
+                <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Receive</label>
+                <ConversionBox
+                  inputValue={amount}
+                  isMainnet={isMainnet}
+                  baseCurrency={currencyShown}
+                  currentPage={currentPage}
+                />
+              </div>
             </div>
           </div>
-          <button type="submit" className="buy-button" disabled={isError}>
+          <button type="submit" className={styles.convertNowButton} disabled={isError}>
             Convert Now
           </button>
         </form>
       ) : (
         <form className="token-purchase-form" onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="payment-amount-static">Receive</label>
-            <input
-              type="number"
-              value={amount}
-              onChange={handleAmountChange}
-              placeholder="Enter amount"
-            />
-            {/* Use a span or a read-only input to display the currency */}
-            <input
-              id="payment-amount-static"
-              type="text"
-              readOnly
-              value={currencyShown}
-              style={{
-                background: "#e9ecef",
-                borderColor: "transparent",
-                color: "#495057",
-              }} // Styling to indicate it's not editable
-            />
+          <div className={styles.detailContainer}>
+              <div className={styles.detailContainerRow}>
+                <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Receive</label>
+                {/* Use a span or a read-only input to display the currency */}
+                <div className={styles.detailContainerActionLabelRow}>
+                  <p className={styles.detailContainerActionLabel}> Bal: {maxAmount} GAU </p>
+                  <p className={styles.detailContainerActionLabelMax}> Max</p>
+                </div>
+              </div>
+              <div className={styles.detailContainerRow}>
+                <input
+                  type="number"
+                  value={amount}
+                  onChange={handleAmountChange}
+                  placeholder="Enter amount"
+                  className={styles.detailContainerInput}
+                />
+                <p id="payment-amount-static" className={styles.detailContainerCurrency}>
+                  {currencyShown}
+                </p>
+              </div>
+              <div className={styles.detailContainerRow}>
+                <div className={styles.walletBalance}>
+                  Wallet Balance:{" "}
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setAmount(maxAmount);
+                    }}
+                  >
+                    {maxAmount} {currencyShown}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           {isError && amount > 0 && (
             <p style={{ color: "red" }}>
@@ -209,7 +236,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
               />
             </div>
           </div>
-          <button type="submit" className="buy-button" disabled={isError}>
+          <button type="submit" className={styles.convertNowButton} disabled={isError}>
             Convert Now
           </button>
         </form>

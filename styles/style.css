@@ -85,7 +85,7 @@ input[type="number"] {
 }
 
 .ant-dropdown .ant-dropdown-menu {
-  background-color: #555167;
+  background-color: #6b677c;
   /*margin-left: 30px;*/
   /*border-radius: 20px;*/
 }
@@ -95,8 +95,6 @@ input[type="number"] {
 }
 
 .ant-tabs-nav-wrap {
-  border-radius: 10px;
-  border: white;
   background-color: #3E3733;
 }
 
@@ -112,8 +110,6 @@ input[type="number"] {
   background: #24222B !important;
   color: #d9d9d9;
   border-radius: 15px;
-  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
-    0 9px 28px 8px #0000000d;
 }
 
 .ant-tabs-tab.ant-tabs-tab-active {
