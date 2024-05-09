@@ -11,6 +11,7 @@
 
 @media (max-width: 640px) {
     .card-container {
-        margin: auto 1rem auto;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }

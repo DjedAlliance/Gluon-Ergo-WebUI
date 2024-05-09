@@ -27,6 +27,17 @@
   }
 }
 
+/* for screens between 400 and 600px */
+@media (min-width: 400px) and (max-width: 600px) {
+  .detailContainer{
+    min-width: 380px; /* Increased minimum width for large devices */
+  }
+
+  .convertNowButton{
+    min-width: 360px; /* Increased minimum width for large devices */
+  }
+}
+
 .detailContainerActionLabel{
   font-family: 'Inter', sans-serif;
   color: #878494;
@@ -87,7 +98,6 @@
   padding: 10px;
   margin-top: 10px;
   border: none;
-  min-width: 250px;
 }
 
 .convertNowButton:hover{
