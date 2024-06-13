@@ -38,7 +38,7 @@ import { Fusion } from "./Fusion";
 
 const Main = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState("Fission");
+  const [activeTab, setActiveTab] = useState("Reactor");
   const [reactorActiveTab, setReactorActiveTab] = useState("Fission");
   const [lastBlock, setLastBlock] = useState(null);
 
@@ -90,7 +90,7 @@ const Main = () => {
             setActiveTab={setActiveTab}
             socket={socket}
           />
-          {activeTab === "Gluon Gold" && <Home />}
+          {/* {activeTab === "Gluon Gold" && <Home />} */}
           {activeTab === fissionTitle && <Fission />}
           {activeTab === fusionTitle && <Fusion />}
           {activeTab === mintGoldTitle && <MintGold />}

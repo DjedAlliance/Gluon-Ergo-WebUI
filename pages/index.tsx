@@ -2,20 +2,22 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Main from "../components/Main";
-import { Footer } from "antd/es/layout/layout";
+import Footer from "@/components/Footer";
+
+import s from '@/styles/general.module.css'
 
 export default function Home() {
   return (
-    <>
+    <div className={s.mainWrapper}>
       <Head>
-        <title>Gluon Gold</title>
+        <title>Reactor Page</title>
+        <link rel="shortcut icon" href="" />
       </Head>
       <ToastContainer />
-      <main className={`bg-[#24222B] min-h-screen `}>
+      <main className={`bg-[#24222C] ${s.main}`}>
         <Main />
       </main>
       <Footer />
-
-    </>
+    </div>
   );
 }

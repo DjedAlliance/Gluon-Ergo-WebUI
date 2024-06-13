@@ -1,6 +1,7 @@
 import React from "react";
 import SettingPopup from "./SettingPopup";
 import { Logo } from "./Logo";
+import LogoIcon from "@/public/icons/logo.svg";
 import ConnectWallet from "@/components/wallet/ConnectWallet";
 import DropDown from "@/components/wallet/DropDown";
 import { Socket } from "socket.io-client";
@@ -18,6 +19,7 @@ import {
   MintRsv
 } from "./constant";
 import hamburgerIcon from "../public/hamburger.png";
+import HeaderButton from "./shared/HeaderButton";
 interface IProps {
   activeTab: string;
   setActiveTab:(tab: string) => void;
@@ -35,11 +37,12 @@ const Navbar = (props: IProps) => {
   <nav className="hidden lg:flex container items-center justify-between mx-auto px-2 sm:px-3 lg:px-5 py-4 text-black">
         <div className="left-navbar">
           <div className="nav-container">
-            <HeaderButton title="Gluon Gold" setActiveTab={setActiveTab} active={activeTab === "Home"} />
-            <HeaderButton title={MintGold} setActiveTab={setActiveTab} active={activeTab === MintGold}/>
-            <HeaderButton title={MintRsv} setActiveTab={setActiveTab} active={activeTab === MintRsv}/>
-            <HeaderButton title={ReactorTitle} setActiveTab={setActiveTab}  active={activeTab === ReactorTitle}/>
-            <HeaderButton title="Docs" setActiveTab={setActiveTab} active={activeTab === "Docs"}/>
+            {/* <HeaderButton title="Gluon Gold" setActiveTab={setActiveTab} active={activeTab === "Home"} /> */}
+            <Image src={LogoIcon} alt="logo" width="83" height="26"/>
+            <HeaderButton title={MintGold} setActiveTab={setActiveTab} active={activeTab === MintGold} disabled={true}/>
+            <HeaderButton title={MintRsv} setActiveTab={setActiveTab} active={activeTab === MintRsv} disabled={true}/>
+            <HeaderButton title={ReactorTitle} setActiveTab={setActiveTab}  active={activeTab === ReactorTitle} disabled={false}/>
+            <HeaderButton title="Docs" setActiveTab={setActiveTab} active={activeTab === "Docs"} disabled={true}/>
           </div>
         </div>
 
@@ -86,15 +89,6 @@ const Navbar = (props: IProps) => {
     </>
   );
 };
-
-const HeaderButton = ({ title, setActiveTab, active }: { title: string, setActiveTab: (tab: string) => void, active: boolean }) => (
-  <button
-    className={`nav-button ${active ? 'active' : ''}`}
-    onClick={() => setActiveTab(title)}
-  >
-    {title}
-  </button>
-);
 
 
 export default Navbar;

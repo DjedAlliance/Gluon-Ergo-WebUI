@@ -85,8 +85,8 @@
 .walletBalance{
   font-family: 'Inter', sans-serif;
   color: #696677;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 10px;
+  /* font-weight: bold; */
 }
 
 .convertNowButton{
