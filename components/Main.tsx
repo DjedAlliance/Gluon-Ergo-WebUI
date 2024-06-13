@@ -102,7 +102,6 @@ const Main = () => {
           {activeTab == "Docs" && <Docs />}
           {/* {activeTab === "refund" && <Refund />} */}
         </div>
-
       </div>
     </>
   );

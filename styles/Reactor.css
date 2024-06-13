@@ -1,6 +1,6 @@
 .reactor-nav-container {
   display: grid;
-  grid-template-columns: 2fr 10fr; 
+  grid-template-columns: 2fr 10fr;
   grid-template-rows: auto auto; /* Two rows, size depends on content */
   width: 100%; /* Full width of the container */
   height: 100vh; /* Full viewport height (adjust as necessary) */
@@ -15,7 +15,7 @@
 
   .reactor-nav-container {
     display: grid;
-    grid-template-columns: 2fr 10fr; 
+    grid-template-columns: 2fr 10fr;
     grid-template-rows: auto auto; /* Two rows, size depends on content */
     width: 100%; /* Full width of the container */
     height: 100vh; /* Full viewport height (adjust as necessary) */
@@ -63,10 +63,10 @@
 
 .header-and-menu {
   justify-content: flex-start;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
-.main-content {
+/* .main-content {
   margin-right: 15%;
 
-}
+} */
