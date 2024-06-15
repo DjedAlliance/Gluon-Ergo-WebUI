@@ -24,6 +24,7 @@ interface Asset {
 
     const [assets, setAssets] = useState<Asset[]>(initialData);
     React.useEffect(() => {
+      console.log('currentPage', currentPage)
       let getPrice: any;
       let input: any;
       switch (currentPage) {
@@ -58,6 +59,7 @@ interface Asset {
       const fetchData = async () => {
         try {
           const response = await getPrice(isMainnet, input);
+          console.log('response.data', response.data)
           setAssets(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);

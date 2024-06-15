@@ -9,8 +9,9 @@ import {
 } from "../constant";
 // import "./TokenPurchaseForm.css";
 
-import ArrowDownIcon from '@/public/icons/arrow-down.svg';
-import ConversionBox from "../widgets/ConversionBox";
+import FusionTab from "../FusionTab";
+import FissionTab from "../FissionTab";
+import BetaDecayTabs from "../BetaDecayTabs";
 
 interface TokenPurchaseFormProps {
   onPurchase: (amount: number) => Promise<void>;
@@ -82,15 +83,61 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
 
   const currencyShown = baseCurrency ?? `ERG`;
 
+
   return (
     <>
-      {currentPage !== Fusion ? (
-        <form onSubmit={handleSubmit}>
+      {(currentPage === TransmuteFromGold || currentPage === TransmuteToGold) &&
+        <BetaDecayTabs
+          handleSubmit={handleSubmit}
+          maxAmount={maxAmount}
+          isMainnet={isMainnet}
+          amount={amount}
+          handleAmountChange={handleAmountChange}
+          currencyShown={currencyShown}
+          isError={isError}
+          setAmount={setAmount}
+          maxNeutronsAvailable={maxNeutronsAvailable}
+          maxProtonsAvailable={maxProtonsAvailable}
+          currentPage={currentPage}
+        />
+      }
+      {(currentPage === Fission) &&
+        <FissionTab
+          handleSubmit={handleSubmit}
+          maxAmount={maxAmount}
+          isMainnet={isMainnet}
+          amount={amount}
+          handleAmountChange={handleAmountChange}
+          currencyShown={currencyShown}
+          isError={isError}
+          setAmount={setAmount}
+          maxNeutronsAvailable={maxNeutronsAvailable}
+          maxProtonsAvailable={maxProtonsAvailable}
+          currentPage={currentPage}
+        />
+      }
+      {(currentPage === Fusion) &&
+        <FusionTab
+          handleSubmit={handleSubmit}
+          maxAmount={maxAmount}
+          isMainnet={isMainnet}
+          amount={amount}
+          handleAmountChange={handleAmountChange}
+          currencyShown={currencyShown}
+          isError={isError}
+          setAmount={setAmount}
+          maxNeutronsAvailable={maxNeutronsAvailable}
+          maxProtonsAvailable={maxProtonsAvailable}
+          currentPage={currentPage}
+        />
+      }
+      {/* {currentPage !== Fusion ? (
+        <form onSubmit={handleSubmit} className={styles.tokenPurchaseForm}>
           <div className="input-group">
             <div className={styles.detailContainer}>
               <div className={styles.detailContainerRow}>
                 <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
-                {/* Use a span or a read-only input to display the currency */}
+                Use a span or a read-only input to display the currency
                 <div className={styles.detailContainerActionLabelRow}>
                   <p className={styles.detailContainerActionLabel}> Bal: {maxAmount} GAU </p>
                   <p className={styles.detailContainerActionLabelMax}> Max</p>
@@ -132,10 +179,10 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           {isError && amount <= 0 && (
             <p style={{ color: "red" }}>Amount must be greater than zero.</p>
           )}
-          {/* {isError && isErrorInFusion && (
+          {isError && isErrorInFusion && (
             <p style={{ color: "red" }}> Insufficient balance</p>
-          )} */}
-          {/* <Image src={ArrowDownIcon} alt="arrow down" width="28" height="28" /> */}
+          )}
+          <Image src={ArrowDownIcon} alt="arrow down" width="28" height="28" />
           <img src={ArrowDownIcon} alt="arrow down" width="28" height="28" />
           <div className="input-group">
             <div className={styles.detailContainer}>
@@ -155,12 +202,12 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           </button>
         </form>
       ) : (
-        <form className="token-purchase-form" onSubmit={handleSubmit}>
+        <form className={styles.tokenPurchaseForm} onSubmit={handleSubmit}>
           <div className="input-group">
           <div className={styles.detailContainer}>
               <div className={styles.detailContainerRow}>
                 <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Receive</label>
-                {/* Use a span or a read-only input to display the currency */}
+                Use a span or a read-only input to display the currency
                 <div className={styles.detailContainerActionLabelRow}>
                   <p className={styles.detailContainerActionLabel}> Bal: {maxAmount} GAU </p>
                   <p className={styles.detailContainerActionLabelMax}> Max</p>
@@ -235,7 +282,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
             Convert Now
           </button>
         </form>
-      )}
+      )} */}
     </>
   );
 };
