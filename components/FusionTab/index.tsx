@@ -64,7 +64,7 @@ const FusionTab: FC<FusionTabProps> = ({
                       '-'
                   )}
                 </p>
-                <p className={styles.detailContainerActionLabelMax}> Max</p>
+                <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
               </div>
             </div>
             <div className={styles.detailContainerRow}>
@@ -107,7 +107,7 @@ const FusionTab: FC<FusionTabProps> = ({
                     ) : (
                         '-'
                     )}
-                  <p className={styles.detailContainerActionLabelMax}> Max</p>
+                  <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
                 </div>
               </div>
               <div className={styles.detailContainerRow}>

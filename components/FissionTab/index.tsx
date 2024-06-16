@@ -58,7 +58,7 @@ const FissionTab:FC<FissionTabProps> = ({
             {/* Use a span or a read-only input to display the currency */}
             <div className={styles.detailContainerActionLabelRow}>
               <p className={styles.detailContainerActionLabel}> Bal: {maxAmount} {currencyShown} </p>
-              <p className={styles.detailContainerActionLabelMax}> Max</p>
+              <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
             </div>
           </div>
           <div className={styles.detailContainerRow}>

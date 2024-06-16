@@ -50,7 +50,7 @@ const BetaDecayTabs:FC<BetaDecayTabsProps> = ({
                     ) : (
                         '-'
                     )}
-                    {/* <p className={styles.detailContainerActionLabelMax}> Max</p> */}
+                    <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
                 </div>
                 </div>
                 <div className={styles.detailContainerRow}>

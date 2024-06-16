@@ -52,12 +52,14 @@
 .detailContainerActionLabel{
   font-family: 'Inter', sans-serif;
   color: #878494;
+  display: flex;
 }
 
 .detailContainerActionLabelMax{
   font-family: 'Inter', sans-serif;
   color: #F3B619;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .detailContainerActionLabelRow{
