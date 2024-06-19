@@ -1,8 +1,7 @@
 import { getFissionPrice, getFusionPrice, getMintGoldRate, getMintRsvRate, getTransmuteGoldToRsvRate, getTransmuteRsvToGoldRate } from "@/blockchain/ergo/apiHelper";
 import { ergsToNanoErgs, UIFriendlyValue } from "@/blockchain/ergo/walletUtils/utils";
 import { Fission, Fusion, TransmuteFromGold, TransmuteToGold } from "@/components/constant";
-import React, { useContext } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import PlusIcon from '@/public/icons/add-square.svg';
 import Image from 'next/image';
 
@@ -21,21 +20,10 @@ interface Asset {
     isMainnet,
     baseCurrency,
     currentPage,
-    setAmount,
-    setAmountFusion,
-    amountFusion,
-    handleAmountChange
   }: any) => {
-    // const jsonData = `[]`;
-    // const initialData: Asset[] = JSON.parse(jsonData).map((asset: Asset) => ({
-    //   ...asset,
-    //   price: 0, // Set the initial price to 0
-    // }));
-
     const { walletAssets, setWalletAssets, assets, setAssets } = useContext(AppContext);
 
-    // const [assets, setAssets] = useState<Asset[]>(initialData);
-    React.useEffect(() => {
+    useEffect(() => {
       let getPrice: any;
       let input: any;
       switch (currentPage) {
@@ -97,8 +85,6 @@ interface Asset {
 
     const tokenWalletAssets = walletAssets.map((item: any, index: number) => item);
 
-    // console.log('tokenWalletAssets', tokenWalletAssets)
-
     return (
       <div className={styles.tokenPurchaseForm}>
         {assets.map((asset: any, index: number) => {
@@ -126,10 +112,8 @@ interface Asset {
                   <div className={styles.detailContainerRow}>
                     <input
                       type="number"
-                      // value={asset.price}
                       value={UIFriendlyValue(asset.price)}
                       className={styles.detailContainerInput}
-                      // disabled={currentPage === 'Fusion' ? false : true}
                       disabled={true}
                     />
                     <p id="payment-amount-static" className={`${styles.detailContainerCurrency} ${styles.detailContainerCurrencyDisabled}`}>
@@ -159,81 +143,12 @@ interface Asset {
                 </div>
               </div>
               {index < assets.length - 1 && (
-                <div style={{ textAlign: 'center', margin: '10px 0' }}>
-                  <Image src={PlusIcon} alt="plus" width={20} height={20} />
-                </div>
+                <Image src={PlusIcon} alt="plus" width={28} height={28} />
               )}
             </React.Fragment>
           );
         })}
       </div>
-  //     <div className={styles.tokenPurchaseForm}>
-  //   {assets.map((asset, index) => {
-  //     const matchedWalletAsset = tokenWalletAssets.find((walletAsset: any) => walletAsset.id === asset.tokenId);
-  //     console.log('matchedWalletAsset', matchedWalletAsset)
-  //     return (
-  //       <React.Fragment key={index}>
-  //         <div className="input-group">
-  //           <div className={styles.detailContainer}>
-  //             <div className={styles.detailContainerRow}>
-  //               <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>
-  //                 {currentPage === 'Fusion' ? 'Pay' : 'Receive'}
-  //               </label>
-  //               {currentPage === 'Fusion' && (
-  //                 <div className={styles.detailContainerActionLabelRow}>
-  //                   Bal: {' '}
-  //                   { matchedWalletAsset ? (
-  //                     <p className={styles.detailContainerActionLabel}> {UIFriendlyValue(matchedWalletAsset.amount)} {matchedWalletAsset.name} </p>
-  //                   ) : (
-  //                     '-'
-  //                   )}
-  //                   {/* <p className={styles.detailContainerActionLabelMax} onClick={() => setAmountFusion(UIFriendlyValue(matchedWalletAsset.amount))}> Max</p> */}
-  //                 </div>
-  //               )}
-  //             </div>
-  //             <div className={styles.detailContainerRow}>
-  //               <input
-  //                 type="number"
-  //                 value={UIFriendlyValue(matchedWalletAsset.amount)}
-  //                 className={styles.detailContainerInput}
-  //                 disabled={currentPage === 'Fusion' ? false : true}
-  //                 // onChange={currentPage === 'Fusion' && handleAmountChange}
-  //               />
-  //               <p id="payment-amount-static" className={`${styles.detailContainerCurrency} ${styles.detailContainerCurrencyDisabled}`}>
-  //                 {(() => {
-  //                   if (asset.assetName?.toLocaleLowerCase() === "neutron") {
-  //                     asset.assetName = "GAU";
-  //                   } else if (asset.assetName?.toLocaleLowerCase() === "proton") {
-  //                     asset.assetName = "GAUC";
-  //                   }
-  //                   return asset.assetName;
-  //                 })()}
-  //               </p>
-  //             </div>
-  //             <div className={styles.detailContainerRow}>
-  //               <div className={styles.walletBalance}>
-  //                 Wallet Balance:{" "}
-  //                 <a
-  //                   href="#"
-  //                   onClick={(e) => {
-  //                     e.preventDefault();
-  //                   }}
-  //                 >
-  //                   {UIFriendlyValue(matchedWalletAsset?.amount || asset.price)} {matchedWalletAsset?.name || asset.assetName}
-  //                 </a>
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //         {index < assets.length - 1 && (
-  //           <div style={{ textAlign: 'center', margin: '10px 0' }}>
-  //             <Image src={PlusIcon} alt="plus" width={20} height={20} />
-  //           </div>
-  //         )}
-  //       </React.Fragment>
-  //     );
-  //   })}
-  // </div>
     );
 
   };

@@ -1,5 +1,4 @@
 import ArrowDownIcon from '@/public/icons/arrow-down.svg';
-import PlusIcon from '@/public/icons/add-square.svg';
 import ConversionBox from "../widgets/ConversionBox";
 import Image from 'next/image';
 
@@ -7,7 +6,6 @@ import styles from '@/styles/TokenBox.module.css';
 import { FC, useEffect, useState } from 'react';
 import FeesAndSlippage from '../shared/FeesAndSlippage';
 import { rateLimitedCoinGeckoERGUSD } from '@/blockchain/ergo/wallet/utils';
-import { UIFriendlyValue } from '@/blockchain/ergo/walletUtils/utils';
 import ErrorComponent from '../shared/ErrorComponent';
 
 interface FusionTabProps {
