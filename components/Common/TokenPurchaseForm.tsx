@@ -33,10 +33,13 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
   maxNeutronsAvailable,
 }) => {
   const [amount, setAmount] = useState(0);
+  const [amountFusion, setAmountFusion] = useState(0);
   const [isError, setIsError] = useState(false);
   const [isErrorInFusion, setIsErrorInFusion] = useState(false);
   // const [protonsPerTransaction, setProtonsPerTransaction] = useState(0);
   // const [neutronsPerTransaction, setNeutronsPerTransaction] = useState(0);
+
+  // console.log('gua-gauc', maxProtonsAvailable, maxNeutronsAvailable)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (amount <= maxAmount) {
@@ -126,6 +129,8 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           currencyShown={currencyShown}
           isError={isError}
           setAmount={setAmount}
+          setAmountFusion={setAmountFusion}
+          amountFusion={amountFusion}
           maxNeutronsAvailable={maxNeutronsAvailable}
           maxProtonsAvailable={maxProtonsAvailable}
           currentPage={currentPage}

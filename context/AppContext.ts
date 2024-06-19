@@ -9,12 +9,16 @@ export interface AccountType {
 
 export interface AppContextType {
   walletAssets: any;
-  setWalletAssets: React.Dispatch<React.SetStateAction<boolean>>;
+  setWalletAssets: any;
+  assets: any;
+  setAssets: any;
 }
 
 const initialAppContext: AppContextType = {
   walletAssets: undefined,
   setWalletAssets: () => {},
+  assets: undefined,
+  setAssets: () => {},
 };
 
 const AppContext = createContext<AppContextType>(initialAppContext);

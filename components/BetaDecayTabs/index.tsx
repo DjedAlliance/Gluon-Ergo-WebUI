@@ -3,9 +3,12 @@ import ConversionBox from "../widgets/ConversionBox";
 import Image from 'next/image';
 
 import styles from '@/styles/TokenBox.module.css';
-import { FC } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { TransmuteFromGold } from '../constant';
 import FeesAndSlippage from '../shared/FeesAndSlippage';
+import AppContext from '@/context/AppContext';
+import { UIFriendlyValue } from '@/blockchain/ergo/walletUtils/utils';
+import ErrorComponent from '../shared/ErrorComponent';
 
 interface BetaDecayTabsProps {
     handleSubmit: any;
@@ -20,6 +23,7 @@ interface BetaDecayTabsProps {
     currentPage?: string;
     maxProtonsAvailable?: number;
     maxNeutronsAvailable?: number;
+    tokenBalance?: any;
   }
 
 
@@ -32,25 +36,48 @@ const BetaDecayTabs:FC<BetaDecayTabsProps> = ({
     currencyShown,
     isError,
     setAmount,
-    maxNeutronsAvailable,
-    maxProtonsAvailable,
     currentPage,
 }) => {
+    const { walletAssets, setWalletAssets, assets, setAssets } = useContext(AppContext);
+    const GAUId = "1271660a9f311c316cc14318e2ed9a57378096e2c07ca96ee4631583a271b51a";
+    const GAUCId = "902b52a00de3cdaa1eca9f209c1b13554b3929b17fe82a7d7663a90676b6a263";
+
+    const [tokenBalance, setTokenBalance] = useState<any>();
+
+    useEffect(() => {
+      const calculateTokenBalance = () => {
+        const tokenWalletAssets = walletAssets.map((item: any) => item);
+        let balance;
+        if (currencyShown === 'GAUC') {
+            balance = tokenWalletAssets.find(
+                (item: any) => item.tokenId === GAUCId
+              )?.amount;
+        } else {
+            balance = tokenWalletAssets.find(
+                (item: any) => item.tokenId === GAUId
+              )?.amount;
+        }
+
+        setTokenBalance(balance);
+      };
+
+      calculateTokenBalance();
+    }, [currencyShown]);
+
     return (
         <form onSubmit={handleSubmit} className={styles.tokenPurchaseForm}>
             <div className="input-group">
             <div className={styles.detailContainer}>
                 <div className={styles.detailContainerRow}>
                 <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
-                {/* Use a span or a read-only input to display the currency */}
                 <div className={styles.detailContainerActionLabelRow}>
-                Bal: {' '}
-                { maxAmount ? (
-                        <p className={styles.detailContainerActionLabel}> {maxAmount} {currencyShown} </p>
+                Bal:&nbsp;
+                { tokenBalance > 0 ? (
+                        <p className={styles.detailContainerActionLabel}> {UIFriendlyValue(tokenBalance)} {currencyShown} </p>
                     ) : (
                         '-'
                     )}
-                    <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
+                    <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(UIFriendlyValue(tokenBalance))}> Max</p>
                 </div>
                 </div>
                 <div className={styles.detailContainerRow}>
@@ -85,68 +112,16 @@ const BetaDecayTabs:FC<BetaDecayTabsProps> = ({
                 </div>
             </div>
             </div>
-            {isError && amount > 0 && (
-            <p style={{ color: "red" }}>
-                Amount exceeds the maximum limit of {maxAmount}.
-            </p>
-            )}
-            {isError && amount <= 0 && (
-            <p style={{ color: "red" }}>Amount must be greater than zero.</p>
-            )}
-            {/* {isError && isErrorInFusion && (
-            <p style={{ color: "red" }}> Insufficient balance</p>
-            )} */}
+            <ErrorComponent isError={isError} amount={amount} maxAmount={UIFriendlyValue(tokenBalance)} />
             <Image src={ArrowDownIcon} alt="arrow down" width="28" height="28" />
-            <div className="input-group">
-                <div className={styles.detailContainer}>
-                    <div className={styles.detailContainerRow}>
-                        <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Receive</label>
-                        {/* Use a span or a read-only input to display the currency */}
-                        <div className={styles.detailContainerActionLabelRow}>
-                            Bal: {' '}
-                            { maxAmount ? (
-                                <p className={styles.detailContainerActionLabel}> {maxAmount} {currencyShown} </p>
-                            ) : (
-                                '-'
-                            )}
-                        </div>
-                    </div>
-                    <div className={styles.detailContainerRow}>
-                        <input
-                            type="number"
-                            value={amount}
-                            onChange={handleAmountChange}
-                            placeholder="Enter amount"
-                            className={styles.detailContainerInput}
-                            disabled={true}
-                        />
-                        <p id="payment-amount-static" className={`${styles.detailContainerCurrency} ${styles.detailContainerCurrencyDisabled}`}>
-                            {currencyShown === 'GAU' ? 'GAUC' : 'GAU'}
-                        </p>
-                    </div>
-                    <div className={styles.detailContainerRow}>
-                    <div className={styles.walletBalance}>
-                        Wallet Balance:{" "}
-                        <a
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setAmount(maxAmount);
-                            }}
-                        >
-                            {maxAmount} {currencyShown === 'GAU' ? 'GAUC' : 'GAU'}
-                        </a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <FeesAndSlippage />
             <ConversionBox
-                    inputValue={amount}
-                    isMainnet={isMainnet}
-                    baseCurrency={currencyShown}
-                    currentPage={currentPage}
-                />
+                inputValue={amount}
+                isMainnet={isMainnet}
+                baseCurrency={currencyShown}
+                currentPage={currentPage}
+            />
+            <FeesAndSlippage />
+
             <button type="submit" className={styles.convertNowButton} disabled={isError}>
                 { currentPage ===  TransmuteFromGold ? 'Initiate Beta Decay +' : 'Initiate Beta Decay -' }
             </button>

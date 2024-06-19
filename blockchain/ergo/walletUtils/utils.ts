@@ -143,7 +143,7 @@ export const ergsToNanoErgs = (ergs: number) => {
 }
 
 export const UIFriendlyValue = (input: number, divisor?: number) => {
-  return input / Math.pow(10, divisor ?? 9);
+  return (input / Math.pow(10, divisor ?? 9));
 }
 
 

@@ -68,6 +68,7 @@ export const Fission = () => {
     setExplorerApiClient(explorerClient);
 
     const walletConfig = getWalletConfig();
+    console.log('walletConfig', walletConfig)
     if (walletConfig !== undefined) {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])

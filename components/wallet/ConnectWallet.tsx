@@ -6,7 +6,7 @@ import styles from '../../styles/ConnectWallet.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal, Space, Tabs, TabsProps, Tooltip } from "antd";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
 import NautilusLogo from "../../public/NautilusLogo.png";
@@ -42,6 +42,7 @@ import { fromEvent, Subscription } from "rxjs";
 import { Socket } from "socket.io-client";
 import { noti_option_close } from "../Notifications/Toast";
 import { CopyOutlined } from "@ant-design/icons";
+import AppContext from "@/context/AppContext";
 interface Token {
   tokenId: string;
   amount: number;
@@ -66,6 +67,7 @@ function classNames(...classes: any) {
 
 const ConnectWallet: React.FC<IProps> = (props) => {
   const { socket } = props;
+  const { walletAssets, setWalletAssets } = useContext(AppContext);
 
   const [activeTabValue, setActiveTabValue] = useState("1"); // Initial value for desktop
 
@@ -108,7 +110,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
   const [walletAddress, setWalletAddress] = useState<string[] | undefined>(
     undefined
   );
-  const [walletAssets, setWalletAssets] = useState<Token[]>([]);
+  // const [walletAssets, setWalletAssets] = useState<Token[]>([]);
 
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [usdOracle, setUsdOracle] = useState<number>(0);
@@ -423,7 +425,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
           animated
           activeKey={activeKey}
           className="mt-2"
-          style={{ background: '#2B2935' }} 
+          style={{ background: '#2B2935' }}
         />
       </Modal>
 

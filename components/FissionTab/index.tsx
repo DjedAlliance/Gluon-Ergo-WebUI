@@ -7,6 +7,8 @@ import styles from '@/styles/TokenBox.module.css';
 import { FC, useEffect, useState } from 'react';
 import FeesAndSlippage from '../shared/FeesAndSlippage';
 import { rateLimitedCoinGeckoERGUSD } from '@/blockchain/ergo/wallet/utils';
+import ErrorComponent from '../shared/ErrorComponent';
+import { UIFriendlyValue } from '@/blockchain/ergo/walletUtils/utils';
 
 interface FissionTabProps {
     handleSubmit: any;
@@ -89,17 +91,7 @@ const FissionTab:FC<FissionTabProps> = ({
           </div>
         </div>
       </div>
-      {isError && amount > 0 && (
-        <p style={{ color: "red" }}>
-          Amount exceeds the maximum limit of {maxAmount}.
-        </p>
-      )}
-      {isError && amount <= 0 && (
-        <p style={{ color: "red" }}>Amount must be greater than zero.</p>
-      )}
-      {/* {isError && isErrorInFusion && (
-        <p style={{ color: "red" }}> Insufficient balance</p>
-      )} */}
+      <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
       <Image src={ArrowDownIcon} alt="arrow down" width="28" height="28" />
       <ConversionBox
         inputValue={amount}

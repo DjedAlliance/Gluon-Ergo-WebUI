@@ -7,11 +7,13 @@ import styles from '@/styles/TokenBox.module.css';
 import { FC, useEffect, useState } from 'react';
 import FeesAndSlippage from '../shared/FeesAndSlippage';
 import { rateLimitedCoinGeckoERGUSD } from '@/blockchain/ergo/wallet/utils';
+import { UIFriendlyValue } from '@/blockchain/ergo/walletUtils/utils';
+import ErrorComponent from '../shared/ErrorComponent';
 
 interface FusionTabProps {
     handleSubmit: any;
     baseCurrency?: string;
-    maxAmount?: number;
+    maxAmount?: any;
     isMainnet: boolean;
     amount?: any;
     handleAmountChange?: any;
@@ -21,6 +23,8 @@ interface FusionTabProps {
     currentPage?: string;
     maxProtonsAvailable?: number;
     maxNeutronsAvailable?: number;
+    setAmountFusion?: any;
+    amountFusion?: any;
   }
 
 
@@ -36,6 +40,8 @@ const FusionTab: FC<FusionTabProps> = ({
     maxNeutronsAvailable,
     maxProtonsAvailable,
     currentPage,
+    setAmountFusion,
+    amountFusion,
 }) => {
   const [exchangeRate, setExchangeRate] = useState(0);
 
@@ -51,93 +57,15 @@ const FusionTab: FC<FusionTabProps> = ({
   const convertedAmount = amount * exchangeRate;
     return (
       <form className={styles.tokenPurchaseForm} onSubmit={handleSubmit}>
-        <div className="input-group">
-          <div className={styles.detailContainer}>
-            <div className={styles.detailContainerRow}>
-              <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
-              <div className={styles.detailContainerActionLabelRow}>
-                <p className={styles.detailContainerActionLabel}>
-                  Bal: {' '}
-                  { maxAmount ? (
-                      <p className={styles.detailContainerActionLabel}> {maxAmount} {maxNeutronsAvailable} GAU </p>
-                  ) : (
-                      '-'
-                  )}
-                </p>
-                <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
-              </div>
-            </div>
-            <div className={styles.detailContainerRow}>
-              <input
-                type="number"
-                value={amount}
-                onChange={handleAmountChange}
-                placeholder="Enter amount"
-                className={styles.detailContainerInput}
-              />
-              <p id="payment-amount-static" className={styles.detailContainerCurrency}>
-                GAU
-              </p>
-            </div>
-            <div className={styles.detailContainerRow}>
-              <div className={styles.walletBalance}>
-                Wallet Balance:{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAmount(maxAmount);
-                  }}
-                >
-                  {maxAmount} GAU
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <Image src={PlusIcon} alt="plus" width="20" height="20" />
-        <div className="input-group">
-          <div className={styles.detailContainer}>
-              <div className={styles.detailContainerRow}>
-                <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
-                <div className={styles.detailContainerActionLabelRow}>
-                    Bal: {' '}
-                    { maxAmount ? (
-                        <p className={styles.detailContainerActionLabel}> {maxAmount} {maxProtonsAvailable} GAUC </p>
-                    ) : (
-                        '-'
-                    )}
-                  <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
-                </div>
-              </div>
-              <div className={styles.detailContainerRow}>
-                <input
-                  type="number"
-                  value={amount}
-                  onChange={handleAmountChange}
-                  placeholder="Enter amount"
-                  className={styles.detailContainerInput}
-                />
-                <p id="payment-amount-static" className={styles.detailContainerCurrency}>
-                  GAUC
-                </p>
-            </div>
-            <div className={styles.detailContainerRow}>
-              <div className={styles.walletBalance}>
-                Wallet Balance:{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAmount(maxAmount);
-                  }}
-                >
-                  {maxAmount} GAUC
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ConversionBox
+          inputValue={amount}
+          isMainnet={isMainnet}
+          baseCurrency={currencyShown}
+          currentPage={currentPage}
+          setAmountFusion
+          amountFusion
+          handleAmountChange
+        />
 
         <Image src={ArrowDownIcon} alt="arrow down" width="28" height="28" />
         <div className="input-group">
@@ -155,7 +83,6 @@ const FusionTab: FC<FusionTabProps> = ({
                 onChange={handleAmountChange}
                 placeholder="Enter amount"
                 className={styles.detailContainerInput}
-                disabled={true}
               />
               <p id="payment-amount-static" className={`${styles.detailContainerCurrency} ${styles.detailContainerCurrencyDisabled}`}>
                 ERG
@@ -177,20 +104,8 @@ const FusionTab: FC<FusionTabProps> = ({
           </div>
           </div>
         </div>
-        {isError && amount > 0 && (
-          <p style={{ color: "red" }}>
-            Amount exceeds the maximum limit of {maxAmount}.
-          </p>
-        )}
-        {isError && amount <= 0 && (
-          <p style={{ color: "red" }}>Amount must be greater than zero.</p>
-        )}
-        <ConversionBox
-          inputValue={amount}
-          isMainnet={isMainnet}
-          baseCurrency={currencyShown}
-          currentPage={currentPage}
-        />
+        <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
+
         <FeesAndSlippage />
         <button type="submit" className={styles.convertNowButton} disabled={isError}>
           Initiate Fusion

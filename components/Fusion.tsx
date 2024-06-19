@@ -97,6 +97,8 @@ export const Fusion = () => {
         });
     }
   }, []);
+  console.log('protonAmountAvailable', protonAmountAvailable,
+  'neutronAmountAvailable', neutronAmountAvailable)
 
   const handleClick = async (amount: number) => {
     const walletConfig = getWalletConfig();
