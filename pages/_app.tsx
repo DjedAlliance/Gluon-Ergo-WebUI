@@ -9,11 +9,14 @@ import "../styles/Navbar.css";
 import "../styles/Reactor.css";
 
 import type { AppProps } from "next/app";
+import AppProvider from "@/context/AppProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div>
-      <Component {...pageProps} />
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
     </div>
   );
 }
