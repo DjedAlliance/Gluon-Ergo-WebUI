@@ -5,10 +5,13 @@ import { Button } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import { addressConnectionQuery } from "@/blockchain/ergo/ergopay/addressConnectionQuery";
 import { ErgoAddress, Network } from "@fleet-sdk/core";
-import { toast } from "react-toastify";
-import { noti_option_close } from "../Notifications/Toast";
+import {
+  noti_option_close,
+} from "@/components/shared/Notifications/Toast";
 import { handleCopyText } from "@/blockchain/ergo/wallet/utils";
 import { NEXT_PUBLIC_NEST_API_URL } from "@/blockchain/ergo/constants";
+import { toast } from "react-toastify";
+
 
 const ErgoPayButton = ({
   setIsModalOpen,

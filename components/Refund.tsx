@@ -8,7 +8,7 @@ import {
   noti_option,
   noti_option_close,
   txSubmmited,
-} from "@/components/Notifications/Toast";
+} from "@/components/shared/Notifications/Toast";
 import { isHex } from "@fleet-sdk/common";
 import { SignedTransaction } from "@nautilus-js/eip12-types";
 import {

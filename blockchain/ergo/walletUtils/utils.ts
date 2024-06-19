@@ -2,7 +2,7 @@ import {
   installNautilus,
   noti_option_close,
   txSubmmited,
-} from "@/components/Notifications/Toast";
+} from "@/components/shared/Notifications/Toast";
 import { Id, toast } from "react-toastify";
 import { SignedTransaction } from "@nautilus-js/eip12-types";
 import { walletLocalStorage } from "@/components/wallet/ConnectWallet";

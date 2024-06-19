@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Loader from "./Loader";
-import Navbar from "./Navbar";
+import Navbar from "./widgets/Navbar";
 import {
   BANK_SINGLETON_TOKEN_ID,
   explorerClient,

@@ -1,6 +1,6 @@
 import React from "react";
-import SettingPopup from "./SettingPopup";
-import { Logo } from "./Logo";
+import SettingPopup from "../SettingPopup";
+import { Logo } from "../Logo";
 import LogoIcon from "@/public/icons/logo.svg";
 import ConnectWallet from "@/components/wallet/ConnectWallet";
 import DropDown from "@/components/wallet/DropDown";
@@ -17,9 +17,9 @@ import {
   GAUC_Reservecoin,
   MintGold,
   MintRsv
-} from "./constant";
-import hamburgerIcon from "../public/hamburger.png";
-import HeaderButton from "./shared/HeaderButton";
+} from "../constant";
+import hamburgerIcon from "@/public/hamburger.png";
+import HeaderButton from "../shared/HeaderButton";
 interface IProps {
   activeTab: string;
   setActiveTab:(tab: string) => void;

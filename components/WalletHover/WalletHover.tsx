@@ -13,14 +13,14 @@ function classNames(...classes:any) {
 }
 
 export default function WalletHover({
-                                      disconnect,
-                                      sigUSDBalance,
-                                      ergBalance,
-                                      sigRSVBalance,
-                                      ergopadBalance,
-                                      netaBalance,
-                                      paideiaBalance,
-                                    }:any) {
+    disconnect,
+    sigUSDBalance,
+    ergBalance,
+    sigRSVBalance,
+    ergopadBalance,
+    netaBalance,
+    paideiaBalance,
+  }:any) {
   function handleClearWallet() {
     disconnect();
   }

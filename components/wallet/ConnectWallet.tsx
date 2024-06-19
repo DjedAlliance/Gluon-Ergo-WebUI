@@ -40,7 +40,7 @@ import ErgoIconModal from "@/components/Common/ErgoIconModal";
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { fromEvent, Subscription } from "rxjs";
 import { Socket } from "socket.io-client";
-import { noti_option_close } from "../Notifications/Toast";
+import { noti_option_close } from "../shared/Notifications/Toast";
 import { CopyOutlined } from "@ant-design/icons";
 import AppContext from "@/context/AppContext";
 interface Token {

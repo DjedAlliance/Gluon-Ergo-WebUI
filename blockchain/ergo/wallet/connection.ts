@@ -1,7 +1,7 @@
 import { walletLocalStorage } from '@/components/wallet/ConnectWallet';
 import React from 'react';
 import { toast } from 'react-toastify';
-import { noti_option_close } from '@/components/Notifications/Toast';
+import { noti_option_close } from '@/components/shared/Notifications/Toast';
 import assert from 'assert';
 import { ErgoAddress, Network } from '@fleet-sdk/core';
 
