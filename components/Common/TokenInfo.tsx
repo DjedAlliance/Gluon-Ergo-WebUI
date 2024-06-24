@@ -18,7 +18,7 @@ const TokenInfo: React.FC<TokenInfoProps> = ({
 
       {/* this is where the logo will go*/}
       {/* <img src={logoUrl} alt={`${tokenName} logo`} className="token-logo" /> */}
-      <h1>{tokenName}</h1>
+      <h4>{tokenName}</h4>
       <div/>
       </div>
       {/* <p>{description}</p> */}

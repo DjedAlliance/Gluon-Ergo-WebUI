@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Loader from "./Loader";
-import Navbar from "./Navbar";
+import Navbar from "./widgets/Navbar";
 import {
   BANK_SINGLETON_TOKEN_ID,
   explorerClient,
@@ -16,22 +16,30 @@ import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import { getWalletConnection } from "@/blockchain/ergo/walletUtils/utils";
 import { Fission } from "./Fission";
+import Home from "./Home";
 import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
-import About from "./About";
+import Docs from "./Docs";
+import Reactor from "./Reactor";
 import {
   Fission as fissionTitle,
   Fusion as fusionTitle,
   TransmuteFromGold as transmuteFromGoldTitle,
   TransmuteToGold as transmuteToGoldTitle,
+  Reactor as reactorTitle,
+  GAU_Stablecoin as gauStablecoinTitle,
+  GAUC_Reservecoin as gaucReservecoinTitle,
+  MintGold as mintGoldTitle,
+  MintRsv as mintRsvTitle
 } from "./constant";
 import { Fusion } from "./Fusion";
 
 const Main = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState("Fission");
+  const [activeTab, setActiveTab] = useState("Reactor");
+  const [reactorActiveTab, setReactorActiveTab] = useState("Fission");
   const [lastBlock, setLastBlock] = useState(null);
 
   const [socket, setSocket] = useState<
@@ -82,20 +90,18 @@ const Main = () => {
             setActiveTab={setActiveTab}
             socket={socket}
           />
-          {activeTab === "Home" && <Fission />}
-          {activeTab === transmuteToGoldTitle && <TransmuteGoldToRsv />}
-          {activeTab === transmuteFromGoldTitle && <TransmuteRsvToGold />}
+          {/* {activeTab === "Gluon Gold" && <Home />} */}
           {activeTab === fissionTitle && <Fission />}
           {activeTab === fusionTitle && <Fusion />}
-          {activeTab === "MintGold" && <MintGold />}
-          {activeTab === "MintRsv" && <MintRsv />}
-          {activeTab == "About" && <About />}
+          {activeTab === mintGoldTitle && <MintGold />}
+          {activeTab === mintRsvTitle && <MintRsv />}
+          {activeTab == reactorTitle && <Reactor reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab}/>}
+          {/* UNCOMMENT THIS LINE TO ADD THE MINT TABS
+          {activeTab == gauStablecoinTitle && <TransmuteGoldToRsv />}
+          {activeTab == gaucReservecoinTitle && <TransmuteRsvToGold />}
+          {activeTab == "Docs" && <Docs />}
           {/* {activeTab === "refund" && <Refund />} */}
         </div>
-
-        <footer className="footer" style={{ marginTop: "-100px" }}>
-          <Footer />
-        </footer>
       </div>
     </>
   );

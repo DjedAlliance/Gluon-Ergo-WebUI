@@ -34,7 +34,7 @@ const SideBar = () => {
             </p>
           ) : (
             <span>
-              <p className={navStyle.sideBarLink}>PAYMENT</p>
+              <p className={navStyle.Link}>PAYMENT</p>
             </span>
           )}
         </li>

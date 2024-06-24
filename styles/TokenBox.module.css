@@ -1,0 +1,128 @@
+.tokenPurchaseForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  width: fit-content;
+}
+
+
+
+.detailContainer{
+  background-color: #2B2935;
+  border-radius: 15px;
+  padding: 15px 15px;
+  justify-content: space-between;
+  min-width: 300px;
+  border: none;
+}
+
+/* Large devices (desktops) */
+@media (min-width: 600px) {
+  .detailContainer{
+    min-width: 500px; /* Increased minimum width for large devices */
+  }
+  .convertNowButton{
+    min-width: 500px; /* Increased minimum width for large devices */
+  }
+}
+
+@media (max-width: 400px) {
+  .detailContainer{
+    min-width: 350px; /* Increased minimum width for large devices */
+  }
+
+  .convertNowButton{
+    min-width: 350px; /* Increased minimum width for large devices */
+  }
+}
+
+/* for screens between 400 and 600px */
+@media (min-width: 400px) and (max-width: 600px) {
+  .detailContainer{
+    min-width: 380px; /* Increased minimum width for large devices */
+  }
+
+  .convertNowButton{
+    min-width: 360px; /* Increased minimum width for large devices */
+  }
+}
+
+.detailContainerActionLabel{
+  font-family: 'Inter', sans-serif;
+  color: #878494;
+  display: flex;
+}
+
+.detailContainerActionLabelMax{
+  font-family: 'Inter', sans-serif;
+  color: #F3B619;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.detailContainerActionLabelRow{
+  display: flex;
+}
+
+.detailContainerRow{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.detailContainerInput{
+  background-color: transparent;
+  border-radius: 15px;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  max-width: 200px;
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  border-color: transparent;
+}
+
+.detailContainerInput:disabled {
+  color: #878494; /* Gray text color */
+  cursor: not-allowed; /* Change cursor to indicate it's disabled */
+}
+
+.detailContainerCurrency{
+  font-family: 'Inter', sans-serif;
+  color: white;
+  font-weight: bold;
+  background-color: #2B2935;
+  border: none;
+  font-size: 25px;
+}
+
+.detailContainerCurrencyDisabled {
+  color: #878494;
+}
+
+.walletBalance{
+  font-family: 'Inter', sans-serif;
+  color: #696677;
+  font-size: 10px;
+  /* font-weight: bold; */
+}
+
+.convertNowButton{
+  background-color: #F3B619;
+  border-radius: 15px;
+  color: #2B2935;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+}
+
+.convertNowButton:hover{
+  background-color: #F3B619;
+  opacity: 0.8;
+}

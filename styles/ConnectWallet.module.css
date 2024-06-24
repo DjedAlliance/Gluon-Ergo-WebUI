@@ -1,0 +1,47 @@
+.textBlur {
+  filter: blur(4px);
+}
+
+.currentErgs {
+  padding: 0.25rem; 
+  color: white;
+  background-color: #24222C;
+  border-radius: 5px;
+}
+
+.eyeToggleButton {
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  margin: 5px;
+}
+
+.connectWalletButton {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.375rem; /* rounded */
+  background: #F3B619;
+  color: #24222C;
+  cursor: pointer;
+}
+
+.connectWalletButton:hover {
+  opacity: 0.8;
+}
+
+.connectWalletButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(128, 90, 213, 0.5);
+}
+
+@media (min-width: 640px) {
+  .connectWalletButton {
+    width: fit-content;
+    padding: 0.625rem 1.25rem;
+  }
+}

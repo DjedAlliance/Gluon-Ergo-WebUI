@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    justify-content: flex-start;
+    height: 100vh;
+    background-color: #24222C;
+    font-family: 'Arial, sans-serif';
+    padding-top: 50px;
+}
+.header {
+    color: #fff;
+}
+.text {
+    color: #fff;
+}
+.image {
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+}

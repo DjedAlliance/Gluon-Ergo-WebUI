@@ -41,7 +41,6 @@ const fetchTokenMetadata = async (addresses: string[], explorerApiClient: any, u
     (asset) => asset.tokenId !== 'ERG',
   );
 
-
   const ergoDexService = new ErgoDexService();
   const tokenErgPrice = await ergoDexService.getTokenRates();
 

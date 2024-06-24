@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { toaster_copy_text } from "@/components/Notifications/Toast";
+import { toaster_copy_text } from "@/components/shared/Notifications/Toast";
 import { walletLocalStorage } from "@/components/wallet/ConnectWallet";
 import axios from "axios";
 import { NEXT_PUBLIC_NEST_API_URL } from "@/blockchain/ergo/constants";

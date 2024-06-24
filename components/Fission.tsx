@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 import {
   noti_option,
   noti_option_close,
-} from "@/components/Notifications/Toast";
+} from "@/components/shared/Notifications/Toast";
 import { Amount, Box, ErgoAddress } from "@fleet-sdk/core";
 import { getShortLink, getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import assert from "assert";
@@ -68,6 +68,7 @@ export const Fission = () => {
     setExplorerApiClient(explorerClient);
 
     const walletConfig = getWalletConfig();
+    console.log('walletConfig', walletConfig)
     if (walletConfig !== undefined) {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
@@ -167,7 +168,7 @@ export const Fission = () => {
     }
   };
 
-  const tokenName = "Convert ERG to GAU and GAUC";
+  const tokenName = "Split ERG into GAU stablecoin and GAUC reservecoin";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 

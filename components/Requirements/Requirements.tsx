@@ -437,8 +437,8 @@ export const ErgoDappConnector = (props: any) => {
                   }}
                 >
                   <button
-                    className="text-white font-bold rounded-xl"
-                    style={{ background: '#E041E7' }}
+                    className="rounded-xl"
+                    style={{ background: '#F3B619', color: '#24222C' }}
                   >
                     CONNECT WALLET
                   </button>

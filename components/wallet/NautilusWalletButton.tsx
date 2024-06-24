@@ -35,12 +35,12 @@ const NautilusWalletButton = ({
               </div>
             </div>
 
-            <p className="m-0 text-black" style={{ fontSize: 16 }}>
+            <p className="m-0 text-white" style={{ fontSize: 16 }}>
               Nautilus Wallet
             </p>
           </div>
         ) : (
-          <p className="m-0 text-black" style={{ fontSize: 16 }}>
+          <p className="m-0 text-white" style={{ fontSize: 16 }}>
             Nautilus Wallet
           </p>
         )}

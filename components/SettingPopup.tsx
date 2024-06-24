@@ -1,13 +1,13 @@
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import CustomTooltip from "./CustomTooltip";
+import CustomTooltip from "./shared/CustomTooltip";
 import {
   MIN_MINER_FEE,
   MIN_TX_OPERATOR_FEE,
 } from "@/blockchain/ergo/constants";
 import { hasDecimals, localStorageKeyExists } from "@/common/utils";
 import { toast } from "react-toastify";
-import { noti_option_close } from "@/components/Notifications/Toast";
+import { noti_option_close } from "@/components/shared/Notifications/Toast";
 
 export default function SettingPopup() {
   const [nitroValue, setNitroValue] = useState<number | string>("1.000");

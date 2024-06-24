@@ -4,7 +4,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: #0d0f19;
+  background: #24222B;
+  overflow-x: hidden;
+  color: #e0e0e0;
+  font-family: "Inter", sans-serif; 
   overflow-x: hidden;
 }
 
@@ -13,7 +16,7 @@ body {
 }
 
 .font-SpaceGrotesk {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 @font-face {
@@ -57,9 +60,7 @@ body {
 }
 
 .primary-gradient {
-  background-image: linear-gradient(to right,
-      #C8B209,
-      #FFBF00) !important;
+ 
 }
 
 .react-datepicker-wrapper,
@@ -84,7 +85,7 @@ input[type="number"] {
 }
 
 .ant-dropdown .ant-dropdown-menu {
-  background: white;
+  background-color: #6b677c;
   /*margin-left: 30px;*/
   /*border-radius: 20px;*/
 }
@@ -94,8 +95,7 @@ input[type="number"] {
 }
 
 .ant-tabs-nav-wrap {
-  border: 1px solid darkgrey;
-  border-radius: 15px;
+  background-color: #3E3733;
 }
 
 .ant-tabs-nav::before {
@@ -107,11 +107,9 @@ input[type="number"] {
 }
 
 .ant-modal-content {
-  background: #141414 !important;
-  color: white;
+  background: #24222B !important;
+  color: #d9d9d9;
   border-radius: 15px;
-  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
-    0 9px 28px 8px #0000000d;
 }
 
 .ant-tabs-tab.ant-tabs-tab-active {
@@ -120,7 +118,7 @@ input[type="number"] {
 }
 
 .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
-  background: #7066c5;
+  background: #F3B619;
   height: 100% !important;
   color: white !important;
   border-radius: 10px;
@@ -135,7 +133,7 @@ input[type="number"] {
 }
 
 .ant-tabs-tab-btn {
-  color: black;
+  color: white;
   font-size: 16px;
 }
 
@@ -162,9 +160,8 @@ input[type="number"] {
 
 .ant-modal .ant-modal-content {
   border-radius: 16px;
-  border: 1px solid #434343;
   padding: 16px !important;
-  background-color: white !important;
+  background-color: #24222C !important;
 }
 
 .ant-modal-close-x {
@@ -172,7 +169,7 @@ input[type="number"] {
 }
 
 .connectWalletBtn {
-  font-family: "Space Grotesk", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
 }
 
 ::-webkit-scrollbar {
@@ -202,7 +199,7 @@ input[type="number"] {
 }
 
 .ant-modal-close-icon svg {
-  fill: #0d0f19;
+  fill: white;
 }
 
 .main-style {
@@ -239,5 +236,4 @@ input[type="number"] {
   .ant-modal-wrap {
     overflow: hidden !important;
   }
-  
 }

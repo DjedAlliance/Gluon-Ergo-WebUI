@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #1e1e2f; */
+    padding: 10px 20px;
+    width: 100%;
+  }
+
+  .text {
+    margin: 0;
+    color: #696677;
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+
+  }

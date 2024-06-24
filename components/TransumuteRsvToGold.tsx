@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 import {
   noti_option,
   noti_option_close,
-} from "@/components/Notifications/Toast";
+} from "@/components/shared/Notifications/Toast";
 import { Amount, Box, ErgoAddress } from "@fleet-sdk/core";
 import {
   findTokenById,
@@ -165,7 +165,7 @@ const TransmuteRsvToGold = () => {
       return;
     }
   };
-const tokenName = "Convert GAU to GAUC";
+  const tokenName = "Turn GAU stablecoin into GAUC reservecoin";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 

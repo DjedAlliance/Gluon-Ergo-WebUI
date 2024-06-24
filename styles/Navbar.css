@@ -1,0 +1,73 @@
+/* Header buttons style */
+  .nav-container {
+    color: #878494;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .nav-button {
+    color: #878494;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-button:disabled {
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .nav-button:hover {
+    color: #ffffff;
+  }
+
+  .nav-button.active {
+    color: #F3B619;
+  }
+
+.mobile-navbar {
+    position: relative;
+    z-index: 1;
+}
+
+.menu-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    background: none;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #878494;
+    border-radius: 5px;
+    color: black;
+}
+
+.menu-item {
+    padding: 10px 15px;
+}
+
+.menu-item.active {
+    color: #F3B619;
+    font-weight: bold;
+}
+
+.menu-item-submenu{
+    padding: 10px 15px;
+    color: black;
+}
+
+.menu-item-submenu.active{
+    padding: 10px 15px;
+    color: #F3B619;
+}

@@ -30,7 +30,7 @@ import {
   noti_option,
   noti_option_close,
   txSubmmited,
-} from "@/components/Notifications/Toast";
+} from "@/components/shared/Notifications/Toast";
 import {
   Amount,
   Box,

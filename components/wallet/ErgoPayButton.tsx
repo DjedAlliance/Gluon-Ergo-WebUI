@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
+import styles from "@/styles/common.module.css";
 import { Button } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import { addressConnectionQuery } from "@/blockchain/ergo/ergopay/addressConnectionQuery";
 import { ErgoAddress, Network } from "@fleet-sdk/core";
-import { toast } from "react-toastify";
-import { noti_option_close } from "../Notifications/Toast";
+import {
+  noti_option_close,
+} from "@/components/shared/Notifications/Toast";
 import { handleCopyText } from "@/blockchain/ergo/wallet/utils";
 import { NEXT_PUBLIC_NEST_API_URL } from "@/blockchain/ergo/constants";
+import { toast } from "react-toastify";
+
 
 const ErgoPayButton = ({
   setIsModalOpen,
@@ -71,7 +75,7 @@ const ErgoPayButton = ({
     (window as any).open(link);
   };
   return (
-    <div style={{ fontFamily: `'Space Grotesk', sans-serif` }}>
+    <div style={{ fontFamily: `'Inter', sans-serif` }}>
       <div className="flex  justify-center">
         <div role="status">
           <svg
@@ -92,9 +96,9 @@ const ErgoPayButton = ({
           </svg>
         </div>
       </div>
-      <p className="text-center">Waiting for connection with ErgoPay</p>
+      <p className="text-center" style={{color: "white"}}>Waiting for connection with ErgoPay</p>
 
-      <h5 className="text-center">Scan QR code</h5>
+      <h5 className="text-center" style={{color: "white"}}>Scan QR code</h5>
 
       {/*  qr code*/}
       <div className="flex justify-center">
@@ -105,7 +109,7 @@ const ErgoPayButton = ({
       <div className="text-center mt-2">
         <a
           href="https://ergoplatform.org/en/get-erg/#Wallets"
-          style={{ color: "#6E64BF", textDecoration: "none" }}
+          style={{ color: "#F3B619", textDecoration: "underline" }}
           target="_blank"
           rel="noreferrer"
         >
@@ -116,26 +120,19 @@ const ErgoPayButton = ({
       <div className="flex justify-center mt-4">
         <Button
           block
-          style={{ fontFamily: `'Space Grotesk', sans-serif` }}
           onClick={() => {
             navigator.clipboard.writeText(link);
             handleCopyText("Copied to clipboard!");
           }}
-          className="mr-2"
+          className={styles.copyRequestButton}
         >
           Copy request
         </Button>
 
         <Button
           block
-          style={{
-            border: "none",
-            color: "white",
-            background: "#6F65C5",
-            fontFamily: `'Space Grotesk', sans-serif`,
-          }}
           onClick={openLink}
-          className="ml-2"
+          className={styles.openWithWalletButton}
         >
           Open with wallet
         </Button>

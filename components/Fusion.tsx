@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 import {
   noti_option,
   noti_option_close,
-} from "@/components/Notifications/Toast";
+} from "@/components/shared/Notifications/Toast";
 import { Amount, Box, ErgoAddress } from "@fleet-sdk/core";
 import {
   findTokenById,
@@ -97,6 +97,8 @@ export const Fusion = () => {
         });
     }
   }, []);
+  console.log('protonAmountAvailable', protonAmountAvailable,
+  'neutronAmountAvailable', neutronAmountAvailable)
 
   const handleClick = async (amount: number) => {
     const walletConfig = getWalletConfig();
@@ -187,7 +189,7 @@ export const Fusion = () => {
     }
   };
 
-  const tokenName = "Convert GAU and GAUC to ERG";
+  const tokenName = "Fuse GAU stablecoin and GAUC reservecoin into ERG";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
