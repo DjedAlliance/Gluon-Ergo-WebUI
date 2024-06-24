@@ -28,6 +28,7 @@ export default function KnowYourAssumptionsModal() {
         onClick={openModal}
         className="transition-all duration-200 ease-in-out hover:text-opacity-80 outline-none bg-transparent"
       >
+
         KYA
       </button>
 
@@ -70,7 +71,7 @@ export default function KnowYourAssumptionsModal() {
                         <span className="font-bold">Gluon</span> is an asset-backed stablecoin protocol.
                       </p>
                       <p>
-                        <span className="font-bold">Gluon Gold on Ergo</span> is a Gluon-based smart contract 
+                        <span className="font-bold">Gluon Gold on Ergo</span> is a Gluon-based smart contract
                         running on the Ergo blockchain, allowing you to issue Gold-pegged stablecoins backed by ERG.
                       </p>
                       <p>
@@ -129,7 +130,7 @@ export default function KnowYourAssumptionsModal() {
                       </div>
                     </div>
                     <button
-                      className="focus:outline-none text-white primary-gradient hover:opacity-80 focus:ring-4 focus:ring-purple-300 font-medium rounded text-md px-3 sm:px-5 py-2 sm:py-2.5"
+                      className="focus:outline-none text-black bg-yellow-400 primary-gradient hover:opacity-80 hover:bg-[#F3B619]-600 focus:ring-4 focus:ring-purple-300 font-medium rounded text-md px-3 sm:px-5 py-2 sm:py-2.5"
                       onClick={closeModal}
                     >
                       I understand and I agree
