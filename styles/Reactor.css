@@ -3,7 +3,7 @@
   grid-template-columns: 2fr 10fr;
   grid-template-rows: auto auto; /* Two rows, size depends on content */
   width: 100%; /* Full width of the container */
-  height: 100vh; /* Full viewport height (adjust as necessary) */
+  /* height: 100vh; */
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -16,9 +16,12 @@
   .reactor-nav-container {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    grid-template-rows: auto auto; /* Two rows, size depends on content */
+    /* grid-template-rows: auto auto; */
+    grid-template-rows: fit-content;
     width: 100%; /* Full width of the container */
-    height: 100vh; /* Full viewport height (adjust as necessary) */
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -44,7 +47,7 @@
   margin-top: 20px;
   gap: 15px;
   padding: 20px;
-  width: 200px;
+  width: 250px;
 }
 
 .reactor-tab-button{

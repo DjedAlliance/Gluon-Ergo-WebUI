@@ -58,4 +58,8 @@
     .token-links {
         margin: 0px;
     }
+
+    .header-info h4 {
+        width: 90%;
+    }
 }

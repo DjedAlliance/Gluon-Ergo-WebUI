@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className={s.mainWrapper}>
       <Head>
-        <title>Reactor Page</title>
+        <title>Gluon Gold</title>
         <link rel="shortcut icon" href="" />
       </Head>
       <ToastContainer />

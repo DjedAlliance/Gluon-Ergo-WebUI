@@ -167,7 +167,7 @@ const TransmuteGoldToRsv = () => {
       return;
     }
   };
-  const tokenName = "Turn GAUC reservecoin into GAU stablecoin";
+  const tokenName = "Turn GAUC volatile coin into GAU stable coin";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 

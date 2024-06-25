@@ -298,7 +298,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
             ? "py-1 px-2 sm:px-[10px] rounded-[5px] "
             : ""
         }`}
-        style={{ backgroundColor: walletConnected ? '#35333F' : '' }}
+        style={{ backgroundColor: walletConnected ? '#35333F' : '', width: '85%' }}
       >
         <Space
           className="site-button-ghost-wrapper   connectWalletBtn w-full"

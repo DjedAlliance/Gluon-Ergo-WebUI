@@ -189,7 +189,7 @@ export const Fusion = () => {
     }
   };
 
-  const tokenName = "Fuse GAU stablecoin and GAUC reservecoin into ERG";
+  const tokenName = "Merge GAU stable coin and GAUC volatile coin into ERG";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 

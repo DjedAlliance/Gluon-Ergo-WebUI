@@ -84,7 +84,7 @@ const Main = () => {
   return (
     <>
       <div>
-        <div className="main-content" style={{ paddingBottom: "100px" }}>
+        <div className="main-content">
           <Navbar
             activeTab={activeTab}
             setActiveTab={setActiveTab}

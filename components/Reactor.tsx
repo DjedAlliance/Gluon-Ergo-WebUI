@@ -32,7 +32,7 @@ const Reactor = (props: IProps) => {
       <div className="reactor-nav-container">
           {/* Menu for larger screens */}
           <div className="header-and-menu">
-            <h1 className="reactor-title">Gluon Reactor</h1>
+            {/* <h1 className="reactor-title">Gluon Reactor</h1> */}
             <div className="reactor-menu-container">
               <TabButton title="Fission" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />
               <TabButton title="Fusion" reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab} />

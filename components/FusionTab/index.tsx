@@ -71,7 +71,7 @@ const FusionTab: FC<FusionTabProps> = ({
             <div className={styles.detailContainerRow}>
               <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Receive</label>
               <div className={styles.detailContainerActionLabelRow}>
-                <p className={styles.detailContainerActionLabel}> Bal: {maxAmount} ERG </p>
+                <p className={styles.detailContainerActionLabel}> Balance: {maxAmount} ERG </p>
               </div>
             </div>
             <div className={styles.detailContainerRow}>

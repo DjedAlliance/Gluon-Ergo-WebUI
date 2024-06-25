@@ -99,9 +99,9 @@ interface Asset {
                     </label>
                     {currentPage === ('Fusion' || 'Transmute from Gold' || 'Transmute to Gold') && (
                       <div className={styles.detailContainerActionLabelRow}>
-                        <span>Bal:&nbsp;</span>
+                        <span>Balance:&nbsp;</span>
                         { matchedWalletAsset || assets ? (
-                          <p className={styles.detailContainerActionLabel}> {UIFriendlyValue(matchedWalletAsset.amount)} {asset.assetName} </p>
+                          <p className={styles.detailContainerActionLabel}> {UIFriendlyValue(matchedWalletAsset?.amount)} {asset.assetName} </p>
                         ) : (
                           '-'
                         )}

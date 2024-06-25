@@ -68,7 +68,7 @@ export default function KnowYourAssumptionsModal() {
                     </h2>
                     <div className="space-y-4 px-2 py-6">
                       <p>
-                        <span className="font-bold">Gluon</span> is an asset-backed stablecoin protocol.
+                        <span className="font-bold">Gluon</span> is an asset-backed stable coin protocol.
                       </p>
                       <p>
                         <span className="font-bold">Gluon Gold on Ergo</span> is a Gluon-based smart contract

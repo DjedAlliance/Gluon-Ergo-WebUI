@@ -71,7 +71,7 @@ const BetaDecayTabs:FC<BetaDecayTabsProps> = ({
                 <div className={styles.detailContainerRow}>
                 <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
                 <div className={styles.detailContainerActionLabelRow}>
-                Bal:&nbsp;
+                Balance:&nbsp;
                 { tokenBalance > 0 ? (
                         <p className={styles.detailContainerActionLabel}> {UIFriendlyValue(tokenBalance)} {currencyShown} </p>
                     ) : (
@@ -123,7 +123,7 @@ const BetaDecayTabs:FC<BetaDecayTabsProps> = ({
             <FeesAndSlippage />
 
             <button type="submit" className={styles.convertNowButton} disabled={isError}>
-                { currentPage ===  TransmuteFromGold ? 'Initiate Beta Decay +' : 'Initiate Beta Decay -' }
+                { currentPage ===  TransmuteFromGold ? 'Initiate Transmutation to Gold' : 'Initiate Transmutation from Gold' }
             </button>
       </form>
     )
