@@ -3,7 +3,7 @@
 }
 
 .currentErgs {
-  padding: 0.25rem; 
+  padding: 0.25rem;
   color: white;
   background-color: #24222C;
   border-radius: 5px;
@@ -42,6 +42,6 @@
 @media (min-width: 640px) {
   .connectWalletButton {
     width: fit-content;
-    padding: 0.625rem 1.25rem;
+    padding: 0.625rem;
   }
 }

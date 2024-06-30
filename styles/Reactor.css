@@ -11,6 +11,7 @@
 @media (max-width: 640px) {
   .header-and-menu {
       display: none;
+      margin-right: 0px;
   }
 
   .reactor-nav-container {
@@ -75,6 +76,7 @@
 .header-and-menu {
   justify-content: flex-start;
   flex-direction: column;
+  margin-right: 20px;
 }
 
 /* .main-content {
