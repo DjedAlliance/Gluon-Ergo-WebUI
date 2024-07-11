@@ -1,64 +1,48 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
-    apiPrecision,
-    apiPrecisionBigInt,
-    BANK_SINGLETON_TOKEN_ID,
-    explorerClient,
-    UIMultiplier,
+  apiPrecision,
+  BANK_SINGLETON_TOKEN_ID,
+  explorerClient,
 } from "@/blockchain/ergo/constants";
-import { HodlBankContract } from "@/blockchain/ergo/phoenixContracts/BankContracts/HodlBankContract";
 
 type BankAPIData = {
-    ergPerToken: number;
-    emissionAmount: number;
-    tvl: number;
-    protocolFeesCollected: number;
-    height: number;
+  ergPerToken: number;
+  emissionAmount: number;
+  tvl: number;
+  protocolFeesCollected: number;
 };
 
 type APIResponse = {
-    hodlERG3: BankAPIData;
+  hodlERG3: BankAPIData;
 };
 
 export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<APIResponse>
+  req: NextApiRequest,
+  res: NextApiResponse<APIResponse>
 ) {
-    const bankBox = (
-        await explorerClient(true).getApiV1BoxesUnspentBytokenidP1(
-            BANK_SINGLETON_TOKEN_ID(true)
-        )
-    ).data.items![0];
-    const hodlBankContract = new HodlBankContract(bankBox);
+  const bankBox = (
+    await explorerClient(true).getApiV1BoxesUnspentBytokenidP1(
+      BANK_SINGLETON_TOKEN_ID(true)
+    )
+  ).data.items![0];
 
-    const currentPrice = hodlBankContract.mintAmount(BigInt(1e9));
-    const tvl = hodlBankContract.getTVL();
+  const currentPrice = 123;
+  const tvl = 123;
 
-    const currentPriceUI =
-        Number((currentPrice * apiPrecisionBigInt) / UIMultiplier) / apiPrecision;
+  const currentPriceUI = Number(123) / apiPrecision;
 
-    const circulatingSupplyUI =
-        Number(
-            (hodlBankContract.getHodlERG3EmissionAmount() * apiPrecisionBigInt) /
-            UIMultiplier
-        ) / apiPrecision;
+  const circulatingSupplyUI = 123;
 
-    const tvlUI =
-        Number((tvl * apiPrecisionBigInt) / UIMultiplier) / apiPrecision;
+  const tvlUI = 123;
 
-    const protocolFeesCollectedUI =
-        Number(
-            (hodlBankContract.getProtocolFeesCollected() * apiPrecisionBigInt) /
-            UIMultiplier
-        ) / apiPrecision;
+  const protocolFeesCollectedUI = 123;
 
-    res.status(200).json({
-        hodlERG3: {
-            ergPerToken: currentPriceUI,
-            emissionAmount: circulatingSupplyUI,
-            tvl: tvlUI,
-            protocolFeesCollected: protocolFeesCollectedUI,
-            height: hodlBankContract.getBoxBlockHeight(),
-        },
-    });
+  res.status(200).json({
+    hodlERG3: {
+      ergPerToken: currentPriceUI,
+      emissionAmount: circulatingSupplyUI,
+      tvl: tvlUI,
+      protocolFeesCollected: protocolFeesCollectedUI,
+    },
+  });
 }

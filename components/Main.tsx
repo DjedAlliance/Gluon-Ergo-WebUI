@@ -16,12 +16,10 @@ import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { getWalletConfig } from "@/blockchain/ergo/wallet/utils";
 import { getWalletConnection } from "@/blockchain/ergo/walletUtils/utils";
 import { Fission } from "./Fission";
-import Home from "./Home";
 import TransmuteGoldToRsv from "./TransumuteGoldToRsv";
 import TransmuteRsvToGold from "./TransumuteRsvToGold";
 import MintGold from "./MintGold";
 import MintRsv from "./MintRsv";
-import Docs from "./Docs";
 import Reactor from "./Reactor";
 import {
   Fission as fissionTitle,
@@ -32,7 +30,7 @@ import {
   GAU_Stablecoin as gauStablecoinTitle,
   GAUC_Reservecoin as gaucReservecoinTitle,
   MintGold as mintGoldTitle,
-  MintRsv as mintRsvTitle
+  MintRsv as mintRsvTitle,
 } from "./constant";
 import { Fusion } from "./Fusion";
 
@@ -95,7 +93,12 @@ const Main = () => {
           {activeTab === fusionTitle && <Fusion />}
           {activeTab === mintGoldTitle && <MintGold />}
           {activeTab === mintRsvTitle && <MintRsv />}
-          {activeTab == reactorTitle && <Reactor reactorActiveTab={reactorActiveTab} setReactorActiveTab={setReactorActiveTab}/>}
+          {activeTab == reactorTitle && (
+            <Reactor
+              reactorActiveTab={reactorActiveTab}
+              setReactorActiveTab={setReactorActiveTab}
+            />
+          )}
           {/* UNCOMMENT THIS LINE TO ADD THE MINT TABS
           {activeTab == gauStablecoinTitle && <TransmuteGoldToRsv />}
           {activeTab == gaucReservecoinTitle && <TransmuteRsvToGold />}
