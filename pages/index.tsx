@@ -11,7 +11,7 @@ export default function Home() {
     <div className={s.mainWrapper}>
       <Head>
         <title>Gluon Gold</title>
-        <link rel="shortcut icon" href="" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <ToastContainer />
       <main className={`bg-[#24222C] ${s.main}`}>
