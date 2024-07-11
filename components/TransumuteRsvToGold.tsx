@@ -30,15 +30,16 @@ import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
-import { UnsignedTxForTransmuteGoldToRsv, UnsignedTxForTransmuteRsvToGold } from "@/blockchain/ergo/apiHelper";
+import {
+  UnsignedTxForTransmuteGoldToRsv,
+  UnsignedTxForTransmuteRsvToGold,
+} from "@/blockchain/ergo/apiHelper";
 import CardContainer from "./Common/CardContainer";
 import TokenContainer from "./Common/TokenContainer";
 import { TransmuteToGold } from "./constant";
 
 const TransmuteRsvToGold = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
-  const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
-  const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [rsvAmountAvailable, setRsvAmountAvailable] = useState<any>(null);
