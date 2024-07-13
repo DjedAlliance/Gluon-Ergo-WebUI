@@ -32,11 +32,10 @@ interface SideTabProps {
 const ReactorSideTabs = ({ activeHref }: SideTabProps) => {
   return (
     <div className="flex flex-col mt-4">
-      <div className="flex flex-col p-4 space-y-4 bg-darkgrey rounded-lg">
+      <div className="flex flex-col p-4 space-y-2 bg-darkgrey rounded-lg">
         {Reactor.map((tab) => {
           return (
             <TabButton
-              key={tab.title}
               title={tab.title}
               isActive={activeHref === tab.href}
               hrefLink={tab.href}
@@ -61,8 +60,8 @@ const TabButton = ({
     href={hrefLink}
     className={classNames(
       isActive
-        ? "text-gluongold bg-gluongold/20 rounded-lg p-2 pl-4"
-        : "text-textprimary pl-4"
+        ? "text-gluongold bg-gluongold/20 p-2 rounded-lg pl-4"
+        : "text-textprimary p-2 pl-4"
     )}
   >
     {title}
