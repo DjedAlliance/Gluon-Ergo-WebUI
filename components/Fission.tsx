@@ -28,13 +28,7 @@ import {
   nanoErgsToErgs,
   ergsToNanoErgs,
 } from "@/blockchain/ergo/walletUtils/utils";
-import {
-  UnsignedTxForFission,
-  getFissionPrice,
-} from "@/blockchain/ergo/apiHelper";
-import CardContainer from "@/components/Common/CardContainer";
-import TokenInfo from "@/components/Common/TokenInfo";
-import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
+import { UnsignedTxForFission } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "@/components/Common/TokenContainer";
 import { Fission as fissionTitle } from "./constant";
 

@@ -12,14 +12,13 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { grayButtonsBg, whiteTextsButtons } from "./genericClassNames";
 import { Dialog, DialogPanel } from "@headlessui/react";
 interface IProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  currentHref: string;
   socket: Socket<DefaultEventsMap, DefaultEventsMap> | undefined;
 }
 
 const Header = (props: IProps) => {
   const router = useRouter();
-  const { activeTab, setActiveTab, socket } = props;
+  const { currentHref, socket } = props;
   const [isMobileMenuOpen, setIsMobileMenuOpen] =
     React.useState<boolean>(false);
 
@@ -51,7 +50,7 @@ const Header = (props: IProps) => {
       >
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full bg-black/70">
-          <div className="bg-cowboy px-6 py-6">
+          <div className="bg-purplemist px-6 py-6">
             <div className="flex items-center justify-end">
               <button
                 type="button"
@@ -69,32 +68,53 @@ const Header = (props: IProps) => {
               <div className="-my-6">
                 <div className="space-y-5 pb-6 flex flex-col text-white">
                   <Link
-                    href="app/fission"
-                    className={classNames("hover:text-gluongold")}
+                    href="fission"
+                    className={classNames(
+                      currentHref === "/app/fission"
+                        ? "text-gluongold"
+                        : "text-white",
+                      "hover:text-cowboy"
+                    )}
                   >
                     Fission
                   </Link>
                   <Link
-                    href="app/fusion"
-                    className={classNames("hover:text-gluongold")}
+                    href="fusion"
+                    className={classNames(
+                      currentHref === "/app/fusion"
+                        ? "text-gluongold"
+                        : "text-white",
+                      "hover:text-cowboy"
+                    )}
                   >
                     Fusion
                   </Link>
                   <Link
-                    href="app/rsvToGold"
-                    className={classNames("hover:text-gluongold")}
+                    href="rsvToGold"
+                    className={classNames(
+                      currentHref === "/app/rsvToGold"
+                        ? "text-gluongold"
+                        : "text-white",
+                      "hover:text-cowboy"
+                    )}
                   >
                     Transmute RSV to Gold
                   </Link>
                   <Link
-                    href="app/goldToRsv"
-                    className={classNames("hover:text-gluongold")}
+                    href="goldToRsv"
+                    className={classNames(
+                      currentHref === "/app/goldToRsv"
+                        ? "text-gluongold"
+                        : "text-white",
+                      "hover:text-cowboy"
+                    )}
                   >
                     Transmute Gold to RSV
                   </Link>
                 </div>
-                <div className="w-full bg-purplemist h-0.5 mb-5" />
-                <div className="mb-4">
+                <div className="w-full bg-neutraldark h-0.5 mb-5" />
+                <div className="flex flex-row items-center justify-between mb-4">
+                  <ConnectWallet socket={socket} />
                   <NetworkPicker />
                 </div>
               </div>

@@ -75,11 +75,7 @@ export default function AppPage({ children }: AppPageProps) {
       <ToastContainer />
       <main className={classNames("bg-[#24222C] pb-8", "flex flex-col ")}>
         <div className="">
-          <Header
-            activeTab={"Reactor"}
-            setActiveTab={(tab: string) => console.log("hello")}
-            socket={socket}
-          />
+          <Header currentHref={router.pathname} socket={socket} />
         </div>
         <div className="flex flex-row px-8 md:space-x-8 lg:space-x-16 w-full justify-center md:pt-12">
           <div className="hidden md:flex flex-col">
