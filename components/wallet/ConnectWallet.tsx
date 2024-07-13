@@ -2,7 +2,7 @@ import {
   faArrowUpRightFromSquare,
   faCopy,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from '../../styles/ConnectWallet.module.css';
+import styles from "../../styles/ConnectWallet.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal, Space, Tabs, TabsProps, Tooltip } from "antd";
 import Image from "next/image";
@@ -293,12 +293,9 @@ const ConnectWallet: React.FC<IProps> = (props) => {
   return (
     <>
       <div
-        className={`flex items-center space-x-2 mx-2 sm:mr-15 mt-15 ml-6 mb-4 lg:mb-0 ${
-          walletConnected
-            ? "py-1 px-2 sm:px-[10px] rounded-[5px] "
-            : ""
-        }`}
-        style={{ backgroundColor: walletConnected ? '#35333F' : '', width: '85%' }}
+        className={classNames(
+          walletConnected ? "py-1 px-2 sm:px-[10px] rounded-[5px] " : ""
+        )}
       >
         <Space
           className="site-button-ghost-wrapper   connectWalletBtn w-full"
@@ -343,7 +340,11 @@ const ConnectWallet: React.FC<IProps> = (props) => {
               </div>
             ) : (
               <div className="flex w-full items-center whitespace-nowrap">
-                <span className={`${isEyeOpen ? styles.textBlur : ''} ${styles.currentErgs} py-1`}>
+                <span
+                  className={`${isEyeOpen ? styles.textBlur : ""} ${
+                    styles.currentErgs
+                  } py-1`}
+                >
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </span>
                 <button
@@ -357,7 +358,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                 >
                   <div className="flex w-full font-VelaSansRegular space-x-3">
                     <Image alt="img" width="25" src={NautilusLogo} />
-                    <p className={`${isEyeOpen ? styles.textBlur : ''}`}>
+                    <p className={`${isEyeOpen ? styles.textBlur : ""}`}>
                       {reduceAddress(walletAddress![0])}
                     </p>
                   </div>
@@ -367,7 +368,9 @@ const ConnectWallet: React.FC<IProps> = (props) => {
           ) : (
             <button
               type="button"
-              className={styles.connectWalletButton}
+              className={
+                "font-medium rounded-lg bg-gluongold p-2 text-sm text-purplemist px-3.5"
+              }
             >
               CONNECT WALLET
             </button>
@@ -425,7 +428,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
           animated
           activeKey={activeKey}
           className="mt-2"
-          style={{ background: '#2B2935' }}
+          style={{ background: "#2B2935" }}
         />
       </Modal>
 
@@ -509,7 +512,11 @@ const ConnectWallet: React.FC<IProps> = (props) => {
             >
               <div className="flex items-center">
                 <ErgoIconModal />
-                <p className={`${commonStyle.ergoBalanceText} ${isEyeOpen ? styles.textBlur : ''}`} >
+                <p
+                  className={`${commonStyle.ergoBalanceText} ${
+                    isEyeOpen ? styles.textBlur : ""
+                  }`}
+                >
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </p>
               </div>

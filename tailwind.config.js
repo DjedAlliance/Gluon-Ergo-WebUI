@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         primary: "#C8B209",
         darkblack: "#FFBF00",
+        gluongold: "#F3B619",
+        purplemist: "#24222C",
+        cowboy: "#daa00b",
+        textprimary: "#878494",
+        darkgrey: "#2B2935",
       },
     },
   },

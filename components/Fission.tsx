@@ -41,8 +41,6 @@ import { Fission as fissionTitle } from "./constant";
 export const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [ergForFissionAmount, setErgForFissionAmount] = useState<number>(0);
-  const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
-  const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
 
   const minBoxValue = BigInt(1000000);
@@ -68,7 +66,7 @@ export const Fission = () => {
     setExplorerApiClient(explorerClient);
 
     const walletConfig = getWalletConfig();
-    console.log('walletConfig', walletConfig)
+    console.log("walletConfig", walletConfig);
     if (walletConfig !== undefined) {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
@@ -174,18 +172,16 @@ export const Fission = () => {
 
   return (
     <>
-      <CardContainer>
-        <TokenContainer
-          onPurchase={handleClick}
-          tokenName={tokenName}
-          description={description}
-          logoUrl={logoUrl}
-          baseCurrency="ERG"
-          maxAmount={ergoAmountAvailable}
-          isMainnet={isMainnet}
-          currentPage={fissionTitle}
-        />
-      </CardContainer>
+      <TokenContainer
+        onPurchase={handleClick}
+        tokenName={tokenName}
+        description={description}
+        logoUrl={logoUrl}
+        baseCurrency="ERG"
+        maxAmount={ergoAmountAvailable}
+        isMainnet={isMainnet}
+        currentPage={fissionTitle}
+      />
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}
@@ -196,5 +192,5 @@ export const Fission = () => {
         ></ErgoPayWalletModal>
       )}
     </>
-  )
+  );
 };

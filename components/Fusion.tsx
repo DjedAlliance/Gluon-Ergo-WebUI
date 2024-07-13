@@ -35,21 +35,13 @@ import {
   nanoErgsToErgs,
   ergsToNanoErgs,
 } from "@/blockchain/ergo/walletUtils/utils";
-import {
-  UnsignedTxForFusion,
-  getFusionPrice,
-} from "@/blockchain/ergo/apiHelper";
-import CardContainer from "@/components/Common/CardContainer";
-import TokenInfo from "@/components/Common/TokenInfo";
-import TokenPurchaseForm from "@/components/Common/TokenPurchaseForm";
+import { UnsignedTxForFusion } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "@/components/Common/TokenContainer";
 import { Fusion as fusionTitle } from "./constant";
 
 export const Fusion = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [ergForFusionAmount, setErgForFusionAmount] = useState<number>(0);
-  const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
-  const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
 
   const minBoxValue = BigInt(1000000);
@@ -97,8 +89,12 @@ export const Fusion = () => {
         });
     }
   }, []);
-  console.log('protonAmountAvailable', protonAmountAvailable,
-  'neutronAmountAvailable', neutronAmountAvailable)
+  console.log(
+    "protonAmountAvailable",
+    protonAmountAvailable,
+    "neutronAmountAvailable",
+    neutronAmountAvailable
+  );
 
   const handleClick = async (amount: number) => {
     const walletConfig = getWalletConfig();
@@ -195,20 +191,18 @@ export const Fusion = () => {
 
   return (
     <>
-      <CardContainer>
-        <TokenContainer
-          onPurchase={handleClick}
-          tokenName={tokenName}
-          description={description}
-          logoUrl={logoUrl}
-          baseCurrency="ERG"
-          maxAmount={ergoAmountAvailable}
-          isMainnet={isMainnet}
-          currentPage={fusionTitle}
-          maxProtonsAvailable={protonAmountAvailable}
-          maxNeutronsAvailable={neutronAmountAvailable}
-        />
-      </CardContainer>
+      <TokenContainer
+        onPurchase={handleClick}
+        tokenName={tokenName}
+        description={description}
+        logoUrl={logoUrl}
+        baseCurrency="ERG"
+        maxAmount={ergoAmountAvailable}
+        isMainnet={isMainnet}
+        currentPage={fusionTitle}
+        maxProtonsAvailable={protonAmountAvailable}
+        maxNeutronsAvailable={neutronAmountAvailable}
+      />
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}

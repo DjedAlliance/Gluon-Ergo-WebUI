@@ -30,11 +30,7 @@ import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
-import {
-  UnsignedTxForTransmuteGoldToRsv,
-  UnsignedTxForTransmuteRsvToGold,
-} from "@/blockchain/ergo/apiHelper";
-import CardContainer from "./Common/CardContainer";
+import { UnsignedTxForTransmuteGoldToRsv } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "./Common/TokenContainer";
 import { TransmuteToGold } from "./constant";
 
@@ -172,18 +168,16 @@ const TransmuteRsvToGold = () => {
 
   return (
     <>
-      <CardContainer>
-        <TokenContainer
-          onPurchase={handleClick}
-          tokenName={tokenName}
-          description={description}
-          logoUrl={logoUrl}
-          baseCurrency="GAU"
-          maxAmount={rsvAmountAvailable}
-          isMainnet={isMainnet}
-          currentPage={TransmuteToGold}
-        />
-      </CardContainer>
+      <TokenContainer
+        onPurchase={handleClick}
+        tokenName={tokenName}
+        description={description}
+        logoUrl={logoUrl}
+        baseCurrency="GAU"
+        maxAmount={rsvAmountAvailable}
+        isMainnet={isMainnet}
+        currentPage={TransmuteToGold}
+      />
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}

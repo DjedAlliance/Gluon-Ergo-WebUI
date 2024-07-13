@@ -28,7 +28,7 @@ const TokenContainer: React.FC<TokenContainerProps> = ({
   maxNeutronsAvailable,
 }) => {
   return (
-    <div className="token-container">
+    <div>
       <TokenInfo
         tokenName={tokenName}
         description={description}

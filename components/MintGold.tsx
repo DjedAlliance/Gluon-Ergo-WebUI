@@ -32,8 +32,6 @@ import TokenContainer from "./Common/TokenContainer";
 const MintGold = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [ergForMintGoldAmount, setErgForMintGoldAmount] = useState<number>(0);
-  const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
-  const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [goldAmountAvailable, setGoldAmountAvailable] = useState<any>(null);

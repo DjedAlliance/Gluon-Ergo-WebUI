@@ -172,18 +172,16 @@ const TransmuteGoldToRsv = () => {
 
   return (
     <>
-      <CardContainer>
-        <TokenContainer
-          onPurchase={handleClick}
-          tokenName={tokenName}
-          description={description}
-          logoUrl={logoUrl}
-          baseCurrency="GAUC"
-          maxAmount={goldAmountAvailable}
-          isMainnet={isMainnet}
-          currentPage={TransmuteFromGold}
-        />
-      </CardContainer>
+      <TokenContainer
+        onPurchase={handleClick}
+        tokenName={tokenName}
+        description={description}
+        logoUrl={logoUrl}
+        baseCurrency="GAUC"
+        maxAmount={goldAmountAvailable}
+        isMainnet={isMainnet}
+        currentPage={TransmuteFromGold}
+      />
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}

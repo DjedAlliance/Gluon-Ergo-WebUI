@@ -33,8 +33,6 @@ import { MintRsv as mintRsvTitle } from "./constant";
 const MintRsv = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [ergForMintRsvAmount, setErgForMintRsvAmount] = useState<number>(0);
-  const [bankBox, setBankBox] = useState<OutputInfo | null>(null);
-  const [ergPrice, setErgPrice] = useState<number>(0);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [ergoAmountAvailable, setErgoAmountAvailable] = useState<any>(null);
