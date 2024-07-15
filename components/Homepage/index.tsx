@@ -89,7 +89,7 @@ export default function HomePageContent() {
   const renderMechanics = () => {
     return (
       <div className="flex flex-col items-center space-y-10">
-        <div className="flex flex-col items-center w-1/2 space-y-2">
+        <div className="flex flex-col items-center w-3/4 md:w-1/2 space-y-2">
           <div className="text-2xl">{mechanicsTitle}</div>
           <div className="text-sm font-thin">{mechanicsDesc}</div>
         </div>
