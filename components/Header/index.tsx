@@ -134,7 +134,7 @@ const Header = (props: IProps) => {
         </Link>
         <div className="hidden sm:block flex flex-row space-x-5 pl-2">
           <Link
-            href="/app"
+            href="/app/fission"
             className={classNames(
               router.pathname.includes("/app")
                 ? "text-gluongold font-medium"
@@ -145,7 +145,7 @@ const Header = (props: IProps) => {
             Reactor
           </Link>
           <Link
-            href="/app"
+            href="https://docs.stability.nexus/"
             className={classNames(
               router.pathname === "/docs"
                 ? "text-gluongold font-medium"

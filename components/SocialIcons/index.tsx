@@ -126,6 +126,7 @@ export const applicationConfig = {
     telegram: "https://t.me/GluonGold",
     discord: "https://discord.com/invite/YzDKeEfWtS",
     github: "https://github.com/DjedAlliance",
+    docs: "https://docs.stability.nexus/",
   },
 };
 

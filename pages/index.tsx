@@ -1,20 +1,12 @@
-import Head from "next/head";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "@/components/Footer";
 
-import s from "@/styles/general.module.css";
+import HomePage from "@/components/pages/HomePage";
+import HomePageContent from "@/components/Homepage";
 
 export default function Home() {
   return (
-    <div className={s.mainWrapper}>
-      <Head>
-        <title>Gluon Gold</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <ToastContainer />
-      <main className={`bg-[#24222C] ${s.main}`}>Hello</main>
-      <Footer />
-    </div>
+    <HomePage>
+      <HomePageContent />
+    </HomePage>
   );
 }
