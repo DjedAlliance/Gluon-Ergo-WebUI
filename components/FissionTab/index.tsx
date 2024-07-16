@@ -57,7 +57,11 @@ const FissionTab: FC<FissionTabProps> = ({
               Pay
             </label>
             {/* Use a span or a read-only input to display the currency */}
-            <div className={"text-sm flex"}>
+            <div className={"text-sm flex space-x-2"}>
+              <p className={styles.detailContainerActionLabel}>
+                {" "}
+                Balance: {maxAmount} {currencyShown}{" "}
+              </p>
               <p
                 className={"bg-gluongold/50 px-2 py-0.5 rounded-lg"}
                 onClick={() => setAmount(maxAmount)}
