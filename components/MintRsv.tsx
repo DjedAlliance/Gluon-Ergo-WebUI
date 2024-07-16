@@ -166,7 +166,7 @@ const MintRsv = () => {
 
   return (
     <>
-      <CardContainer>
+      {/* <CardContainer>
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}
@@ -177,7 +177,7 @@ const MintRsv = () => {
           isMainnet={isMainnet}
           currentPage={mintRsvTitle}
         />
-      </CardContainer>
+      </CardContainer> */}
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}

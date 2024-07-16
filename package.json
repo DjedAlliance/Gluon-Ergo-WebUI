@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@nautilus-js/eip12-types": "^0.1.9",
+    "@types/lodash": "^4.17.7",
     "@types/node": "20.14.10",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-dom": "18.2.6",

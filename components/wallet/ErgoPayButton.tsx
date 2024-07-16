@@ -5,13 +5,10 @@ import { Button } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import { addressConnectionQuery } from "@/blockchain/ergo/ergopay/addressConnectionQuery";
 import { ErgoAddress, Network } from "@fleet-sdk/core";
-import {
-  noti_option_close,
-} from "@/components/shared/Notifications/Toast";
+import { noti_option_close } from "@/components/shared/Notifications/Toast";
 import { handleCopyText } from "@/blockchain/ergo/wallet/utils";
 import { NEXT_PUBLIC_NEST_API_URL } from "@/blockchain/ergo/constants";
 import { toast } from "react-toastify";
-
 
 const ErgoPayButton = ({
   setIsModalOpen,
@@ -46,7 +43,7 @@ const ErgoPayButton = ({
               }
               setIsModalOpen(false);
               if (intervalId) {
-                clearInterval(intervalId);
+                clearInterval(intervalId as number);
                 intervalId = undefined; // set intervalId as undefined just to be safe
               }
             }
@@ -57,7 +54,7 @@ const ErgoPayButton = ({
 
     // this will clear the Interval when the component is unmounted or activeKey changes
     return () => {
-      clearInterval(intervalId);
+      clearInterval(intervalId as number);
     };
   }, [activeKey]);
 
@@ -96,9 +93,13 @@ const ErgoPayButton = ({
           </svg>
         </div>
       </div>
-      <p className="text-center" style={{color: "white"}}>Waiting for connection with ErgoPay</p>
+      <p className="text-center" style={{ color: "white" }}>
+        Waiting for connection with ErgoPay
+      </p>
 
-      <h5 className="text-center" style={{color: "white"}}>Scan QR code</h5>
+      <h5 className="text-center" style={{ color: "white" }}>
+        Scan QR code
+      </h5>
 
       {/*  qr code*/}
       <div className="flex justify-center">

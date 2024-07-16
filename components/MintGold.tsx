@@ -166,7 +166,7 @@ const MintGold = () => {
 
   return (
     <>
-      <CardContainer>
+      {/* <CardContainer>
         <TokenContainer
           onPurchase={handleClick}
           tokenName={tokenName}
@@ -177,7 +177,7 @@ const MintGold = () => {
           isMainnet={isMainnet}
           currentPage="MintGold"
         />
-      </CardContainer>
+      </CardContainer> */}
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}
