@@ -58,12 +58,13 @@ const BetaDecayTabs: FC<BetaDecayTabsProps> = ({
           (item: any) => item.tokenId === GAUId
         )?.amount;
       }
+      console.log(balance);
 
       setTokenBalance(balance);
     };
 
     calculateTokenBalance();
-  }, [currencyShown]);
+  }, [currencyShown, tokenBalance]);
 
   return (
     <form
@@ -80,18 +81,11 @@ const BetaDecayTabs: FC<BetaDecayTabsProps> = ({
               Pay
             </label>
             <div className={"text-sm flex"}>
-              Balance:&nbsp;
-              {tokenBalance > 0 ? (
-                <p className={styles.detailContainerActionLabel}>
-                  {" "}
-                  {UIFriendlyValue(tokenBalance)} {currencyShown}{" "}
-                </p>
-              ) : (
-                "-"
-              )}
               <p
-                className={styles.detailContainerActionLabelMax}
-                onClick={() => setAmount(UIFriendlyValue(tokenBalance))}
+                className={"bg-gluongold/50 px-2 py-0.5 rounded-lg"}
+                onClick={() =>
+                  setAmount(maxAmount !== undefined ? maxAmount : 0)
+                }
               >
                 {" "}
                 Max
