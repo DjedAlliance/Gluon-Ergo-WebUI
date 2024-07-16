@@ -77,7 +77,7 @@ const FissionTab: FC<FissionTabProps> = ({
               value={amount}
               onChange={handleAmountChange}
               placeholder="Enter amount"
-              className={"bg-transparent text-2xl text-graytext"}
+              className={"bg-transparent text-2xl focus:outline-none"}
             />
             <p id="payment-amount-static" className={"text-2xl"}>
               {currencyShown}
