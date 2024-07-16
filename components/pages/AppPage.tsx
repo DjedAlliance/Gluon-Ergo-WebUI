@@ -77,7 +77,7 @@ export default function AppPage({ children }: AppPageProps) {
         <div className="">
           <Header currentHref={router.pathname} socket={socket} />
         </div>
-        <div className="flex flex-row px-8 md:space-x-8 lg:space-x-16 w-full justify-center md:pt-12 pb-24">
+        <div className="flex flex-row px-8 md:space-x-8 lg:space-x-16 w-full justify-center md:pt-12 pb-12">
           <div className="hidden md:flex flex-col">
             <ReactorSideTabs activeHref={router.pathname} />
           </div>
