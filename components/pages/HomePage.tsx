@@ -26,7 +26,7 @@ export default function HomePage({ children }: AppPageProps) {
         <div className="">
           <HomepageHeader currentHref={router.pathname} />
         </div>
-        <div className="flex flex-row px-8 md:space-x-8 lg:space-x-16 w-full justify-center md:pt-12">
+        <div className="flex flex-row px-8 md:space-x-8 lg:space-x-16 w-full md:w-3/4 m-auto justify-center md:pt-12">
           {children}
         </div>
       </main>
