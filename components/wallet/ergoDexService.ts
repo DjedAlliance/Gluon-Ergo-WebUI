@@ -3,11 +3,11 @@ import axiosRetry from "axios-retry";
 import { uniqWith } from "lodash";
 import BigNumber from "bignumber.js";
 
-const ERG_TOKEN_ID = "0000000000000000000000000000000000000000000000000000000000000000";
+const ERG_TOKEN_ID =
+  "0000000000000000000000000000000000000000000000000000000000000000";
 function asDict<T>(array: T[]) {
   return Object.assign({}, ...array);
 }
-
 
 export type ErgoDexPool = {
   id: string;
@@ -36,23 +36,29 @@ export class ErgoDexService {
     const fromDate = new Date();
     fromDate.setDate(fromDate.getDate() - 30);
 
-    const { data } = await axios.get<ErgoDexPool[]>(`${BASE_URL}/price-tracking/markets`, {
-      params: {
-        from: this._getUtcTimestamp(fromDate),
-        to: this._getUtcTimestamp(new Date())
+    const { data } = await axios.get<ErgoDexPool[]>(
+      `${BASE_URL}/price-tracking/markets`,
+      {
+        params: {
+          from: this._getUtcTimestamp(fromDate),
+          to: this._getUtcTimestamp(new Date()),
+        },
       }
-    });
+    );
 
     const filtered = uniqWith(
       data.filter((x) => x.baseId === ERG_TOKEN_ID),
       (a, b) =>
-        a.quoteId === b.quoteId && new BigNumber(a.baseVolume.value).isLessThan(b.baseVolume.value)
+        a.quoteId === b.quoteId &&
+        new BigNumber(a.baseVolume.value).isLessThan(b.baseVolume.value)
     );
 
     return asDict(
       filtered.map((r) => {
         return {
-          [r.quoteId]: { erg: new BigNumber(1).dividedBy(r.lastPrice).toNumber() }
+          [r.quoteId]: {
+            erg: new BigNumber(1).dividedBy(r.lastPrice).toNumber(),
+          },
         };
       })
     );
