@@ -290,78 +290,73 @@ const ConnectWallet: React.FC<IProps> = (props) => {
     },
   ];
 
+  const renderErgoPayWalletInfoButton = () => {
+    return (
+      <div className="flex flex-row">
+        <button className="flex font-VelaSansRegular text-black rounded-[5px] font-normal">
+          <p
+            className={`${
+              isEyeOpen ? "blur-sm" : ""
+            }  font-VelaSansRegular text-white font-normal`}
+          >
+            {numberWithCommas(parseInt(ergBalance), 9)} ERG
+          </p>
+          <span>
+            <svg
+              width="21"
+              height="21"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="12" fill="black"></circle>
+              <path
+                d="M20.6979 11.7378L18.3358 6.03509C18.2663 5.86717 18.1328 5.73375 17.9649 5.66419L12.2622 3.30213C12.0943 3.23262 11.9057 3.23262 11.7377 3.30213L6.03522 5.66419C5.86729 5.73375 5.73387 5.86717 5.6643 6.03509L3.30225 11.7378C3.26776 11.8209 3.25 11.91 3.25 12C3.25 12.09 3.26776 12.1792 3.30225 12.2623L5.6643 17.9648C5.73387 18.1327 5.86729 18.2661 6.03522 18.3357L11.7377 20.6978C11.8209 20.7322 11.91 20.75 12 20.75C12.09 20.75 12.1791 20.7322 12.2622 20.6978L17.9649 18.3357C18.1328 18.2661 18.2663 18.1327 18.3358 17.9648L20.6979 12.2623C20.7674 12.0944 20.7674 11.9057 20.6979 11.7378ZM14.832 9.75245H11.5165L13.5717 11.9047L11.4444 14.2474H14.8311V15.8212H9.16874V14.3907L11.3969 11.9241L9.17944 9.61326V8.17888H14.8312L14.832 9.75245Z"
+                fill="white"
+              ></path>
+            </svg>
+          </span>
+          <p className={`font-VelaSansRegular ${isEyeOpen ? "blur-sm" : ""} `}>
+            {reduceAddress(walletAddress![0])}
+          </p>
+        </button>
+      </div>
+    );
+  };
+
   return (
     <>
       <div
         className={classNames(
-          walletConnected ? "py-1 px-2 sm:px-[10px] rounded-[5px] " : ""
+          walletConnected
+            ? "py-0.5 px-2 sm:px-[10px] rounded-[5px] bg-neutraldark flex text-sm"
+            : ""
         )}
       >
         <Space
-          className="site-button-ghost-wrapper   connectWalletBtn w-full"
+          className="site-button-ghost-wrapper connectWalletBtn w-full"
           wrap
           onClick={walletConnected ? showNautilusModal : showModal}
           style={{ fontFamily: `'Inter', sans-serif` }}
         >
           {walletConnected ? (
             walletName && walletName === "ergopay" ? (
-              <div className="flex w-full">
-                <button className="w-full space-x-2 font-VelaSansRegular flex  text-black rounded-[5px] font-normal">
-                  <p
-                    className={`${
-                      isEyeOpen ? "blur-sm" : ""
-                    }  font-VelaSansRegular text-white font-normal`}
-                  >
-                    {numberWithCommas(parseInt(ergBalance), 9)} ERG
-                  </p>
-                  <span>
-                    <svg
-                      width="21"
-                      height="21"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle cx="12" cy="12" r="12" fill="black"></circle>
-                      <path
-                        d="M20.6979 11.7378L18.3358 6.03509C18.2663 5.86717 18.1328 5.73375 17.9649 5.66419L12.2622 3.30213C12.0943 3.23262 11.9057 3.23262 11.7377 3.30213L6.03522 5.66419C5.86729 5.73375 5.73387 5.86717 5.6643 6.03509L3.30225 11.7378C3.26776 11.8209 3.25 11.91 3.25 12C3.25 12.09 3.26776 12.1792 3.30225 12.2623L5.6643 17.9648C5.73387 18.1327 5.86729 18.2661 6.03522 18.3357L11.7377 20.6978C11.8209 20.7322 11.91 20.75 12 20.75C12.09 20.75 12.1791 20.7322 12.2622 20.6978L17.9649 18.3357C18.1328 18.2661 18.2663 18.1327 18.3358 17.9648L20.6979 12.2623C20.7674 12.0944 20.7674 11.9057 20.6979 11.7378ZM14.832 9.75245H11.5165L13.5717 11.9047L11.4444 14.2474H14.8311V15.8212H9.16874V14.3907L11.3969 11.9241L9.17944 9.61326V8.17888H14.8312L14.832 9.75245Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <p
-                    className={`font-VelaSansRegular ${
-                      isEyeOpen ? "blur-sm" : ""
-                    } `}
-                  >
-                    {reduceAddress(walletAddress![0])}
-                  </p>
-                </button>
-              </div>
+              renderErgoPayWalletInfoButton()
             ) : (
-              <div className="flex w-full items-center whitespace-nowrap">
+              <div className="flex items-center whitespace-nowrap py-1">
                 <span
-                  className={`${isEyeOpen ? styles.textBlur : ""} ${
-                    styles.currentErgs
-                  } py-1`}
+                  className={classNames(
+                    isEyeOpen ? styles.textBlur : "",
+                    "px-1 mr-2 bg-gray-900 rounded-lg py-1"
+                  )}
                 >
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </span>
-                <button
-                  className="w-full font-VelaSansRegular"
-                  style={{
-                    borderRadius: 5,
-                    color: "white",
-                    marginLeft: 10,
-                    padding: "3px 10px",
-                  }}
-                >
-                  <div className="flex w-full font-VelaSansRegular space-x-3">
-                    <Image alt="img" width="25" src={NautilusLogo} />
-                    <p className={`${isEyeOpen ? styles.textBlur : ""}`}>
-                      {reduceAddress(walletAddress![0])}
-                    </p>
-                  </div>
+                <button className="flex font-VelaSansRegular flex-row space-x-2 items-center">
+                  <Image alt="img" width="25" src={NautilusLogo} />
+                  <p className={`${isEyeOpen ? styles.textBlur : ""}`}>
+                    {reduceAddress(walletAddress![0])}
+                  </p>
                 </button>
               </div>
             )
@@ -378,7 +373,7 @@ const ConnectWallet: React.FC<IProps> = (props) => {
         </Space>
         {walletConnected && (
           <button
-            className={styles.eyeToggleButton}
+            className={"hidden md:block pl-2"}
             onClick={() => setEyeOpen(!isEyeOpen)}
           >
             {isEyeOpen ? (

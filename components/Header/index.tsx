@@ -24,7 +24,8 @@ const Header = (props: IProps) => {
 
   const renderMobileView = () => {
     return (
-      <div className="flex justify-end md:hidden">
+      <div className="flex justify-end md:hidden space-x-4">
+        <ConnectWallet socket={socket} />
         <button
           type="button"
           className={classNames(
@@ -114,8 +115,8 @@ const Header = (props: IProps) => {
                 </div>
                 <div className="w-full bg-neutraldark h-0.5 mb-5" />
                 <div className="flex flex-row items-center justify-between mb-4">
-                  <ConnectWallet socket={socket} />
                   <NetworkPicker />
+                  <ConnectWallet socket={socket} />
                 </div>
               </div>
             </div>
@@ -126,7 +127,7 @@ const Header = (props: IProps) => {
   };
 
   return (
-    <header className="grid grid-cols-6 items-center mx-3 py-4">
+    <header className="grid grid-cols-7 items-center mx-3 py-4">
       <div className="col-span-3 items-center space-x-4 content-center text-lg flex">
         {/* Top Left Section */}
         <Link className="ml-3 mr-2" href={"/"}>
@@ -157,12 +158,12 @@ const Header = (props: IProps) => {
           </Link>
         </div>
       </div>
-      <div className="hidden md:flex items-center col-span-3 flex-row space-x-4 justify-end">
+      <div className="hidden md:flex items-center col-span-4 flex-row space-x-4 justify-end">
         {/* Top Right Section */}
         <NetworkPicker />
         <ConnectWallet socket={socket} />
       </div>
-      <div className="lg:hidden col-span-3">
+      <div className="lg:hidden col-span-4">
         {renderMobileView()}
         {renderDialog()}
       </div>
