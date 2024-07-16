@@ -4,10 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "classnames";
-import NetworkPicker from "../wallet/NetworkPicker";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
-import { grayButtonsBg, whiteTextsButtons } from "./genericClassNames";
-import { Dialog, DialogPanel } from "@headlessui/react";
 import { applicationConfig } from "../SocialIcons";
 
 interface IProps {

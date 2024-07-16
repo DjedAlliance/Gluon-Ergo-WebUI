@@ -31,11 +31,7 @@ import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
-import {
-  UnsignedTxForTransmuteGoldToRsv,
-  UnsignedTxForTransmuteRsvToGold,
-} from "@/blockchain/ergo/apiHelper";
-import CardContainer from "../Common/CardContainer";
+import { UnsignedTxForTransmuteRsvToGold } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "../Common/TokenContainer";
 import { TransmuteFromGold } from "../constant";
 import TokenPurchaseForm from "../Common/TokenPurchaseForm";

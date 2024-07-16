@@ -3,7 +3,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/components/Footer";
 
-import s from "@/styles/general.module.css";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 import HomepageHeader from "../Header/homepageHeader";

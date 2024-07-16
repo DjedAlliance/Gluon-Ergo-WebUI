@@ -1,16 +1,10 @@
-import {
-  faArrowUpRightFromSquare,
-  faCopy,
-} from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/ConnectWallet.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Modal, Space, Tabs, TabsProps, Tooltip } from "antd";
+import { Modal, Space, Tabs, TabsProps, Tooltip } from "antd";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
 import NautilusLogo from "../../public/NautilusLogo.png";
-import ErgoLogoDark from "../../public/ergo-icon.png";
 import commonStyle from "../../styles/common.module.css";
 import DisconnectNautilusWalletButton from "./DisconnectNautilusWalletButton";
 import ErgoPayButton from "./ErgoPayButton";
@@ -41,8 +35,8 @@ import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { fromEvent, Subscription } from "rxjs";
 import { Socket } from "socket.io-client";
 import { noti_option_close } from "../shared/Notifications/Toast";
-import { CopyOutlined } from "@ant-design/icons";
 import AppContext from "@/context/AppContext";
+
 interface Token {
   tokenId: string;
   amount: number;
@@ -51,6 +45,7 @@ interface Token {
   tokenType: string;
   usdValue: number;
 }
+
 export interface walletLocalStorage {
   walletConnected: boolean;
   walletName: string;

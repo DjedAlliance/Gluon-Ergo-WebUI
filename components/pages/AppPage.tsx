@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/components/Footer";
 
 import s from "@/styles/general.module.css";
-import Navbar from "@/components/widgets/Navbar";
 import { useEffect, useState } from "react";
 
 import { NEXT_PUBLIC_NEST_API_URL } from "@/blockchain/ergo/constants";

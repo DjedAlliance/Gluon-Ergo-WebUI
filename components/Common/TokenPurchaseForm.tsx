@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import styles from "@/styles/TokenBox.module.css";
 import {
   Fission,
   Fusion,

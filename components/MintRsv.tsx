@@ -7,7 +7,6 @@ import {
 import {
   Configuration,
   DefaultApiFactory,
-  OutputInfo,
 } from "@/blockchain/ergo/explorerApi";
 import {
   checkWalletConnection,
