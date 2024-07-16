@@ -1,37 +1,23 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useEffect } from "react";
+import { Fragment } from "react";
 const KYA_STORAGE_KEY = "knowYourAssumptionsAccepted";
 
-export default function KnowYourAssumptionsModal() {
-  const [isOpen, setIsOpen] = useState(false);
+interface KyaProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+}
 
+export default function KnowYourAssumptionsModal({
+  isOpen,
+  setIsOpen,
+}: KyaProps) {
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen();
     localStorage.setItem(KYA_STORAGE_KEY, "true");
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  useEffect(() => {
-    const isKYAAccepted = localStorage.getItem(KYA_STORAGE_KEY);
-    if (!isKYAAccepted) {
-      setIsOpen(true);
-    }
-  }, []);
-
   return (
     <>
-      <button
-        type="button"
-        onClick={openModal}
-        className="transition-all duration-200 ease-in-out hover:text-opacity-80 outline-none bg-transparent"
-      >
-
-        KYA
-      </button>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -68,27 +54,31 @@ export default function KnowYourAssumptionsModal() {
                     </h2>
                     <div className="space-y-4 px-2 py-6">
                       <p>
-                        <span className="font-bold">Gluon</span> is an asset-backed stable coin protocol.
+                        <span className="font-bold">Gluon</span> is an
+                        asset-backed stable coin protocol.
                       </p>
                       <p>
-                        <span className="font-bold">Gluon Gold on Ergo</span> is a Gluon-based smart contract
-                        running on the Ergo blockchain, allowing you to issue Gold-pegged stablecoins backed by ERG.
+                        <span className="font-bold">Gluon Gold on Ergo</span> is
+                        a Gluon-based smart contract running on the Ergo
+                        blockchain, allowing you to issue Gold-pegged
+                        stablecoins backed by ERG.
                       </p>
                       <p>
-                        This website is an open-source UI for interacting with Gluon Gold on Ergo.{" "}
+                        This website is an open-source UI for interacting with
+                        Gluon Gold on Ergo.{" "}
                       </p>
                       <div className="">
                         <span className="font-bold">Note that:</span>
                         <ul className="list-inside">
                           <li>
-                            - This website does not log, collect, profile, share or sell your
-                            data.
+                            - This website does not log, collect, profile, share
+                            or sell your data.
                           </li>
                           <li>
                             {" "}
-                            - Gluon Gold on Ergo runs on a blockchain. Therefore,
-                            transactions are final and irreversible once they
-                            have status «
+                            - Gluon Gold on Ergo runs on a blockchain.
+                            Therefore, transactions are final and irreversible
+                            once they have status «
                             <span className="font-semibold">
                               confirmed
                             </span>».{" "}
@@ -112,8 +102,9 @@ export default function KnowYourAssumptionsModal() {
                       </p>
                       <p className="font-bold">
                         {" "}
-                        No assistance can be offered if a user is hacked or cheated
-                        out of passwords, recovery phrases, private keys or assets.{" "}
+                        No assistance can be offered if a user is hacked or
+                        cheated out of passwords, recovery phrases, private keys
+                        or assets.{" "}
                       </p>
                       <div>
                         <span className="font-bold">

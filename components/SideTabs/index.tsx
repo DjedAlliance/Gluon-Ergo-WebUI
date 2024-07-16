@@ -36,6 +36,7 @@ const ReactorSideTabs = ({ activeHref }: SideTabProps) => {
         {Reactor.map((tab) => {
           return (
             <TabButton
+              key={tab.title}
               title={tab.title}
               isActive={activeHref === tab.href}
               hrefLink={tab.href}
@@ -60,8 +61,8 @@ const TabButton = ({
     href={hrefLink}
     className={classNames(
       isActive
-        ? "text-gluongold bg-gluongold/20 p-2 rounded-lg pl-4"
-        : "text-textprimary p-2 pl-4"
+        ? "text-gluongold bg-gluongold/20 p-2 rounded-lg px-4 text-sm"
+        : "text-textprimary p-2 pl-4 text-sm"
     )}
   >
     {title}

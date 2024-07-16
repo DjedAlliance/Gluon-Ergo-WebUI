@@ -1,48 +1,30 @@
 import React from "react";
 import TokenInfo from "./TokenInfo";
-import TokenPurchaseForm from "./TokenPurchaseForm";
 
 interface TokenContainerProps {
-  onPurchase: (amount: number) => Promise<void>;
   tokenName: string;
   description: string;
   logoUrl: string;
-  baseCurrency?: string;
-  maxAmount?: number;
-  isMainnet: boolean;
   currentPage: string;
-  maxProtonsAvailable?: number;
-  maxNeutronsAvailable?: number;
+  children: React.ReactNode;
 }
 
 const TokenContainer: React.FC<TokenContainerProps> = ({
-  onPurchase,
   tokenName,
   description,
   logoUrl,
-  baseCurrency,
-  maxAmount,
-  isMainnet,
+  children,
   currentPage,
-  maxProtonsAvailable,
-  maxNeutronsAvailable,
 }) => {
   return (
     <div>
+      <div className="flex md:hidden text-2xl py-2">{currentPage}</div>
       <TokenInfo
         tokenName={tokenName}
         description={description}
         logoUrl={logoUrl}
       />
-      <TokenPurchaseForm
-        onPurchase={onPurchase}
-        baseCurrency={baseCurrency}
-        maxAmount={maxAmount}
-        isMainnet={isMainnet}
-        currentPage={currentPage}
-        maxProtonsAvailable={maxProtonsAvailable}
-        maxNeutronsAvailable={maxNeutronsAvailable}
-      />
+      {children}
     </div>
   );
 };

@@ -4,10 +4,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: #24222B;
+  background: #24222b;
   overflow-x: hidden;
   color: #e0e0e0;
-  font-family: "Inter", sans-serif; 
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
 
@@ -60,7 +60,6 @@ body {
 }
 
 .primary-gradient {
- 
 }
 
 .react-datepicker-wrapper,
@@ -95,7 +94,7 @@ input[type="number"] {
 }
 
 .ant-tabs-nav-wrap {
-  background-color: #3E3733;
+  background-color: #3e3733;
 }
 
 .ant-tabs-nav::before {
@@ -107,7 +106,7 @@ input[type="number"] {
 }
 
 .ant-modal-content {
-  background: #24222B !important;
+  background: #24222b !important;
   color: #d9d9d9;
   border-radius: 15px;
 }
@@ -118,7 +117,7 @@ input[type="number"] {
 }
 
 .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
-  background: #F3B619;
+  background: #f3b619;
   height: 100% !important;
   color: white !important;
   border-radius: 10px;
@@ -161,7 +160,7 @@ input[type="number"] {
 .ant-modal .ant-modal-content {
   border-radius: 16px;
   padding: 16px !important;
-  background-color: #24222C !important;
+  background-color: #24222c !important;
 }
 
 .ant-modal-close-x {

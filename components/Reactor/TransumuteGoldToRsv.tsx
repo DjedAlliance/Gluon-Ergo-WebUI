@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   EXPLORER_API_URL,
   explorerClient,
-  GLUON_NEUTRON_ADDRESS,
+  GLUON_PROTON_ADDRESS,
   PROXY_ADDRESS,
 } from "@/blockchain/ergo/constants";
 import {
@@ -13,6 +13,7 @@ import {
 import {
   UIFriendlyValue,
   checkWalletConnection,
+  nanoErgsToErgs,
   signAndSubmitTx,
 } from "@/blockchain/ergo/walletUtils/utils";
 import { toast } from "react-toastify";
@@ -30,17 +31,20 @@ import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
-import { UnsignedTxForTransmuteGoldToRsv } from "@/blockchain/ergo/apiHelper";
-import TokenContainer from "./Common/TokenContainer";
-import { TransmuteToGold } from "./constant";
+import {
+  UnsignedTxForTransmuteGoldToRsv,
+  UnsignedTxForTransmuteRsvToGold,
+} from "@/blockchain/ergo/apiHelper";
+import CardContainer from "../Common/CardContainer";
+import TokenContainer from "../Common/TokenContainer";
+import { TransmuteFromGold } from "../constant";
+import TokenPurchaseForm from "../Common/TokenPurchaseForm";
 
-const TransmuteRsvToGold = () => {
+const TransmuteGoldToRsv = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [proxyAddress, setProxyAddress] = useState<string>("");
   const [explorerApiClient, setExplorerApiClient] = useState<any>(null);
   const [rsvAmountAvailable, setRsvAmountAvailable] = useState<any>(null);
-
-  const minBoxValue = BigInt(1000000);
 
   const [isModalErgoPayOpen, setIsModalErgoPayOpen] = useState<boolean>(false);
   const [ergoPayLink, setErgoPayLink] = useState<string>("");
@@ -56,25 +60,27 @@ const TransmuteRsvToGold = () => {
     const explorerConf = new Configuration({
       basePath: EXPLORER_API_URL(isMainnet),
     });
+    const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
 
     const explorerClient = DefaultApiFactory(explorerConf);
     setExplorerApiClient(explorerClient);
-    const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
-          const neutrons = findTokenById(res.data.tokens ?? [], neutronTokenId);
-          if (neutrons && neutrons.amount) {
-            setRsvAmountAvailable(UIFriendlyValue(neutrons.amount));
+          const protons = findTokenById(res.data.tokens ?? [], protonTokenId);
+          console.log(protons?.amount);
+          if (protons && protons.amount) {
+            setRsvAmountAvailable(UIFriendlyValue(protons?.amount));
           }
         });
     }
   }, []);
 
   const handleClick = async (amount: number) => {
+    console.log(amount);
     const walletConfig = getWalletConfig();
 
     if (!(await checkWalletConnection(walletConfig))) {
@@ -109,9 +115,8 @@ const TransmuteRsvToGold = () => {
     ).ergoTree;
 
     receiverErgoTree = receiverErgoTree.substring(2);
-
     try {
-      const unsignedTransaction = await UnsignedTxForTransmuteGoldToRsv(
+      const unsignedTransaction = await UnsignedTxForTransmuteRsvToGold(
         isMainnet,
         walletConfig.walletAddress[0] || "",
         amount,
@@ -162,22 +167,27 @@ const TransmuteRsvToGold = () => {
       return;
     }
   };
-  const tokenName = "Turn GAU stable coin into GAUC volatile coin";
+  const tokenName = "Turn GAUC volatile coin into GAU stable coin";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
   return (
     <>
       <TokenContainer
-        onPurchase={handleClick}
         tokenName={tokenName}
         description={description}
         logoUrl={logoUrl}
-        baseCurrency="GAU"
-        maxAmount={rsvAmountAvailable}
-        isMainnet={isMainnet}
-        currentPage={TransmuteToGold}
-      />
+        currentPage={TransmuteFromGold}
+      >
+        <TokenPurchaseForm
+          onPurchase={handleClick}
+          baseCurrency={"GAU"}
+          maxAmount={rsvAmountAvailable}
+          isMainnet={isMainnet}
+          currentPage={TransmuteFromGold}
+          maxProtonsAvailable={rsvAmountAvailable}
+        />
+      </TokenContainer>
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}
@@ -190,5 +200,4 @@ const TransmuteRsvToGold = () => {
     </>
   );
 };
-TransmuteRsvToGold.displayName = TransmuteToGold;
-export default TransmuteRsvToGold;
+export default TransmuteGoldToRsv;

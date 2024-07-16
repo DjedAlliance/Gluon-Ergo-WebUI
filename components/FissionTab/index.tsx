@@ -1,40 +1,36 @@
-import ArrowDownIcon from '@/public/icons/arrow-down.svg';
+import ArrowDownIcon from "@/public/icons/arrow-down.svg";
 import ConversionBox from "../widgets/ConversionBox";
-import Image from 'next/image';
+import Image from "next/image";
 
-import styles from '@/styles/TokenBox.module.css';
-import { FC, useEffect, useState } from 'react';
-import FeesAndSlippage from '../shared/FeesAndSlippage';
-import { rateLimitedCoinGeckoERGUSD } from '@/blockchain/ergo/wallet/utils';
-import ErrorComponent from '../shared/ErrorComponent';
+import styles from "@/styles/TokenBox.module.css";
+import { FC, useEffect, useState } from "react";
+import FeesAndSlippage from "../shared/FeesAndSlippage";
+import { rateLimitedCoinGeckoERGUSD } from "@/blockchain/ergo/wallet/utils";
+import ErrorComponent from "../shared/ErrorComponent";
 
 interface FissionTabProps {
-    handleSubmit: any;
-    baseCurrency?: string;
-    maxAmount?: number;
-    isMainnet: boolean;
-    amount?: any;
-    handleAmountChange?: any;
-    currencyShown?: any;
-    isError?: any;
-    setAmount?: any;
-    currentPage?: string;
-    maxProtonsAvailable?: number;
-    maxNeutronsAvailable?: number;
-  }
+  handleSubmit: any;
+  baseCurrency?: string;
+  maxAmount?: number;
+  isMainnet: boolean;
+  amount?: any;
+  handleAmountChange?: any;
+  currencyShown?: any;
+  isError?: any;
+  setAmount?: any;
+  currentPage?: string;
+}
 
-const FissionTab:FC<FissionTabProps> = ({
-    handleSubmit,
-    maxAmount,
-    isMainnet,
-    amount,
-    handleAmountChange,
-    currencyShown,
-    isError,
-    setAmount,
-    maxNeutronsAvailable,
-    maxProtonsAvailable,
-    currentPage,
+const FissionTab: FC<FissionTabProps> = ({
+  handleSubmit,
+  maxAmount,
+  isMainnet,
+  amount,
+  handleAmountChange,
+  currencyShown,
+  isError,
+  setAmount,
+  currentPage,
 }) => {
   const [exchangeRate, setExchangeRate] = useState(0);
 
@@ -54,28 +50,42 @@ const FissionTab:FC<FissionTabProps> = ({
       <div className="input-group">
         <div className={styles.detailContainer}>
           <div className={styles.detailContainerRow}>
-            <label htmlFor="payment-amount-static" className={styles.detailContainerActionLabel}>Pay</label>
+            <label
+              htmlFor="payment-amount-static"
+              className={"text-sm text-graytext"}
+            >
+              Pay
+            </label>
             {/* Use a span or a read-only input to display the currency */}
-            <div className={styles.detailContainerActionLabelRow}>
-              <p className={styles.detailContainerActionLabel}> Balance: {maxAmount} {currencyShown} </p>
-              <p className={styles.detailContainerActionLabelMax} onClick={() => setAmount(maxAmount)}> Max</p>
+            <div className={"text-sm flex"}>
+              <p className={styles.detailContainerActionLabel}>
+                {" "}
+                Balance: {maxAmount} {currencyShown}{" "}
+              </p>
+              <p
+                className={styles.detailContainerActionLabelMax}
+                onClick={() => setAmount(maxAmount)}
+              >
+                {" "}
+                Max
+              </p>
             </div>
           </div>
-          <div className={styles.detailContainerRow}>
+          <div className={"flex items-center px-3"}>
             <input
               type="number"
               value={amount}
               onChange={handleAmountChange}
               placeholder="Enter amount"
-              className={styles.detailContainerInput}
+              className={"bg-transparent text-2xl text-graytext"}
             />
-            <p id="payment-amount-static" className={styles.detailContainerCurrency}>
+            <p id="payment-amount-static" className={"text-2xl"}>
               {currencyShown}
             </p>
           </div>
           <div className={styles.detailContainerRow}>
             <div className={styles.walletBalance}>
-              Wallet Balance:{" "}
+              Balance:{" "}
               <a
                 href="#"
                 onClick={(e) => {
@@ -99,11 +109,17 @@ const FissionTab:FC<FissionTabProps> = ({
       />
       <FeesAndSlippage />
 
-      <button type="submit" className={styles.convertNowButton} disabled={isError}>
+      <button
+        type="submit"
+        className={
+          "bg-gluongold w-full flex justify-center py-2 rounded-md font-semibold tracking-wider text-purplemist"
+        }
+        disabled={isError}
+      >
         Initiate Fission
       </button>
     </form>
-  )
-}
+  );
+};
 
 export default FissionTab;

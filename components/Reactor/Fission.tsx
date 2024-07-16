@@ -30,7 +30,8 @@ import {
 } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForFission } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "@/components/Common/TokenContainer";
-import { Fission as fissionTitle } from "./constant";
+import { Fission as fissionTitle } from "../constant";
+import TokenPurchaseForm from "../Common/TokenPurchaseForm";
 
 export const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -167,15 +168,19 @@ export const Fission = () => {
   return (
     <>
       <TokenContainer
-        onPurchase={handleClick}
         tokenName={tokenName}
         description={description}
         logoUrl={logoUrl}
-        baseCurrency="ERG"
-        maxAmount={ergoAmountAvailable}
-        isMainnet={isMainnet}
         currentPage={fissionTitle}
-      />
+      >
+        <TokenPurchaseForm
+          onPurchase={handleClick}
+          baseCurrency={"ERG"}
+          maxAmount={ergoAmountAvailable}
+          isMainnet={isMainnet}
+          currentPage={fissionTitle}
+        />
+      </TokenContainer>
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}

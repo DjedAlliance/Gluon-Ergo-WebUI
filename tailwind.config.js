@@ -16,6 +16,7 @@ module.exports = {
         textprimary: "#878494",
         darkgrey: "#2B2935",
         neutraldark: "#35333F",
+        graytext: "#878494",
       },
     },
   },

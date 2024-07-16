@@ -37,7 +37,9 @@ import {
 } from "@/blockchain/ergo/walletUtils/utils";
 import { UnsignedTxForFusion } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "@/components/Common/TokenContainer";
-import { Fusion as fusionTitle } from "./constant";
+import { Fusion as fusionTitle } from "../constant";
+import TokenPurchaseForm from "../Common/TokenPurchaseForm";
+import { getNeutronId, getProtonId } from "@/common/constants";
 
 export const Fusion = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
@@ -68,8 +70,8 @@ export const Fusion = () => {
 
     const explorerClient = DefaultApiFactory(explorerConf);
     setExplorerApiClient(explorerClient);
-    const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
-    const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
+    const protonTokenId = getProtonId(isMainnet);
+    const neutronTokenId = getNeutronId(isMainnet);
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
@@ -192,17 +194,21 @@ export const Fusion = () => {
   return (
     <>
       <TokenContainer
-        onPurchase={handleClick}
         tokenName={tokenName}
         description={description}
         logoUrl={logoUrl}
-        baseCurrency="ERG"
-        maxAmount={ergoAmountAvailable}
-        isMainnet={isMainnet}
         currentPage={fusionTitle}
-        maxProtonsAvailable={protonAmountAvailable}
-        maxNeutronsAvailable={neutronAmountAvailable}
-      />
+      >
+        <TokenPurchaseForm
+          onPurchase={handleClick}
+          baseCurrency={"ERG"}
+          maxAmount={ergoAmountAvailable}
+          isMainnet={isMainnet}
+          currentPage={fusionTitle}
+          maxProtonsAvailable={protonAmountAvailable}
+          maxNeutronsAvailable={neutronAmountAvailable}
+        />
+      </TokenContainer>
       {isModalErgoPayOpen && (
         <ErgoPayWalletModal
           isModalOpen={isModalErgoPayOpen}

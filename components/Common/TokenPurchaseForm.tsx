@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import styles from '@/styles/TokenBox.module.css';
+import styles from "@/styles/TokenBox.module.css";
 import {
   Fission,
   Fusion,
@@ -36,10 +36,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
   const [amountFusion, setAmountFusion] = useState(0);
   const [isError, setIsError] = useState(false);
   const [isErrorInFusion, setIsErrorInFusion] = useState(false);
-  // const [protonsPerTransaction, setProtonsPerTransaction] = useState(0);
-  // const [neutronsPerTransaction, setNeutronsPerTransaction] = useState(0);
 
-  // console.log('gua-gauc', maxProtonsAvailable, maxNeutronsAvailable)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (amount <= maxAmount) {
@@ -86,10 +83,10 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
 
   const currencyShown = baseCurrency ?? `ERG`;
 
-
   return (
-    <>
-      {(currentPage === TransmuteFromGold || currentPage === TransmuteToGold) &&
+    <div className="">
+      {(currentPage === TransmuteFromGold ||
+        currentPage === TransmuteToGold) && (
         <BetaDecayTabs
           handleSubmit={handleSubmit}
           maxAmount={maxAmount}
@@ -103,8 +100,8 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           maxProtonsAvailable={maxProtonsAvailable}
           currentPage={currentPage}
         />
-      }
-      {(currentPage === Fission) &&
+      )}
+      {currentPage === Fission && (
         <FissionTab
           handleSubmit={handleSubmit}
           maxAmount={maxAmount}
@@ -114,12 +111,10 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           currencyShown={currencyShown}
           isError={isError}
           setAmount={setAmount}
-          maxNeutronsAvailable={maxNeutronsAvailable}
-          maxProtonsAvailable={maxProtonsAvailable}
           currentPage={currentPage}
         />
-      }
-      {(currentPage === Fusion) &&
+      )}
+      {currentPage === Fusion && (
         <FusionTab
           handleSubmit={handleSubmit}
           maxAmount={maxAmount}
@@ -135,8 +130,8 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           maxProtonsAvailable={maxProtonsAvailable}
           currentPage={currentPage}
         />
-      }
-    </>
+      )}
+    </div>
   );
 };
 
