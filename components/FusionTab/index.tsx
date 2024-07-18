@@ -105,7 +105,7 @@ const FusionTab: FC<FusionTabProps> = ({
                   setAmount(maxAmount);
                 }}
               >
-                {convertedAmount.toFixed(2)} ERG
+                ${convertedAmount.toFixed(2)}
               </a>
             </div>
           </div>
