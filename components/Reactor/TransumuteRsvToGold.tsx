@@ -30,7 +30,7 @@ import assert from "assert";
 import { getTxReducedB64Safe } from "@/blockchain/ergo/ergopay/reducedTxn";
 import ErgoPayWalletModal from "@/components/wallet/ErgoPayWalletModal";
 import { outputInfoToErgoTransactionOutput } from "@/blockchain/ergo/walletUtils/utils";
-import { UnsignedTxForTransmuteGoldToRsv } from "@/blockchain/ergo/apiHelper";
+import { UnsignedTxForTransmuteRsvToGold } from "@/blockchain/ergo/apiHelper";
 import TokenContainer from "../Common/TokenContainer";
 import { TransmuteToGold } from "../constant";
 import TokenPurchaseForm from "../Common/TokenPurchaseForm";
@@ -112,7 +112,7 @@ const TransmuteRsvToGold = () => {
     receiverErgoTree = receiverErgoTree.substring(2);
 
     try {
-      const unsignedTransaction = await UnsignedTxForTransmuteGoldToRsv(
+      const unsignedTransaction = await UnsignedTxForTransmuteRsvToGold(
         isMainnet,
         walletConfig.walletAddress[0] || "",
         amount,
@@ -163,7 +163,7 @@ const TransmuteRsvToGold = () => {
       return;
     }
   };
-  const tokenName = "Turn GAU stable coin into GAUC volatile coin";
+  const tokenName = "Turn GAUC stable coin into GAU volatile coin";
   const description = "";
   const logoUrl = "https://cryptologos.cc/logos/ergo-erg-logo.png?v=029"; // Replace with your actual logo path
 
