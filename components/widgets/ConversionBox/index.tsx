@@ -73,6 +73,7 @@ export const ConversionBox = ({
     }
     const fetchData = async () => {
       try {
+        console.log("getting price");
         const response = await getPrice(isMainnet, input);
         console.log("response.data", response.data);
         setAssets(response.data);
@@ -91,9 +92,9 @@ export const ConversionBox = ({
 
   assets.map((asset: any, index: number) => {
     if (asset.assetName?.toLocaleLowerCase() == "neutron") {
-      asset.assetName = "GAUC";
-    } else if (asset.assetName?.toLocaleLowerCase() == "proton") {
       asset.assetName = "GAU";
+    } else if (asset.assetName?.toLocaleLowerCase() == "proton") {
+      asset.assetName = "GAUC";
     } else {
       asset.assetName = asset.assetName;
     }

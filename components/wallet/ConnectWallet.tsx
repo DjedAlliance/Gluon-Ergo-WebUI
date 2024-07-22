@@ -349,7 +349,11 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                 </span>
                 <button className="flex font-VelaSansRegular flex-row space-x-2 items-center">
                   <Image alt="img" width="25" src={NautilusLogo} />
-                  <p className={`${isEyeOpen ? styles.textBlur : ""}`}>
+                  <p
+                    className={classNames(
+                      `${isEyeOpen ? styles.textBlur : ""}`
+                    )}
+                  >
                     {reduceAddress(walletAddress![0])}
                   </p>
                 </button>

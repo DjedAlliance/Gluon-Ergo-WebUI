@@ -11,14 +11,14 @@ import {
 const networks: Array<INetwork> = [
   {
     id: 1,
-    name: "Ergo Mainnet",
+    name: "Mainnet",
     icon: ErgoIcon,
     network: "Ergo",
     isMainnet: true,
   },
   {
     id: 2,
-    name: "Ergo Testnet",
+    name: "Testnet",
     icon: ErgoIcon,
     network: "Ergo",
     isMainnet: false,
@@ -77,7 +77,7 @@ const NetworkPicker: React.FC = () => {
 
         <ListboxOptions
           transition
-          className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-neutraldark py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
+          className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-neutraldark py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in text-sm"
         >
           {networks.map((network) => (
             <ListboxOption
