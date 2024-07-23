@@ -135,11 +135,31 @@ const Header = (props: IProps) => {
         </Link>
         <div className="hidden sm:block flex flex-row space-x-5 pl-2">
           <Link
+            href="/app"
+            className={classNames(
+              router.pathname.includes("/app") &&
+                !(
+                  router.pathname.includes("fission") ||
+                  router.pathname.includes("fusion") ||
+                  router.pathname.includes("goldToRsv") ||
+                  router.pathname.includes("rsvToGold")
+                )
+                ? "text-gluongold font-medium"
+                : "font-thin text-gray-400",
+              "text-sm"
+            )}
+          >
+            Dashboard
+          </Link>
+          <Link
             href="/app/fission"
             className={classNames(
-              router.pathname.includes("/app")
+              router.pathname.includes("fission") ||
+                router.pathname.includes("fusion") ||
+                router.pathname.includes("goldToRsv") ||
+                router.pathname.includes("rsvToGold")
                 ? "text-gluongold font-medium"
-                : "font-thin text-gray-900",
+                : "font-thin text-gray-400",
               "text-sm"
             )}
           >
