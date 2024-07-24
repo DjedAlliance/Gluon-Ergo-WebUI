@@ -34,7 +34,7 @@ interface INetwork {
 }
 
 const NetworkPicker: React.FC = () => {
-  const [selected, setSelected] = useState<INetwork>(networks[1]);
+  const [selected, setSelected] = useState<INetwork>(networks[0]);
 
   const handleMenuClick = (network: INetwork) => {
     console.log("Network isMainNet " + network.isMainnet);
