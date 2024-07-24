@@ -99,7 +99,7 @@ const Header = (props: IProps) => {
                       "hover:text-cowboy"
                     )}
                   >
-                    Transmute RSV to Gold
+                    Transmute to Gold
                   </Link>
                   <Link
                     href="goldToRsv"
@@ -110,7 +110,7 @@ const Header = (props: IProps) => {
                       "hover:text-cowboy"
                     )}
                   >
-                    Transmute Gold to RSV
+                    Transmute from Gold
                   </Link>
                 </div>
                 <div className="w-full bg-neutraldark h-0.5 mb-5" />
