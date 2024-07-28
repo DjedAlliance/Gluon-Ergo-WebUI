@@ -80,12 +80,15 @@ const BetaDecayTabs: FC<BetaDecayTabsProps> = ({
             >
               Pay
             </label>
-            <div className={"text-sm flex"}>
+            {/* Use a span or a read-only input to display the currency */}
+            <div className={"text-sm flex space-x-2"}>
+              <p className={styles.detailContainerActionLabel}>
+                {" "}
+                Balance: {maxAmount ?? 0} {currencyShown}{" "}
+              </p>
               <p
                 className={"bg-gluongold/50 px-2 py-0.5 rounded-lg"}
-                onClick={() =>
-                  setAmount(maxAmount !== undefined ? maxAmount : 0)
-                }
+                onClick={() => setAmount(maxAmount)}
               >
                 {" "}
                 Max

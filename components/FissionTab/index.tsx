@@ -60,7 +60,7 @@ const FissionTab: FC<FissionTabProps> = ({
             <div className={"text-sm flex space-x-2"}>
               <p className={styles.detailContainerActionLabel}>
                 {" "}
-                Balance: {maxAmount} {currencyShown}{" "}
+                Balance: {maxAmount ?? 0} {currencyShown}{" "}
               </p>
               <p
                 className={"bg-gluongold/50 px-2 py-0.5 rounded-lg"}

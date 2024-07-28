@@ -74,10 +74,18 @@ const FusionTab: FC<FusionTabProps> = ({
             >
               Receive
             </label>
-            <div className={styles.detailContainerActionLabelRow}>
-              <p className={"text-sm text-graytext"}>
+            {/* Use a span or a read-only input to display the currency */}
+            <div className={"text-sm flex space-x-2"}>
+              <p className={styles.detailContainerActionLabel}>
                 {" "}
-                Balance: {maxAmount} ERG{" "}
+                Balance: {maxAmount ?? 0} {currencyShown}{" "}
+              </p>
+              <p
+                className={"bg-gluongold/50 px-2 py-0.5 rounded-lg"}
+                onClick={() => setAmount(maxAmount)}
+              >
+                {" "}
+                Max
               </p>
             </div>
           </div>
