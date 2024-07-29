@@ -165,6 +165,7 @@ export const ConversionBox = ({
                     })()}
                   </p>
                 </div>
+                <!--
                 <div className={styles.detailContainerRow}>
                   <div className={styles.walletBalance}>
                     Balance:{" "}
@@ -178,6 +179,7 @@ export const ConversionBox = ({
                     </a>
                   </div>
                 </div>
+                -->
               </div>
             </div>
             {index < assets.length - 1 && (
