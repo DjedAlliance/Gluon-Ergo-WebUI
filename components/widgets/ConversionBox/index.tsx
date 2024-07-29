@@ -165,8 +165,7 @@ export const ConversionBox = ({
                     })()}
                   </p>
                 </div>
-                <!--
-                <div className={styles.detailContainerRow}>
+                {/* <div className={styles.detailContainerRow}>
                   <div className={styles.walletBalance}>
                     Balance:{" "}
                     <a
@@ -178,8 +177,7 @@ export const ConversionBox = ({
                       {UIFriendlyValue(asset.price)} {asset.assetName}
                     </a>
                   </div>
-                </div>
-                -->
+                </div> */}
               </div>
             </div>
             {index < assets.length - 1 && (

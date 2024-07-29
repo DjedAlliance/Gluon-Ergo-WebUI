@@ -103,8 +103,7 @@ const FusionTab: FC<FusionTabProps> = ({
               ERG
             </p>
           </div>
-          <!--
-          <div className={styles.detailContainerRow}>
+          {/* <div className={styles.detailContainerRow}>
             <div className={styles.walletBalance}>
               Balance:{" "}
               <a
@@ -117,8 +116,7 @@ const FusionTab: FC<FusionTabProps> = ({
                 ${convertedAmount.toFixed(2)}
               </a>
             </div>
-          </div>
-          -->
+          </div> */}
         </div>
       </div>
       <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
