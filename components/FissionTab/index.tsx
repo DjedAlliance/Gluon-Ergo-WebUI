@@ -83,6 +83,7 @@ const FissionTab: FC<FissionTabProps> = ({
               {currencyShown}
             </p>
           </div>
+          <!--
           <div className={styles.detailContainerRow}>
             <div className={styles.walletBalance}>
               Balance:{" "}
@@ -97,6 +98,7 @@ const FissionTab: FC<FissionTabProps> = ({
               </a>
             </div>
           </div>
+          -->
         </div>
       </div>
       <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
