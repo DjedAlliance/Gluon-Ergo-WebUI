@@ -109,6 +109,7 @@ const BetaDecayTabs: FC<BetaDecayTabsProps> = ({
               {currencyShown}
             </p>
           </div>
+          <!--
           <div className={styles.detailContainerRow}>
             <div className={styles.walletBalance}>
               Balance:{" "}
@@ -127,6 +128,7 @@ const BetaDecayTabs: FC<BetaDecayTabsProps> = ({
               )}
             </div>
           </div>
+          -->
         </div>
       </div>
       <ErrorComponent
