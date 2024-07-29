@@ -103,6 +103,7 @@ const FusionTab: FC<FusionTabProps> = ({
               ERG
             </p>
           </div>
+          <!--
           <div className={styles.detailContainerRow}>
             <div className={styles.walletBalance}>
               Balance:{" "}
@@ -117,6 +118,7 @@ const FusionTab: FC<FusionTabProps> = ({
               </a>
             </div>
           </div>
+          -->
         </div>
       </div>
       <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
