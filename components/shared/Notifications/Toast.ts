@@ -64,7 +64,7 @@ export const installNautilus:any = {
 };
 
 export const txSubmmited = (txHash: string, isMainnet: boolean) =>
-  toast.success(`Transaction submitted (click me)`, {
+  toast.success(`Transaction submitted (click me to show it on the Explorer)`, {
     position: 'top-right',
     autoClose: false,
     hideProgressBar: false,
