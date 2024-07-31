@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   EXPLORER_API_URL,
   explorerClient,
-  GLUON_NEUTRON_ADDRESS,
+  GLUON_PROTON_ADDRESS,
   PROXY_ADDRESS,
 } from "@/blockchain/ergo/constants";
 import {
@@ -60,16 +60,16 @@ const TransmuteRsvToGold = () => {
 
     const explorerClient = DefaultApiFactory(explorerConf);
     setExplorerApiClient(explorerClient);
-    const neutronTokenId = GLUON_NEUTRON_ADDRESS(isMainnet);
+    const protonTokenId = GLUON_PROTON_ADDRESS(isMainnet);
 
     const walletConfig = getWalletConfig();
     if (walletConfig !== undefined) {
       explorerClient
         .getApiV1AddressesP1BalanceConfirmed(walletConfig.walletAddress[0])
         .then((res) => {
-          const neutrons = findTokenById(res.data.tokens ?? [], neutronTokenId);
-          if (neutrons && neutrons.amount) {
-            setGoldAmountAvailable(UIFriendlyValue(neutrons.amount));
+          const protons = findTokenById(res.data.tokens ?? [], protonTokenId);
+          if (protons && protons.amount) {
+            setGoldAmountAvailable(UIFriendlyValue(protons.amount));
           }
         });
     }
