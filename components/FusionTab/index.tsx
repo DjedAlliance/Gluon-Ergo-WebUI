@@ -75,7 +75,7 @@ const FusionTab: FC<FusionTabProps> = ({
               Receive
             </label>
             {/* Use a span or a read-only input to display the currency */}
-            <div className={"text-sm flex space-x-2"}>
+            {/* <div className={"text-sm flex space-x-2"}>
               <p className={styles.detailContainerActionLabel}>
                 {" "}
                 Balance: {maxAmount ?? 0} {currencyShown}{" "}
@@ -87,7 +87,7 @@ const FusionTab: FC<FusionTabProps> = ({
                 {" "}
                 Max
               </p>
-            </div>
+            </div> */}
           </div>
           <div className={"flex px-3 items-center"}>
             <input
