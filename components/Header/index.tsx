@@ -93,7 +93,7 @@ const Header = (props: IProps) => {
                   <Link
                     href="rsvToGold"
                     className={classNames(
-                      currentHref === "/app/rsvToGold"
+                      currentHref === "/app/transmuteToGold"
                         ? "text-gluongold"
                         : "text-white",
                       "hover:text-cowboy"
@@ -104,7 +104,7 @@ const Header = (props: IProps) => {
                   <Link
                     href="goldToRsv"
                     className={classNames(
-                      currentHref === "/app/goldToRsv"
+                      currentHref === "/app/transmuteFromGold"
                         ? "text-gluongold"
                         : "text-white",
                       "hover:text-cowboy"
