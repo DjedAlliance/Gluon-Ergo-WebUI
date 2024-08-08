@@ -11,12 +11,12 @@ export const Reactor: Array<ReactorTab> = [
     href: "/app/fusion",
   },
   {
-    title: "Transmute RSV To Gold",
-    href: "/app/rsvToGold",
+    title: "Transmute to Gold",
+    href: "/app/transmuteToGold",
   },
   {
-    title: "Transmute Gold to RSV",
-    href: "/app/goldToRsv",
+    title: "Transmute from Gold",
+    href: "/app/transmuteFromGold",
   },
 ];
 

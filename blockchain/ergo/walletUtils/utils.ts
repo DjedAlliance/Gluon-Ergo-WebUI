@@ -52,7 +52,7 @@ export const getWalletConn = async () => {
 
   if (!walletConnection) {
     toast.dismiss();
-    toast.warn("please connect wallet", noti_option_close("try-again"));
+    toast.warn("Please connect wallet", noti_option_close("try-again"));
     return false;
   }
   return true;
@@ -70,7 +70,7 @@ export const signAndSubmitTx = async (
     signedTransaction = await ergo!.sign_tx(unsignedTransaction);
 
     toast.update(txBuilding_noti, {
-      render: "Sign your transaction",
+      render: "Transaction signed successfully",
       type: "success",
       isLoading: false,
       autoClose: false,
@@ -80,7 +80,7 @@ export const signAndSubmitTx = async (
     //@ts-ignore
     if ("code" in error) {
       toast.dismiss();
-      toast.warn("canceled by user", noti_option_close("try-again"));
+      toast.warn("Transaction canceled by user", noti_option_close("try-again"));
       return;
     }
     throw error;

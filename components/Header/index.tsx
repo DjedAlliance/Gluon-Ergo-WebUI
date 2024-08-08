@@ -91,9 +91,9 @@ const Header = (props: IProps) => {
                     Fusion
                   </Link>
                   <Link
-                    href="rsvToGold"
+                    href="transmuteToGold"
                     className={classNames(
-                      currentHref === "/app/rsvToGold"
+                      currentHref === "/app/transmuteToGold"
                         ? "text-gluongold"
                         : "text-white",
                       "hover:text-cowboy"
@@ -102,9 +102,9 @@ const Header = (props: IProps) => {
                     Transmute to Gold
                   </Link>
                   <Link
-                    href="goldToRsv"
+                    href="transmuteFromGold"
                     className={classNames(
-                      currentHref === "/app/goldToRsv"
+                      currentHref === "/app/transmuteFromGold"
                         ? "text-gluongold"
                         : "text-white",
                       "hover:text-cowboy"

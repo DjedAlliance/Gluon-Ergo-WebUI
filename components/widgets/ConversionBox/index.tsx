@@ -119,18 +119,18 @@ export const ConversionBox = ({
                     htmlFor="payment-amount-static"
                     className={"text-sm text-graytext"}
                   >
-                    {currentPage === "Fusion" ? "Pay" : "Receive"}
+                    {currentPage === Fusion ? "Pay" : "Receive"}
                   </label>
                   {currentPage ===
-                    ("Fusion" ||
-                      "Transmute from Gold" ||
-                      "Transmute to Gold") && (
+                    (Fusion || TransmuteFromGold || TransmuteToGold) && (
                     <div className={"text-sm flex"}>
                       <span>Balance:&nbsp;</span>
                       {matchedWalletAsset || assets ? (
                         <p className={styles.detailContainerActionLabel}>
                           {" "}
-                          {UIFriendlyValue(matchedWalletAsset?.amount)}{" "}
+                          {UIFriendlyValue(
+                            matchedWalletAsset?.amount ?? 0
+                          )}{" "}
                           {asset.assetName}{" "}
                         </p>
                       ) : (
@@ -165,7 +165,7 @@ export const ConversionBox = ({
                     })()}
                   </p>
                 </div>
-                <div className={styles.detailContainerRow}>
+                {/* <div className={styles.detailContainerRow}>
                   <div className={styles.walletBalance}>
                     Balance:{" "}
                     <a
@@ -177,7 +177,7 @@ export const ConversionBox = ({
                       {UIFriendlyValue(asset.price)} {asset.assetName}
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             {index < assets.length - 1 && (

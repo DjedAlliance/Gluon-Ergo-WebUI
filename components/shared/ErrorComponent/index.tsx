@@ -10,13 +10,16 @@ interface ErrorComponentProps {
 const ErrorComponent:FC<ErrorComponentProps> = ({ isError, amount, maxAmount }) => {
   return (
     <>
-      {isError && amount > 0 && (
+      {isError && amount > maxAmount && (
         <p className={s.text}>
-          Amount exceeds the maximum limit of {maxAmount}.
+          Amount exceeds the available Balance.
         </p>
       )}
       {isError && amount <= 0 && (
         <p className={s.text}>Amount must be greater than zero.</p>
+      )}
+      {isError && amount > 0 && amount <= maxAmount && (
+        <p className={s.text}>Error.</p>
       )}
     </>
   );

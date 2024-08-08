@@ -74,12 +74,20 @@ const FusionTab: FC<FusionTabProps> = ({
             >
               Receive
             </label>
-            <div className={styles.detailContainerActionLabelRow}>
-              <p className={"text-sm text-graytext"}>
+            {/* Use a span or a read-only input to display the currency */}
+            {/* <div className={"text-sm flex space-x-2"}>
+              <p className={styles.detailContainerActionLabel}>
                 {" "}
-                Balance: {maxAmount} ERG{" "}
+                Balance: {maxAmount ?? 0} {currencyShown}{" "}
               </p>
-            </div>
+              <p
+                className={"bg-gluongold/50 px-2 py-0.5 rounded-lg"}
+                onClick={() => setAmount(maxAmount)}
+              >
+                {" "}
+                Max
+              </p>
+            </div> */}
           </div>
           <div className={"flex px-3 items-center"}>
             <input
@@ -95,7 +103,7 @@ const FusionTab: FC<FusionTabProps> = ({
               ERG
             </p>
           </div>
-          <div className={styles.detailContainerRow}>
+          {/* <div className={styles.detailContainerRow}>
             <div className={styles.walletBalance}>
               Balance:{" "}
               <a
@@ -108,7 +116,7 @@ const FusionTab: FC<FusionTabProps> = ({
                 ${convertedAmount.toFixed(2)}
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
