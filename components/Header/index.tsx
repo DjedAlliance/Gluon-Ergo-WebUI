@@ -146,7 +146,7 @@ const Header = (props: IProps) => {
             Reactor
           </Link>
           <Link
-            href="https://docs.stability.nexus/"
+            href="https://docs.stability.nexus/gluon-protocols/gluon-overview/"
             className={classNames(
               router.pathname === "/docs"
                 ? "text-gluongold font-medium"
