@@ -128,6 +128,7 @@ const TokenPurchaseForm: React.FC<TokenPurchaseFormProps> = ({
           maxNeutronsAvailable={maxNeutronsAvailable}
           maxProtonsAvailable={maxProtonsAvailable}
           currentPage={currentPage}
+          setIsError={setIsError}
         />
       )}
     </div>

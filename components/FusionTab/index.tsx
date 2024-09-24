@@ -7,6 +7,9 @@ import { FC, useEffect, useState } from "react";
 import FeesAndSlippage from "../shared/FeesAndSlippage";
 import { rateLimitedCoinGeckoERGUSD } from "@/blockchain/ergo/wallet/utils";
 import ErrorComponent from "../shared/ErrorComponent";
+import { ergsToNanoErgs } from "@/blockchain/ergo/walletUtils/utils";
+import { getFusionPrice } from "@/blockchain/ergo/apiHelper";
+import { getNeutronId, getProtonId } from "@/common/constants";
 
 interface FusionTabProps {
   handleSubmit: any;
@@ -23,6 +26,7 @@ interface FusionTabProps {
   maxNeutronsAvailable?: number;
   setAmountFusion?: any;
   amountFusion?: any;
+  setIsError?: any;
 }
 
 const FusionTab: FC<FusionTabProps> = ({
@@ -39,17 +43,40 @@ const FusionTab: FC<FusionTabProps> = ({
   currentPage,
   setAmountFusion,
   amountFusion,
+  setIsError,
 }) => {
   const [exchangeRate, setExchangeRate] = useState(0);
-
+  const [protonAmountRequested, setProtonAmountRequested] = useState(0);
+  const [neutronAmountRequested, setNeutronAmountRequested] = useState(0);
   useEffect(() => {
     const fetchRate = async () => {
       const getPrice = await rateLimitedCoinGeckoERGUSD();
       const rate = await getPrice();
       setExchangeRate(rate);
+
+      const inputValue = ergsToNanoErgs(amount);
+      const price = await getFusionPrice(isMainnet, inputValue);
+      const neutronId = getNeutronId(isMainnet);
+      const protonId = getProtonId(isMainnet);
+      // Find the object for neutron
+      const neutron = price.data.find(
+        (item: { id: string }) => item.id === neutronId
+      );
+      // Extract the price
+      const neutronPrice = neutron ? neutron.price : null;
+
+      // Find the object for proton
+      const proton = price.data.find(
+        (item: { id: string }) => item.id === protonId
+      );
+      // Extract the price
+      const protonPrice = proton ? proton.price : null;
+
+      setProtonAmountRequested(protonPrice * 10 ** -9);
+      setNeutronAmountRequested(neutronPrice * 10 ** -9);
     };
     fetchRate();
-  }, []);
+  }, [amount, isMainnet]);
 
   const convertedAmount = amount * exchangeRate;
   return (
@@ -119,7 +146,17 @@ const FusionTab: FC<FusionTabProps> = ({
           </div> */}
         </div>
       </div>
-      <ErrorComponent isError={isError} amount={amount} maxAmount={maxAmount} />
+      <ErrorComponent
+        isError={isError}
+        amount={amount}
+        maxAmount={maxAmount}
+        isFusion={true}
+        maxNeutronsAvailable={maxNeutronsAvailable}
+        maxProtonsAvailable={maxProtonsAvailable}
+        ProtonsAmountForFusion={protonAmountRequested}
+        NeutronsAmountForFusion={neutronAmountRequested}
+        setIsError={setIsError}
+      />
 
       <FeesAndSlippage />
       <button
