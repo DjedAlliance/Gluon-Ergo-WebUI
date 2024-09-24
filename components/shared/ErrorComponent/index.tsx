@@ -5,7 +5,7 @@ interface ErrorComponentProps {
   isError: boolean;
   amount: number;
   maxAmount: any;
-  isFusion: boolean;
+  isFusion?: boolean;
   maxProtonsAvailable?: number;
   maxNeutronsAvailable?: number;
   ProtonsAmountForFusion?: number;
