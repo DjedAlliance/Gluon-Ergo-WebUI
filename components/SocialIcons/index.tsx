@@ -122,7 +122,7 @@ export const GitHub = () => {
 
 export const applicationConfig = {
   social: {
-    twitter: "https://x.com/DjedAlliance",
+    twitter: "https://x.com/GluonStable",
     telegram: "https://t.me/GluonGold",
     discord: "https://discord.com/invite/YzDKeEfWtS",
     github: "https://github.com/DjedAlliance",
