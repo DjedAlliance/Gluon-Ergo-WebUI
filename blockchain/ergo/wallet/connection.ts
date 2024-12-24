@@ -42,7 +42,6 @@ export async function connectNautilusWallet(setWalletConnected: React.Dispatch<R
           throw new WrongNetworkException();
         }
 
-        // Retrieve used addresses and handle the case where it might not return anything
         let addresses: string[] = [];
         try {
           addresses = await ergo.get_used_addresses() || [];
@@ -52,21 +51,17 @@ export async function connectNautilusWallet(setWalletConnected: React.Dispatch<R
 
         console.log("addresses", addresses);
 
-        // Ensure the change address is added, and deduplicate the list
         addresses.unshift(address);
         const uniqueAddresses = [...new Set(addresses)];
 
-        // Wallet configuration object
         const walletStorageConf: walletLocalStorage = {
           walletConnected: true,
           walletName: 'nautilus',
-          walletAddress: uniqueAddresses.length > 0 ? uniqueAddresses : [address] // Default to change_address if empty
+          walletAddress: uniqueAddresses.length > 0 ? uniqueAddresses : [address]
         };
 
-        // Save the wallet configuration to localStorage
         localStorage.setItem("walletConfig", JSON.stringify(walletStorageConf));
 
-        // Update the state
         setWalletConnected(true);
         setWalletName('nautilus');
         setWalletAddress(uniqueAddresses);
@@ -74,8 +69,6 @@ export async function connectNautilusWallet(setWalletConnected: React.Dispatch<R
         console.log("There is some issue with the addresses:", error);
       }
 
-
-      // removes any duplicates in case the change address is already in the array of used addresses
 
 
 
