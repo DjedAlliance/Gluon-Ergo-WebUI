@@ -80,6 +80,7 @@ export const ErgoDappConnector = (props: any) => {
           .then((access_granted: any) => {
             if (access_granted) {
               setWalletConnected(true);
+              console.log("walletconnected", walletConnected);
               (window as any).ergoConnector.nautilus
                 .getContext()
                 .then((context: any) => {

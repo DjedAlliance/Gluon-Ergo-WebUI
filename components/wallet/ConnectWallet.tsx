@@ -152,8 +152,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
 
     const walletConfig = localStorage.getItem("walletConfig")
       ? (JSON.parse(
-          localStorage.getItem("walletConfig")!
-        ) as walletLocalStorage)
+        localStorage.getItem("walletConfig")!
+      ) as walletLocalStorage)
       : undefined;
 
     if (walletConfig) {
@@ -290,9 +290,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
       <div className="flex flex-row">
         <button className="flex font-VelaSansRegular text-black rounded-[5px] font-normal">
           <p
-            className={`${
-              isEyeOpen ? "blur-sm" : ""
-            }  font-VelaSansRegular text-white font-normal`}
+            className={`${isEyeOpen ? "blur-sm" : ""
+              }  font-VelaSansRegular text-white font-normal`}
           >
             {numberWithCommas(parseInt(ergBalance), 9)} ERG
           </p>
@@ -507,18 +506,16 @@ const ConnectWallet: React.FC<IProps> = (props) => {
               <div className="flex items-center">
                 <ErgoIconModal />
                 <p
-                  className={`${commonStyle.ergoBalanceText} ${
-                    isEyeOpen ? styles.textBlur : ""
-                  }`}
+                  className={`${commonStyle.ergoBalanceText} ${isEyeOpen ? styles.textBlur : ""
+                    }`}
                 >
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </p>
               </div>
               <div>
                 <p
-                  className={`${
-                    isEyeOpen ? "blur-sm" : ""
-                  } m-0 text-[12px] font-semibold font-VelaSanSemiBold text-[#595959]`}
+                  className={`${isEyeOpen ? "blur-sm" : ""
+                    } m-0 text-[12px] font-semibold font-VelaSanSemiBold text-[#595959]`}
                 >
                   ${numberWithCommas(parseInt(ergBalance), 9)}
                 </p>
@@ -553,26 +550,24 @@ const ConnectWallet: React.FC<IProps> = (props) => {
             >
               {/* FOR DESKTOP  */}
               <p
-                className={`${commonStyle.ergoBalanceAdd} ${
-                  isEyeOpen ? "blur-sm" : ""
-                } font-SpaceGrotesk hidden sm:inline-block`}
+                className={`${commonStyle.ergoBalanceAdd} ${isEyeOpen ? "blur-sm" : ""
+                  } font-SpaceGrotesk hidden sm:inline-block`}
               >
                 {walletAddress
                   ? walletAddress[0].slice(0, 18) +
-                    "..." +
-                    walletAddress[0].slice(-8)
+                  "..." +
+                  walletAddress[0].slice(-8)
                   : ""}
               </p>
               {/* FOR MOBILE  */}
               <p
-                className={`${commonStyle.ergoBalanceAdd} ${
-                  isEyeOpen ? "blur-sm" : ""
-                } font-SpaceGrotesk sm:hidden`}
+                className={`${commonStyle.ergoBalanceAdd} ${isEyeOpen ? "blur-sm" : ""
+                  } font-SpaceGrotesk sm:hidden`}
               >
                 {walletAddress
                   ? walletAddress[0].slice(0, 13) +
-                    "..." +
-                    walletAddress[0].slice(-6)
+                  "..." +
+                  walletAddress[0].slice(-6)
                   : ""}
               </p>
               <div className="flex items-center space-x-1.5">
@@ -604,9 +599,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
 
                 <div className="cursor-pointer">
                   <a
-                    href={`${EXPLORER_URL(isMainnet!)}/addresses/${
-                      walletAddress![0]
-                    }`}
+                    href={`${EXPLORER_URL(isMainnet!)}/addresses/${walletAddress![0]
+                      }`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -751,18 +745,16 @@ const ConnectWallet: React.FC<IProps> = (props) => {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <ErgoIconModal />
                 <p
-                  className={`${commonStyle.ergoBalanceText} ${
-                    isEyeOpen ? "blur-sm" : ""
-                  } `}
+                  className={`${commonStyle.ergoBalanceText} ${isEyeOpen ? "blur-sm" : ""
+                    } `}
                 >
                   {numberWithCommas(parseInt(ergBalance), 9)} ERG
                 </p>
               </div>
               <div>
                 <p
-                  className={`${
-                    isEyeOpen ? "blur-sm" : ""
-                  } m-0 text-[12px] font-semibold font-VelaSanSemiBold text-[#595959]`}
+                  className={`${isEyeOpen ? "blur-sm" : ""
+                    } m-0 text-[12px] font-semibold font-VelaSanSemiBold text-[#595959]`}
                 >
                   ${ergUSDValue}
                 </p>
@@ -798,25 +790,23 @@ const ConnectWallet: React.FC<IProps> = (props) => {
             >
               <div>
                 <p
-                  className={`${commonStyle.ergoBalanceAdd} ${
-                    isEyeOpen ? "blur-sm" : ""
-                  } hidden sm:block`}
+                  className={`${commonStyle.ergoBalanceAdd} ${isEyeOpen ? "blur-sm" : ""
+                    } hidden sm:block`}
                 >
                   {walletAddress
                     ? walletAddress[0].slice(0, 18) +
-                      "..." +
-                      walletAddress[0].slice(-8)
+                    "..." +
+                    walletAddress[0].slice(-8)
                     : ""}
                 </p>{" "}
                 <p
-                  className={`${commonStyle.ergoBalanceAdd} ${
-                    isEyeOpen ? "blur-sm" : ""
-                  } sm:hidden`}
+                  className={`${commonStyle.ergoBalanceAdd} ${isEyeOpen ? "blur-sm" : ""
+                    } sm:hidden`}
                 >
                   {walletAddress
                     ? walletAddress[0].slice(0, 14) +
-                      "..." +
-                      walletAddress[0].slice(-6)
+                    "..." +
+                    walletAddress[0].slice(-6)
                     : ""}
                 </p>
               </div>
@@ -849,9 +839,8 @@ const ConnectWallet: React.FC<IProps> = (props) => {
                 </div>
                 <div className="cursor-pointer">
                   <a
-                    href={`${EXPLORER_URL(isMainnet!)}/addresses/${
-                      walletAddress ? walletAddress[0] : ""
-                    }`}
+                    href={`${EXPLORER_URL(isMainnet!)}/addresses/${walletAddress ? walletAddress[0] : ""
+                      }`}
                     target="_blank"
                     rel="noreferrer"
                   >
