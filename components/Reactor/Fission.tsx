@@ -33,6 +33,12 @@ import TokenContainer from "@/components/Common/TokenContainer";
 import { Fission as fissionTitle } from "../constant";
 import TokenPurchaseForm from "../Common/TokenPurchaseForm";
 
+let gluon: any;
+
+if (typeof window !== 'undefined') {
+  gluon = import('gluon-sdk')
+}
+
 export const Fission = () => {
   const [isMainnet, setIsMainnet] = useState<boolean>(true);
   const [ergForFissionAmount, setErgForFissionAmount] = useState<number>(0);
@@ -73,7 +79,11 @@ export const Fission = () => {
   }, []);
 
   const handleClick = async (amount: number) => {
+    const resGluon = await gluon;
     const walletConfig = getWalletConfig();
+
+    const serializer = new (await gluon).Serializer();
+    console.log(await serializer.encodeTupleLong(1, 2));
 
     if (!(await checkWalletConnection(walletConfig))) {
       toast.dismiss();
@@ -109,12 +119,17 @@ export const Fission = () => {
     receiverErgoTree = receiverErgoTree.substring(2);
     setErgForFissionAmount(ergsToNanoErgs(amount));
     try {
-      const unsignedTransaction = await UnsignedTxForFission(
-        isMainnet,
-        walletConfig.walletAddress[0] || "",
-        ergsToNanoErgs(amount),
-        true
-      );
+      // const unsignedTransaction = await UnsignedTxForFission(
+      //   isMainnet,
+      //   walletConfig.walletAddress[0] || "",
+      //   ergsToNanoErgs(amount),
+      //   true
+      // );
+      const gluon = new resGluon.Gluon()
+      const oracleBoxJs = await gluon.getGoldOracleBox()
+      const gluonBoxJs = await gluon.getGluonBox()
+      const amountToFission = ergsToNanoErgs(amount)
+      const unsignedTransaction = await gluon.fissionForEip12(gluonBoxJs, oracleBoxJs, inputs, amountToFission)
 
       if (isErgoPay) {
         const [txId, ergoPayTx] = await getTxReducedB64Safe(
